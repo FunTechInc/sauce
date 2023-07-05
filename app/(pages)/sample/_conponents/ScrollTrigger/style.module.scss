@@ -1,0 +1,12 @@
+@use "@/css" as *;
+
+.box {
+   width: 320px;
+   height: 480px;
+   background-color: $color-key;
+   margin-bottom: 40px;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

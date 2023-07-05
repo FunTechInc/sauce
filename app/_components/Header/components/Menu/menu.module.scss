@@ -1,0 +1,30 @@
+@use "/css" as *;
+
+.button {
+   position: relative;
+   z-index: 100001;
+}
+
+.active {
+   color: #fff;
+}
+
+.inner {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   z-index: 10000;
+   background-color: $color-key;
+   top: 0;
+   left: 0;
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.hidden {
+   visibility: hidden;
+   opacity: 0;
+   pointer-events: none;
+}
