@@ -14,6 +14,14 @@ export async function generateMetadata({
    };
 }
 
+export async function generateStaticParams() {
+   const blogs = await getAllBlogs();
+
+   return blogs.map((blog) => ({
+      id: blog.id,
+   }));
+}
+
 const Single = async () => {
    const blogs = await getAllBlogs();
    return (

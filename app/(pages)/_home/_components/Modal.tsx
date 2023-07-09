@@ -32,7 +32,6 @@ const ModalContent = () => {
 };
 
 export const Modal = () => {
-   const setIsModal = useAppStore(({ setIsModalOpen }) => setIsModalOpen);
    return (
       <MyModal
          className={s.button}
@@ -42,13 +41,13 @@ export const Modal = () => {
          }}
          callback={{
             open: (dialog) => {
-               setIsModal(true);
+               useAppStore.setState({ isModalOpen: true });
                const content =
                   dialog.getElementsByClassName("js_modal_content")[0];
                content.scrollTop = 0;
             },
             close: () => {
-               setIsModal(false);
+               useAppStore.setState({ isModalOpen: false });
             },
          }}>
          <span>Show Modal</span>

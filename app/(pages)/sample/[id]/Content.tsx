@@ -17,7 +17,7 @@ export const Content = ({ content }: { content: any }) => {
    const param = useParams();
    //paramはuseParamが更新されるたびに変更されるので、memo化してあげる
    const blog = useMemo(
-      () => getContent(content.contents, param.id),
+      () => getContent(content, param.id),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       []
    );

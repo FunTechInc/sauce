@@ -6,12 +6,14 @@ export const PageTransitionContext = ({
    millisecond,
    routing,
    children,
+   scrollRestoration,
 }: {
    millisecond: number;
    routing: {
       path: string;
       children: React.ReactNode;
    }[];
+   scrollRestoration: "top" | "restore";
    children: React.ReactNode;
 }) => {
    const pathname = usePathname();
@@ -20,7 +22,7 @@ export const PageTransitionContext = ({
          millisecond={millisecond}
          routing={routing}
          mode="wait"
-         scrollRestoration="top"
+         scrollRestoration={scrollRestoration}
          router={pathname}>
          {children}
       </MekuriContext>

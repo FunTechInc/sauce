@@ -50,6 +50,7 @@ body {
    color: $color-txt;
    letter-spacing: $letter-spacing-base;
    line-height: $leading-none;
+   transition: opacity #{$duration / 3 + "s"} ease-in-out;
 }
 
 html {
@@ -71,6 +72,11 @@ html {
    @else if $designRoot==3 {
       font-size: var(--mobile-root);
    }
+}
+
+//set opacity to 1 after font is loaded
+html.fonts-loaded body {
+   opacity: 1 !important;
 }
 
 /*===============================================

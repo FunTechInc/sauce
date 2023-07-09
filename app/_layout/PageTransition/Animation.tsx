@@ -14,7 +14,6 @@ export const PageTransitionAnimation = ({
 
    useMekuriAnimation({
       isReRender: false,
-      mode: "wait",
       leave: () => {
          gsap.to(ref.current, {
             opacity: 0,
