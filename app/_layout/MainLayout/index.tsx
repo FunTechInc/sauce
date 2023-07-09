@@ -33,7 +33,10 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <MainWrapper>
          <Lenis>
-            <PageTransitionContext millisecond={600} routing={routing}>
+            <PageTransitionContext
+               millisecond={800}
+               routing={routing}
+               scrollRestoration="top">
                <Header />
                <main>
                   <PageTransitionAnimation>

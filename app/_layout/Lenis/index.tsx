@@ -47,9 +47,6 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
          lenis?.start();
       }
    }, [lenis, isModalOpen, isMenuOpen]);
-   /*===============================================
-	hash
-	===============================================*/
 
    return (
       <MyLenis root options={{ ...option }}>

@@ -1,11 +1,6 @@
 import { SampleLayout } from "@/app/_layout/SampleLayout";
-import { getBlogById } from "@/app/_libs/api-responses";
+import { getAllBlogs, getBlogById } from "@/app/_libs/api-responses";
 import type { Metadata } from "next";
-
-const metadata: Metadata = {
-   title: "blog",
-   description: "samplesamplesamplesamplesamplesamplesamplesample",
-};
 
 export async function generateMetadata({
    params,
@@ -16,6 +11,14 @@ export async function generateMetadata({
    return {
       title: blog.title,
    };
+}
+
+export async function generateStaticParams() {
+   const blogs = await getAllBlogs();
+
+   return blogs.map((blog) => ({
+      id: blog.id,
+   }));
 }
 
 const Single = async ({ params }: { params: { id: string } }) => {

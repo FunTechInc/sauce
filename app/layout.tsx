@@ -18,8 +18,7 @@ const metadata: Metadata = {
       default: "(hidden)sauce | FunTech",
       template: "%s | FunTech",
    },
-   description:
-      "This is 'Hiden no Tare' a clever Japanese pun, both in sound and sense.",
+   description: "this is our「秘伝のタレ」, means hidden sauce.",
    twitter: {
       card: "summary_large_image",
       title: "(hidden)sauce | FunTech",
@@ -31,7 +30,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <html lang="ja">
-         <body className={inter.className}>
+         <body style={{ opacity: 0 }} className={inter.className}>
             <MainLayout>{children}</MainLayout>
          </body>
          <AppHooks />
