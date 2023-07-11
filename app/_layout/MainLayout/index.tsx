@@ -7,35 +7,48 @@ import {
    PageTransitionAnimation,
    PageTransitionLayout,
 } from "../PageTransition";
+import { register } from "@funtech-inc/mekuri/register";
 
 /*===============================================
 import routing
 ===============================================*/
 import Home from "@/app/page";
 import Sample from "@/app/(pages)/sample/page";
-import Single from "@/app/(pages)/sample/[id]/page";
-const routing = [
-   {
-      path: "/",
-      children: <Home />,
-   },
-   {
-      path: "/sample",
-      children: <Sample />,
-   },
-   {
-      path: "/sample/★",
-      children: <Single />,
-   },
-];
+import SampleSingle from "@/app/(pages)/sample/[id]/page";
+import { getAllBlogsID } from "@/app/_libs/api-responses";
 
-export const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const createRouting = async () => {
+   const idArr = await getAllBlogsID();
+   const routing = [
+      {
+         path: "/",
+         children: <Home />,
+      },
+      {
+         path: "/sample",
+         children: <Sample />,
+      },
+      ...register({
+         path: idArr.map((id) => `/sample/${id}`),
+         children: idArr.map((id) => (
+            <SampleSingle key={id} params={{ id: id }} />
+         )),
+      }),
+   ];
+   return routing;
+};
+
+export const MainLayout = async ({
+   children,
+}: {
+   children: React.ReactNode;
+}) => {
    return (
       <MainWrapper>
          <Lenis>
             <PageTransitionContext
-               millisecond={800}
-               routing={routing}
+               millisecond={1000}
+               routing={await createRouting()}
                scrollRestoration="top">
                <Header />
                <main>

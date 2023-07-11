@@ -25,6 +25,7 @@ const Single = async ({ params }: { params: { id: string } }) => {
    const blog = await getBlogById(params.id);
    return (
       <SampleLayout>
+         <p>blog</p>
          <p>{blog.title}</p>
       </SampleLayout>
    );
