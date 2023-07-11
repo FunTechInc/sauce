@@ -26,6 +26,21 @@ export const getAllBlogs = async () => {
       throw new Error("Failed to fetch data");
    }
 };
+export const getAllBlogsID = async () => {
+   try {
+      const response = await client.getList({
+         // default is force-cache
+         customRequestInit: {
+            cache: "force-cache",
+         },
+         endpoint: "blogs",
+      });
+      const idArr = response.contents.map((res) => res.id);
+      return idArr;
+   } catch (error) {
+      throw new Error("Failed to fetch data");
+   }
+};
 type TBlog = {
    title: string;
 };

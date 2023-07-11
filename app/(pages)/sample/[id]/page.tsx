@@ -1,7 +1,6 @@
 import { SampleLayout } from "@/app/_layout/SampleLayout";
-import type { Metadata } from "next";
-import { Content } from "./Content";
 import { getAllBlogs, getBlogById } from "@/app/_libs/api-responses";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
    params,
@@ -22,11 +21,12 @@ export async function generateStaticParams() {
    }));
 }
 
-const Single = async () => {
-   const blogs = await getAllBlogs();
+const Single = async ({ params }: { params: { id: string } }) => {
+   const blog = await getBlogById(params.id);
    return (
       <SampleLayout>
-         <Content content={blogs} />
+         <p>sample</p>
+         <p>{blog.title}</p>
       </SampleLayout>
    );
 };
