@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useMekuriAnimation, useMekuriDuration } from "@funtech-inc/mekuri";
+import { EASEVAL } from "@/app/_libs/constants";
 
 export const PageTransitionAnimation = ({
    children,
@@ -10,22 +11,24 @@ export const PageTransitionAnimation = ({
    children: React.ReactNode;
 }) => {
    const ref = useRef(null);
-   const duration = useMekuriDuration();
+   const { second } = useMekuriDuration();
+   const easing = {
+      duration: second,
+      ease: `${EASEVAL}.out`,
+   };
 
    useMekuriAnimation({
       isReRender: false,
       leave: () => {
          gsap.to(ref.current, {
             opacity: 0,
-            duration: duration.second,
-            ease: "power3.out",
+            ...easing,
          });
       },
       enter: () => {
          gsap.to(ref.current, {
             opacity: 1,
-            duration: duration.second,
-            ease: "power3.out",
+            ...easing,
          });
       },
    });
