@@ -13,13 +13,13 @@ export async function generateMetadata({
    };
 }
 
-export async function generateStaticParams() {
-   const blogs = await getAllBlogs();
+// export async function generateStaticParams() {
+//    const blogs = await getAllBlogs();
 
-   return blogs.map((blog) => ({
-      id: blog.id,
-   }));
-}
+//    return blogs.map((blog) => ({
+//       id: blog.id,
+//    }));
+// }
 
 const Single = async ({ params }: { params: { id: string } }) => {
    const blog = await getBlogById(params.id);
