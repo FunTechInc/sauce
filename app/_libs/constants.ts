@@ -4,8 +4,8 @@ export const ISPROD = process.env.NODE_ENV === "production";
 export const ISCLIENT = typeof document !== "undefined";
 export const ISSERVER = !ISCLIENT;
 
-export const SITEURL = new URL(process.env.NEXT_PUBLIC_SITE_URL!);
-export const SITEORIGIN = SITEURL.origin;
+// export const SITEURL = new URL(process.env.NEXT_PUBLIC_SITE_URL!);
+// export const SITEORIGIN = SITEURL.origin;
 
 export const WINDOWSM = 560;
 export const WINDOWMD = 960;
