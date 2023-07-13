@@ -3,8 +3,7 @@ import { AppHooks } from "./app-hooks";
 import { MainLayout } from "@/app/_layout/MainLayout";
 
 //font
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { noto } from "./font";
 
 //css
 import "the-new-css-reset/css/reset.css";
@@ -30,7 +29,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <html lang="ja">
-         <body style={{ opacity: 0 }} className={inter.className}>
+         <body style={{ opacity: 0 }} className={noto.className}>
             <MainLayout>{children}</MainLayout>
          </body>
          <AppHooks />

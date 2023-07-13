@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useStarter } from "@funtech-inc/spice";
 import { useAppStore } from "./_context/useAppStore";
+import { poppins } from "./font";
 
 export const AppHooks = () => {
    useStarter({
@@ -12,7 +13,13 @@ export const AppHooks = () => {
       areYouFun: true,
    });
    useFontsLoaded();
-   return null;
+   return (
+      <style jsx global>{`
+         .ff_en {
+            font-family: ${poppins.style.fontFamily};
+         }
+      `}</style>
+   );
 };
 
 //set opacity to 1 after font is loaded
