@@ -165,47 +165,23 @@ transition
 ===============================================*/
 @mixin transition($dur: all #{$duration + "s"}) {
    transition: $dur;
-   @include my-cubic-bezier03();
+   @include easing-quart();
 }
 
 /*===============================================
-my cubic bezier
+easing
 ===============================================*/
-@mixin my-cubic-bezier01 {
-   //"power1" (a.k.a. "quad")
+@mixin easing-quad {
+   //"power1" in GSAP
    transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
 }
-@mixin my-cubic-bezier02 {
-   //"power2" (a.k.a. "cubic")
+@mixin easing-cubic {
+   //"power2" in GSAP
    transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
 }
-@mixin my-cubic-bezier03 {
-   //"power3" (a.k.a. "quart")
+@mixin easing-quart {
+   //"power3" in GSAP
    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@mixin cubic-backOut {
-   transition-timing-function: cubic-bezier(0.28, 0.8, 0.36, 1.81);
-}
-
-@mixin cubic-backIn {
-   transition-timing-function: cubic-bezier(0.59, -0.82, 0.79, 0.39);
-}
-
-@mixin cubic-bezier01 {
-   transition-timing-function: cubic-bezier(0.26, 0.06, 0, 1);
-}
-
-@mixin cubic-bezier02 {
-   transition-timing-function: cubic-bezier(0.18, 0.06, 0.23, 1);
-}
-
-@mixin cubic-bezier03 {
-   transition-timing-function: cubic-bezier(0.43, 0.05, 0.17, 1);
-}
-
-@mixin cubic-bezier04 {
-   transition-timing-function: cubic-bezier(0.55, 0.05, 0.22, 0.99);
 }
 
 /*===============================================
