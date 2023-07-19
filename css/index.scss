@@ -165,15 +165,23 @@ transition
 ===============================================*/
 @mixin transition($dur: all #{$duration + "s"}) {
    transition: $dur;
-   @include my-cubic-bezier01();
+   @include my-cubic-bezier03();
 }
 
 /*===============================================
 my cubic bezier
 ===============================================*/
 @mixin my-cubic-bezier01 {
-   //ease out系
-   transition-timing-function: cubic-bezier(0.2, 1.05, 0.7, 0.95);
+   //"power1" (a.k.a. "quad")
+   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
+}
+@mixin my-cubic-bezier02 {
+   //"power2" (a.k.a. "cubic")
+   transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+@mixin my-cubic-bezier03 {
+   //"power3" (a.k.a. "quart")
+   transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @mixin cubic-backOut {
