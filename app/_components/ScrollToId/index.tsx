@@ -1,18 +1,27 @@
 "use client";
 
-import Link from "next/link";
 import { useLenis } from "@studio-freight/react-lenis";
 
 export const ScrollToId = ({
    target,
    children,
+   className,
 }: {
-   target: string;
+   target: React.RefObject<HTMLElement> | string;
    children: React.ReactNode;
+   className?: string;
 }) => {
    const lenis = useLenis();
+
+   const isRefObj = (
+      value: React.RefObject<HTMLElement> | string
+   ): value is React.RefObject<HTMLElement> => {
+      return value !== null && typeof value === "object" && "current" in value;
+   };
+
    const clickHandler = () => {
-      lenis.scrollTo(target, {
+      const scrollTarget = isRefObj(target) ? target.current : target;
+      lenis.scrollTo(scrollTarget, {
          offset: -80,
          lock: true,
          force: true,
@@ -21,8 +30,8 @@ export const ScrollToId = ({
       });
    };
    return (
-      <Link href={target} onClick={clickHandler}>
+      <button onClick={clickHandler} className={className ? className : ""}>
          {children}
-      </Link>
+      </button>
    );
 };
