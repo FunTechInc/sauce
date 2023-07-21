@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { MekuriContext } from "@funtech-inc/mekuri";
 
-export const PageTransitionContext = ({
+export const Context = ({
    millisecond,
    routing,
    children,
