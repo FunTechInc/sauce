@@ -2,11 +2,7 @@ import { Lenis } from "@/app/_layout/Lenis";
 import { MainWrapper } from "./MainWrapper";
 import { Header } from "@/app/_components/Header";
 import { Footer } from "@/app/_components/Footer";
-import {
-   PageTransitionContext,
-   PageTransitionAnimation,
-   PageTransitionLayout,
-} from "../PageTransition";
+import { PageTransition } from "../PageTransition";
 import { register } from "@funtech-inc/mekuri/register";
 
 /*===============================================
@@ -46,18 +42,18 @@ export const MainLayout = async ({
    return (
       <MainWrapper>
          <Lenis>
-            <PageTransitionContext
+            <PageTransition.Context
                millisecond={1000}
                routing={await createRouting()}
                scrollRestoration="top">
                <Header />
                <main>
-                  <PageTransitionAnimation>
-                     <PageTransitionLayout>{children}</PageTransitionLayout>
-                  </PageTransitionAnimation>
+                  <PageTransition.Animation>
+                     <PageTransition.Layout>{children}</PageTransition.Layout>
+                  </PageTransition.Animation>
                </main>
                <Footer />
-            </PageTransitionContext>
+            </PageTransition.Context>
          </Lenis>
       </MainWrapper>
    );

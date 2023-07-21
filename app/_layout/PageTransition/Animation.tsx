@@ -5,11 +5,7 @@ import { useRef } from "react";
 import { useMekuriAnimation, useMekuriDuration } from "@funtech-inc/mekuri";
 import { EASEVAL } from "@/app/_libs/constants";
 
-export const PageTransitionAnimation = ({
-   children,
-}: {
-   children: React.ReactNode;
-}) => {
+export const Animation = ({ children }: { children: React.ReactNode }) => {
    const ref = useRef(null);
    const { second } = useMekuriDuration();
    const easing = {
