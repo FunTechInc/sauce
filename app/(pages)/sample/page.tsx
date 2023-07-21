@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getAllBlogs } from "@/app/_libs/api-responses";
 import { SampleLayout } from "@/app/_layout/SampleLayout";
-import { ScrollToId } from "@/app/_components/ScrollToId";
+import { ScrollToId } from "@/app/_utils/ScrollToId";
 import s from "./style.module.scss";
 
 import type { Metadata } from "next";
