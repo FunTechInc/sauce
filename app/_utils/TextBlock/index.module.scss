@@ -1,0 +1,90 @@
+@use "@/css" as *;
+
+/*===============================================
+wrapper
+===============================================*/
+.wrapper {
+   > * {
+      &:last-child {
+         margin-bottom: 0;
+      }
+   }
+}
+
+/*===============================================
+size
+===============================================*/
+.size_14 {
+   font-size: 1.4rem;
+}
+.size_15 {
+   font-size: 1.5rem;
+}
+
+/*===============================================
+weight
+===============================================*/
+.weight_normal {
+   font-weight: normal;
+}
+.weight_bold {
+   font-weight: bold;
+}
+
+/*===============================================
+color
+===============================================*/
+.color_black {
+   color: #000;
+}
+.color_white {
+   color: #fff;
+}
+
+/*===============================================
+align
+===============================================*/
+.align_center {
+   text-align: center;
+}
+.align_left {
+   text-align: left;
+}
+
+/*===============================================
+line-height
+===============================================*/
+.lineHeight_1 {
+   line-height: $leading-none;
+}
+.lineHeight_xTight {
+   line-height: $leading-x-tight;
+}
+.lineHeight_tight {
+   line-height: $leading-tight;
+}
+.lineHeight_snug {
+   line-height: $leading-snug;
+}
+.lineHeight_normal {
+   line-height: $leading-normal;
+}
+.lineHeight_relaxed {
+   line-height: $leading-relaxed;
+}
+.lineHeight_loose {
+   line-height: $leading-loose;
+}
+.lineHeight_xLoose {
+   line-height: $leading-x-loose;
+}
+
+/*===============================================
+margin
+===============================================*/
+.marginBottom_0 {
+   margin-bottom: $spacing-0;
+}
+.marginBottom_16 {
+   margin-bottom: $spacing-1;
+}

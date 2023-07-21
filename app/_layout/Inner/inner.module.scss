@@ -1,0 +1,12 @@
+@use "@/css" as *;
+
+.inner {
+   margin: 0 auto;
+}
+
+.w_wide {
+   width: min(100% - $spacing-3, 128rem);
+}
+.w_narrow {
+   width: min(100% - $spacing-3, 96rem);
+}

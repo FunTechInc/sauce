@@ -1,0 +1,25 @@
+@use "@/css" as *;
+
+/*===============================================
+padding
+===============================================*/
+.padding_L {
+   padding: 16rem 0;
+}
+.padding_M {
+   padding: $spacing-12 0;
+}
+.padding_S {
+   padding: $spacing-10 0;
+}
+
+/*===============================================
+background-color
+===============================================*/
+.bg_white {
+   background-color: white;
+}
+
+.bg_black {
+   background-color: black;
+}
