@@ -5,9 +5,10 @@ import { Lenis as MyLenis, useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useAppStore } from "@/app/_context/useAppStore";
+import { useMekuriAnimation } from "@funtech-inc/mekuri";
 
 const option = {
-   duration: 1.2,
+   duration: 2,
    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
    orientation: "vertical",
    gestureOrientation: "vertical",
@@ -34,6 +35,19 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
    useEffect(() => {
       ScrollTrigger.refresh();
    }, [lenis]);
+
+   /*===============================================
+	ページ遷移のタイミングでlenisを停止させる
+	===============================================*/
+   useMekuriAnimation({
+      isReRender: false,
+      everyLeave: () => {
+         lenis?.stop();
+      },
+      everyEnter: () => {
+         lenis?.start();
+      },
+   });
 
    /*===============================================
 	stop lenis

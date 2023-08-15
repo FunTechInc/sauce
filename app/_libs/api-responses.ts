@@ -19,7 +19,7 @@ export const getAllBlogs = async () => {
          customRequestInit: {
             cache: "force-cache",
          },
-         endpoint: "blogs",
+         endpoint: "news",
       });
       return response.contents as TBlogList[];
    } catch (error) {
@@ -33,7 +33,7 @@ export const getAllBlogsID = async () => {
          customRequestInit: {
             cache: "force-cache",
          },
-         endpoint: "blogs",
+         endpoint: "news",
       });
       const idArr = response.contents.map((res) => res.id);
       return idArr;
@@ -47,7 +47,7 @@ type TBlog = {
 export const getBlogById = async (id: string) => {
    try {
       const response = await client.get({
-         endpoint: "blogs",
+         endpoint: "news",
          contentId: id,
       });
       return response as TBlog;

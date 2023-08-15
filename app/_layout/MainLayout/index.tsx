@@ -41,11 +41,11 @@ export const MainLayout = async ({
 }) => {
    return (
       <MainWrapper>
-         <Lenis>
-            <PageTransition.Context
-               millisecond={1000}
-               routing={await createRouting()}
-               scrollRestoration="top">
+         <PageTransition.Context
+            millisecond={1000}
+            routing={await createRouting()}
+            scrollRestoration="restore">
+            <Lenis>
                <Header />
                <main>
                   <PageTransition.Animation>
@@ -53,8 +53,8 @@ export const MainLayout = async ({
                   </PageTransition.Animation>
                </main>
                <Footer />
-            </PageTransition.Context>
-         </Lenis>
+            </Lenis>
+         </PageTransition.Context>
       </MainWrapper>
    );
 };
