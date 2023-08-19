@@ -25,7 +25,9 @@ const Sample = async () => {
                <ul>
                   {blogs.map((blog) => (
                      <li key={blog.id}>
-                        <Link href={`/sample/${blog.id}`}>{blog.title}</Link>
+                        <Link href={`/sample/${blog.id}`} scroll={false}>
+                           {blog.title}
+                        </Link>
                      </li>
                   ))}
                </ul>
