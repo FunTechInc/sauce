@@ -14,14 +14,13 @@ export const Animation = ({ children }: { children: React.ReactNode }) => {
    };
 
    useMekuriAnimation({
-      isReRender: false,
-      leave: () => {
+      onEveryLeave: () => {
          gsap.to(ref.current, {
             opacity: 0,
             ...easing,
          });
       },
-      enter: () => {
+      onEveryEnter: () => {
          gsap.to(ref.current, {
             opacity: 1,
             ...easing,
