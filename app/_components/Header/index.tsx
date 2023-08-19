@@ -6,14 +6,14 @@ export const Header = () => {
    return (
       <header className={s.wrapper}>
          <h1>
-            <Link className={s.link} href={"/"}>
+            <Link className={s.link} href={"/"} scroll={false}>
                (hidden)sauce
             </Link>
          </h1>
          <Menu />
          <nav>
             <li>
-               <Link className={s.link} href={"/sample"}>
+               <Link className={s.link} href={"/sample"} scroll={false}>
                   sample
                </Link>
             </li>

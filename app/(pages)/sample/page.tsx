@@ -22,22 +22,10 @@ const Sample = async () => {
             </div>
             <div className={s.block} id="scroll-target">
                <h3>Sample:microCMS</h3>
-               <p>with page transition animation</p>
                <ul>
                   {blogs.map((blog) => (
                      <li key={blog.id}>
                         <Link href={`/sample/${blog.id}`}>{blog.title}</Link>
-                     </li>
-                  ))}
-               </ul>
-            </div>
-            <div className={s.block}>
-               <h3>Blog:microCMS</h3>
-               <p>with NO page transition animation</p>
-               <ul>
-                  {blogs.map((blog) => (
-                     <li key={blog.id}>
-                        <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
                      </li>
                   ))}
                </ul>

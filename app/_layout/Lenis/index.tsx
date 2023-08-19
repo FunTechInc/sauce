@@ -8,7 +8,7 @@ import { useAppStore } from "@/app/_context/useAppStore";
 import { useMekuriAnimation } from "@funtech-inc/mekuri";
 
 const option = {
-   duration: 2,
+   duration: 0.6,
    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
    orientation: "vertical",
    gestureOrientation: "vertical",
@@ -40,11 +40,10 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
 	ページ遷移のタイミングでlenisを停止させる
 	===============================================*/
    useMekuriAnimation({
-      isReRender: false,
-      everyLeave: () => {
+      onEveryLeave: () => {
          lenis?.stop();
       },
-      everyEnter: () => {
+      onEveryEnter: () => {
          lenis?.start();
       },
    });
