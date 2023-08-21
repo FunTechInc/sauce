@@ -5,7 +5,6 @@ import { Lenis as MyLenis, useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useAppStore } from "@/app/_context/useAppStore";
-import { useMekuriAnimation } from "@funtech-inc/mekuri";
 
 const option = {
    duration: 0.6,
@@ -21,7 +20,7 @@ const option = {
 
 export const Lenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
-	integrate ScrollTrigger
+	integrate GSAP & ScrollTrigger
 	===============================================*/
    const lenis = useLenis(ScrollTrigger.update);
    useEffect(() => {
@@ -35,18 +34,6 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
    useEffect(() => {
       ScrollTrigger.refresh();
    }, [lenis]);
-
-   /*===============================================
-	ページ遷移のタイミングでlenisを停止させる
-	===============================================*/
-   useMekuriAnimation({
-      onEveryLeave: () => {
-         lenis?.stop();
-      },
-      onEveryEnter: () => {
-         lenis?.start();
-      },
-   });
 
    /*===============================================
 	stop lenis
