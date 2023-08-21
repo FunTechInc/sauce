@@ -11,8 +11,8 @@ export const MainLayout = async ({
 }) => {
    return (
       <MainWrapper>
-         <PageTransition.Context>
-            <Lenis>
+         <Lenis>
+            <PageTransition.Context>
                <Header />
                <main>
                   <PageTransition.Animation>
@@ -20,8 +20,8 @@ export const MainLayout = async ({
                   </PageTransition.Animation>
                </main>
                <Footer />
-            </Lenis>
-         </PageTransition.Context>
+            </PageTransition.Context>
+         </Lenis>
       </MainWrapper>
    );
 };
