@@ -30,6 +30,7 @@
       "gsap": "^3.12.2",
       "html-react-parser": "^4.2.1",
       "microcms-js-sdk": "^2.5.0",
+      "postcss": "^8.4.28",
       "postcss-sort-media-queries": "^5.2.0",
       "sass": "^1.63.6",
       "the-new-css-reset": "^1.9.0",
