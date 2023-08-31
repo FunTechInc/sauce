@@ -5,6 +5,7 @@ import { Lenis as MyLenis, useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useAppStore } from "@/app/_context/useAppStore";
+import { useWindowResizeObserver } from "@funtech-inc/spice";
 
 const option = {
    duration: 0.6,
@@ -24,16 +25,33 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
 	===============================================*/
    const lenis = useLenis(ScrollTrigger.update);
    useEffect(() => {
+      if (!lenis) {
+         return;
+      }
       gsap.registerPlugin(ScrollTrigger);
       gsap.ticker.lagSmoothing(0);
       gsap.ticker.add((time) => {
          lenis?.raf(time * 1000);
       });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+   }, [lenis]);
+
    useEffect(() => {
       ScrollTrigger.refresh();
    }, [lenis]);
+
+   /*===============================================
+	resize
+	===============================================*/
+   useWindowResizeObserver({
+      callback: () => {
+         if (!lenis) {
+            return;
+         }
+         lenis?.resize();
+      },
+      debounce: 100,
+      dependencies: [lenis],
+   });
 
    /*===============================================
 	stop lenis
