@@ -22,7 +22,9 @@ export const AppHooks = () => {
    );
 };
 
-//set opacity to 1 after font is loaded
+/**
+ * set opacity to 1 after font is loaded
+ */
 const useFontsLoaded = () => {
    useEffect(() => {
       const maxWaitTime = 1500;

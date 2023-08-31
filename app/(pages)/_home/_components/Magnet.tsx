@@ -9,14 +9,14 @@ export const Magnet = ({ title }: { title: string }) => {
       <MyMagnet
          className={s.magnet}
          callback={{
-            move: (props) => {
+            onMove: (props) => {
                const animProps = { duration: 0.6, ease: "power2.out" };
                let xTo = gsap.quickTo(props.target, "x", animProps),
                   yTo = gsap.quickTo(props.target, "y", animProps);
                xTo(props.x * 0.4);
                yTo(props.y * 0.4);
             },
-            leave: ({ target }) => {
+            onLeave: ({ target }) => {
                gsap.to(target, {
                   x: 0,
                   y: 0,

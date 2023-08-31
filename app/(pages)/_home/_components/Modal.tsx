@@ -40,13 +40,13 @@ export const Modal = () => {
             className: s.dialog,
          }}
          callback={{
-            open: (dialog) => {
+            onOpen: (dialog) => {
                useAppStore.setState({ isModalOpen: true });
                const content =
                   dialog.getElementsByClassName("js_modal_content")[0];
                content.scrollTop = 0;
             },
-            close: () => {
+            onClose: () => {
                useAppStore.setState({ isModalOpen: false });
             },
          }}>
