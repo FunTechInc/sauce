@@ -49,7 +49,7 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
          }
          lenis?.resize();
       },
-      debounce: 100,
+      debounce: 50,
       dependencies: [lenis],
    });
 
