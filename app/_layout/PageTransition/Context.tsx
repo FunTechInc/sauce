@@ -19,7 +19,7 @@ export const Context = ({ children }: { children: React.ReactNode }) => {
          mode="wait"
          scrollRestoration={{
             scrollRestoration: "restore",
-            onRestore: (pos) => {
+            onEnter: (pos) => {
                lenisRef.current?.scrollTo(pos, {
                   immediate: true,
                   force: true,
