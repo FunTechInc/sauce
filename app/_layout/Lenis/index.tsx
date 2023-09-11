@@ -55,7 +55,7 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
          lenisRef.current?.resize();
       },
       debounce: 50,
-      dependencies: [lenisRef],
+      dependencies: [],
    });
 
    /*===============================================
@@ -69,7 +69,7 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
       } else {
          lenisRef.current?.start();
       }
-   }, [lenisRef, isModalOpen, isMenuOpen]);
+   }, [isModalOpen, isMenuOpen]);
 
    return (
       <ReactLenis root ref={lenisRef} autoRaf={false} option={option}>
