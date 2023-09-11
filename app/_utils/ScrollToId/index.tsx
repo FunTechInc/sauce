@@ -21,7 +21,7 @@ export const ScrollToId = ({
 
    const clickHandler = () => {
       const scrollTarget = isRefObj(target) ? target.current : target;
-      lenis.scrollTo(scrollTarget, {
+      lenis?.scrollTo(scrollTarget, {
          offset: -80,
          lock: true,
          force: true,

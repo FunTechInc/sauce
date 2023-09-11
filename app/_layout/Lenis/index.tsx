@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { Lenis as MyLenis, useLenis } from "@studio-freight/react-lenis";
+import { useEffect, useRef } from "react";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useAppStore } from "@/app/_context/useAppStore";
@@ -23,34 +23,39 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
 	integrate GSAP & ScrollTrigger
 	===============================================*/
-   const lenis = useLenis(ScrollTrigger.update);
+   const lenis = useLenis();
    useEffect(() => {
       if (!lenis) {
          return;
       }
       gsap.registerPlugin(ScrollTrigger);
-      gsap.ticker.lagSmoothing(0);
-      gsap.ticker.add((time) => {
-         lenis?.raf(time * 1000);
-      });
+      lenis?.on("scroll", ScrollTrigger.update);
    }, [lenis]);
 
+   const lenisRef = useRef<any>();
    useEffect(() => {
-      ScrollTrigger.refresh();
-   }, [lenis]);
+      function update(time: number) {
+         lenisRef.current?.raf(time * 1000);
+      }
+      gsap.ticker.add(update);
+      gsap.ticker.lagSmoothing(0);
+      return () => {
+         gsap.ticker.remove(update);
+      };
+   }, []);
 
    /*===============================================
 	resize
 	===============================================*/
    useWindowResizeObserver({
       callback: () => {
-         if (!lenis) {
+         if (!lenisRef.current) {
             return;
          }
-         lenis?.resize();
+         lenisRef.current?.resize();
       },
       debounce: 50,
-      dependencies: [lenis],
+      dependencies: [lenisRef],
    });
 
    /*===============================================
@@ -60,15 +65,15 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
    useEffect(() => {
       if (isModalOpen || isMenuOpen) {
-         lenis?.stop();
+         lenisRef.current?.stop();
       } else {
-         lenis?.start();
+         lenisRef.current?.start();
       }
-   }, [lenis, isModalOpen, isMenuOpen]);
+   }, [lenisRef, isModalOpen, isMenuOpen]);
 
    return (
-      <MyLenis root options={{ ...option }}>
+      <ReactLenis root ref={lenisRef} autoRaf={false} option={option}>
          {children}
-      </MyLenis>
+      </ReactLenis>
    );
 };
