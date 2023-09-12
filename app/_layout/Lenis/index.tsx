@@ -8,15 +8,14 @@ import { useAppStore } from "@/app/_context/useAppStore";
 import { useWindowResizeObserver } from "@funtech-inc/spice";
 
 const option = {
-   duration: 1.2,
+   duration: 0.6,
    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-   orientation: "vertical",
-   gestureOrientation: "vertical",
    smoothWheel: true,
    wheelMultiplier: 1,
+   normalizeWheel: true,
    smoothTouch: false,
-   touchMultiplier: 2,
    infinite: false,
+   autoResize: false,
 };
 
 export const Lenis = ({ children }: { children: React.ReactNode }) => {
