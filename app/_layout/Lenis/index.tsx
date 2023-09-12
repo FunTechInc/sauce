@@ -18,8 +18,6 @@ const option = {
    touchMultiplier: 2,
    infinite: false,
 };
-//control lenis rAF
-const LENIS_SPEED = 600;
 
 export const Lenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
@@ -40,7 +38,7 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
    const lenisRef = useRef<any>();
    useEffect(() => {
       function update(time: number) {
-         lenisRef.current?.raf(time * LENIS_SPEED);
+         lenisRef.current?.raf(time * 1000);
       }
       gsap.ticker.add(update);
       gsap.ticker.lagSmoothing(0);
