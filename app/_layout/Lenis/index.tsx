@@ -8,7 +8,7 @@ import { useAppStore } from "@/app/_context/useAppStore";
 import { useWindowResizeObserver } from "@funtech-inc/spice";
 
 const option = {
-   duration: 0.6,
+   duration: 1.2,
    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
    orientation: "vertical",
    gestureOrientation: "vertical",
@@ -18,24 +18,29 @@ const option = {
    touchMultiplier: 2,
    infinite: false,
 };
+//control lenis rAF
+const LENIS_SPEED = 600;
 
 export const Lenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
-	integrate GSAP & ScrollTrigger
+	integrate GSAP
 	===============================================*/
+   // GSAP ScrollTrigger
    const lenis = useLenis();
    useEffect(() => {
       if (!lenis) {
          return;
       }
       gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.refresh();
       lenis?.on("scroll", ScrollTrigger.update);
    }, [lenis]);
 
+   // GSAP
    const lenisRef = useRef<any>();
    useEffect(() => {
       function update(time: number) {
-         lenisRef.current?.raf(time * 1000);
+         lenisRef.current?.raf(time * LENIS_SPEED);
       }
       gsap.ticker.add(update);
       gsap.ticker.lagSmoothing(0);
