@@ -1,10 +1,11 @@
 import Link from "next/link";
-import s from "./header.module.scss";
 import { Menu } from "./components/Menu";
+import { HeaderWrapper } from "./components/HeaderWrapper";
+import s from "./header.module.scss";
 
 export const Header = () => {
    return (
-      <header className={s.wrapper}>
+      <HeaderWrapper>
          <h1>
             <Link className={s.link} href={"/"} scroll={false}>
                (hidden)sauce
@@ -18,6 +19,6 @@ export const Header = () => {
                </Link>
             </li>
          </nav>
-      </header>
+      </HeaderWrapper>
    );
 };
