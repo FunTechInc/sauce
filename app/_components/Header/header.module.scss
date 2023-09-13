@@ -1,5 +1,12 @@
 @use "@/css" as *;
 
+.inner {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: $spacing-2 0;
+}
+
 .link {
    font-size: 16px;
    color: $color-key;
