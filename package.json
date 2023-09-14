@@ -22,7 +22,7 @@
    },
    "devDependencies": {
       "@funtech-inc/mekuri": "^3.1.7",
-      "@funtech-inc/spice": "^1.1.21",
+      "@funtech-inc/spice": "^1.1.22",
       "@studio-freight/react-lenis": "^0.0.27",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
