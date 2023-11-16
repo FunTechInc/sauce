@@ -15,15 +15,15 @@
       "@types/react-dom": "^18.2.6",
       "eslint": "8.44.0",
       "eslint-config-next": "13.4.8",
-      "next": "^13.4.19",
+      "next": "^14.0.2",
       "react": "18.2.0",
       "react-dom": "18.2.0",
       "typescript": "^5.1.6"
    },
    "devDependencies": {
-      "@funtech-inc/mekuri": "^3.1.7",
-      "@funtech-inc/spice": "^1.1.23",
-      "@studio-freight/react-lenis": "^0.0.27",
+      "@funtech-inc/mekuri": "^3.1.16",
+      "@funtech-inc/spice": "^1.1.26",
+      "@studio-freight/react-lenis": "^0.0.36",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
       "date-fns": "^2.30.0",
@@ -34,6 +34,6 @@
       "postcss-sort-media-queries": "^5.2.0",
       "sass": "^1.63.6",
       "the-new-css-reset": "^1.9.0",
-      "zustand": "^4.3.8"
+      "zustand": "^4.4.6"
    }
 }

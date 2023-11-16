@@ -1,14 +1,12 @@
 import { createClient } from "microcms-js-sdk";
 
-/*===============================================
-microCMS
-===============================================*/
+// microCMS
 const client = createClient({
    serviceDomain: process.env.SERVICE_DOMAIN!,
    apiKey: process.env.API_KEY!,
 });
 
-type TBlogList = {
+type BlogListResponse = {
    id: string;
    title: string;
 };
@@ -21,7 +19,7 @@ export const getAllBlogs = async () => {
          },
          endpoint: "news",
       });
-      return response.contents as TBlogList[];
+      return response.contents as BlogListResponse[];
    } catch (error) {
       throw new Error("Failed to fetch data");
    }
@@ -41,7 +39,7 @@ export const getAllBlogsID = async () => {
       throw new Error("Failed to fetch data");
    }
 };
-type TBlog = {
+type BlogResponse = {
    title: string;
 };
 export const getBlogById = async (id: string) => {
@@ -50,7 +48,7 @@ export const getBlogById = async (id: string) => {
          endpoint: "news",
          contentId: id,
       });
-      return response as TBlog;
+      return response as BlogResponse;
    } catch (error) {
       throw new Error("Failed to fetch data");
    }

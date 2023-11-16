@@ -1,9 +1,6 @@
 import s from "./index.module.scss";
 
-/*===============================================
-wrapper
-===============================================*/
-type TWrapper = {
+type WrapperProps = {
    children: React.ReactNode;
    tag?: "ul" | "ol";
    col?: 2 | 3 | 4 | 5;
@@ -18,7 +15,7 @@ const Wrapper = ({
    marginBottom = 16,
    gap = 16,
    className,
-}: TWrapper) => {
+}: WrapperProps) => {
    const Tag = tag;
    const classNames = `${s["col_" + col]} ${s.wrapper} ${
       className ? className : ""
@@ -26,14 +23,11 @@ const Wrapper = ({
    return <Tag className={classNames}>{children}</Tag>;
 };
 
-/*===============================================
-list
-===============================================*/
-type TList = {
+type ListProps = {
    children: React.ReactNode;
    className?: string;
 };
-const List = ({ children, className }: TList) => {
+const List = ({ children, className }: ListProps) => {
    return (
       <li className={`${s.list} ${className ? className : ""}`}>{children}</li>
    );
