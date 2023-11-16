@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useAppStore } from "@/app/_context/useAppStore";
 import { useWindowResizeObserver } from "@funtech-inc/spice";
 
-const option = {
+const OPTION = {
    duration: 0.6,
    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
    smoothWheel: true,
@@ -19,11 +19,9 @@ const option = {
 };
 
 export const Lenis = ({ children }: { children: React.ReactNode }) => {
-   /*===============================================
-	integrate GSAP
-	===============================================*/
-   // GSAP ScrollTrigger
    const lenis = useLenis();
+   const lenisRef = useRef<any>();
+
    useEffect(() => {
       if (!lenis) {
          return;
@@ -33,8 +31,6 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
       lenis?.on("scroll", ScrollTrigger.update);
    }, [lenis]);
 
-   // GSAP
-   const lenisRef = useRef<any>();
    useEffect(() => {
       function update(time: number) {
          lenisRef.current?.raf(time * 1000);
@@ -46,23 +42,6 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
       };
    }, []);
 
-   /*===============================================
-	resize
-	===============================================*/
-   useWindowResizeObserver({
-      callback: () => {
-         if (!lenisRef.current) {
-            return;
-         }
-         lenisRef.current?.resize();
-      },
-      debounce: 50,
-      dependencies: [],
-   });
-
-   /*===============================================
-	stop lenis
-	===============================================*/
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
    useEffect(() => {
@@ -73,8 +52,17 @@ export const Lenis = ({ children }: { children: React.ReactNode }) => {
       }
    }, [isModalOpen, isMenuOpen]);
 
+   useWindowResizeObserver({
+      callback: () => {
+         if (!lenisRef.current) {
+            return;
+         }
+         lenisRef.current?.resize();
+      },
+   });
+
    return (
-      <ReactLenis root ref={lenisRef} autoRaf={false} option={option}>
+      <ReactLenis root ref={lenisRef} autoRaf={false} option={OPTION}>
          {children}
       </ReactLenis>
    );

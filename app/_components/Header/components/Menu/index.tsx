@@ -1,7 +1,7 @@
 "use client";
 
-import s from "./menu.module.scss";
 import { useAppStore } from "@/app/_context/useAppStore";
+import s from "./menu.module.scss";
 
 export const Menu = () => {
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);

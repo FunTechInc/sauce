@@ -1,16 +1,10 @@
-//component
 import { AppHooks } from "./app-hooks";
 import { MainLayout } from "@/app/_layout/MainLayout";
-
-//font
 import { poppins, noto } from "./font";
-
-//css
 import "the-new-css-reset/css/reset.css";
 import "@funtech-inc/spice/css";
 import "@/css/global.scss";
 
-//meta
 import type { Metadata } from "next";
 import { SITEURL, SITENAME, SITEDESCRIPTION } from "./_libs/constants";
 

@@ -1,5 +1,5 @@
 "use client";
-import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context";
+import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname } from "next/navigation";
 import { Mekuri, MekuriFreezer } from "@funtech-inc/mekuri";
 

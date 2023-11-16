@@ -1,13 +1,10 @@
 import s from "./index.module.scss";
 
-/********************
-Wrapper
-********************/
-interface IWrapper {
+type WrapperProps = {
    children: React.ReactNode;
    className?: string;
-}
-const Wrapper = ({ children, className }: IWrapper) => {
+};
+const Wrapper = ({ children, className }: WrapperProps) => {
    return (
       <div className={`${s.wrapper} ${className ? className : ""}`}>
          {children}
@@ -15,10 +12,7 @@ const Wrapper = ({ children, className }: IWrapper) => {
    );
 };
 
-/********************
-Text
-********************/
-interface IClassName {
+type ClassName = {
    size?: "14" | "15";
    weight?: "normal" | "bold";
    color?: "black" | "white";
@@ -33,16 +27,16 @@ interface IClassName {
       | "loose"
       | "xLoose";
    marginBottom?: "0" | "16";
-}
+};
 
-interface IText extends IClassName {
+interface TextProps extends ClassName {
    children: React.ReactNode;
    tag: keyof JSX.IntrinsicElements;
    isEn?: boolean;
    className?: string;
 }
 
-const createClassName = (styles: IClassName) => {
+const createClassName = (styles: ClassName) => {
    return (Object.keys(styles) as Array<keyof typeof styles>)
       .map((key) => `${s[key + "_" + styles[key]]}`)
       .join(" ");
@@ -59,7 +53,7 @@ const Text = ({
    align = "left",
    lineHeight = "snug",
    marginBottom = "0",
-}: IText) => {
+}: TextProps) => {
    const TagName = tag || "p";
    const styles = { size, weight, color, align, lineHeight, marginBottom };
    return (
