@@ -26,7 +26,6 @@ type ClassName = {
       | "normal"
       | "loose"
       | "xLoose";
-   marginBottom?: "0" | "16";
 };
 
 interface TextProps extends ClassName {
@@ -52,10 +51,9 @@ const Text = ({
    color = "black",
    align = "left",
    lineHeight = "snug",
-   marginBottom = "0",
 }: TextProps) => {
    const TagName = tag || "p";
-   const styles = { size, weight, color, align, lineHeight, marginBottom };
+   const styles = { size, weight, color, align, lineHeight };
    return (
       <TagName
          className={`${createClassName(styles)} ${isEn ? "ff_en" : ""} ${
@@ -75,7 +73,6 @@ const Text = ({
  * @param color black
  * @param align left
  * @param lineHeight snug
- * @param marginBottom 0
  */
 const TextBlock = {
    Text: Text,
