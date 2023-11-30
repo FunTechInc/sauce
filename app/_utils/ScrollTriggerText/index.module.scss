@@ -1,0 +1,20 @@
+@use "@/css" as *;
+
+.wrapper {
+   overflow: hidden;
+}
+
+@mixin content {
+   white-space: nowrap;
+   display: flex;
+}
+
+.content {
+   @include content;
+   justify-content: flex-start;
+}
+
+.content_reverse {
+   @include content;
+   justify-content: flex-end;
+}
