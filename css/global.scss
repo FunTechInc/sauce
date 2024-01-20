@@ -106,6 +106,32 @@ select {
 }
 
 /*===============================================
+br
+===============================================*/
+br {
+   &.lg {
+      @include mq(md) {
+         display: none;
+      }
+   }
+   &.md {
+      display: none;
+      @include mq(md) {
+         display: block;
+      }
+      @include mq(sm) {
+         display: none;
+      }
+   }
+   &.sm {
+      display: none;
+      @include mq(sm) {
+         display: block;
+      }
+   }
+}
+
+/*===============================================
 lenis
 ===============================================*/
 html {
