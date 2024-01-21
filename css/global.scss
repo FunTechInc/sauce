@@ -114,6 +114,12 @@ br {
          display: none;
       }
    }
+   &.mdsm {
+      display: none;
+      @include mq(md) {
+         display: block;
+      }
+   }
    &.md {
       display: none;
       @include mq(md) {
