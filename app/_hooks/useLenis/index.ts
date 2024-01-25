@@ -1,5 +1,4 @@
 import { useAppStore } from "@/app/_context/useAppStore";
-import { useGSAP } from "@gsap/react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -28,17 +27,14 @@ const lenis = new Lenis({
 export const useLenisRegister = () => {
    useLenis.setState({ lenis });
 
-   useGSAP(
-      () => {
-         if (!lenis) {
-            return;
-         }
-         gsap.registerPlugin(ScrollTrigger);
-         ScrollTrigger.refresh();
-         lenis.on("scroll", ScrollTrigger.update);
-      },
-      { dependencies: [lenis] }
-   );
+   useEffect(() => {
+      if (!lenis) {
+         return;
+      }
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.refresh();
+      lenis.on("scroll", ScrollTrigger.update);
+   }, []);
 
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
