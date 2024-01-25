@@ -6,19 +6,19 @@ import gsap from "gsap";
 import { useEffect } from "react";
 
 export const MainWrapper = ({ children }: { children: React.ReactNode }) => {
-   const lenis = useLenisRegister();
+   // const lenis = useLenisRegister();
 
-   useEffect(() => {
-      if (!lenis) return;
-      function update(time: number) {
-         lenis.raf(time * 1000);
-      }
-      gsap.ticker.add(update);
-      gsap.ticker.lagSmoothing(0);
-      return () => {
-         gsap.ticker.remove(update);
-      };
-   }, [lenis]);
+   // useEffect(() => {
+   //    if (!lenis) return;
+   //    function update(time: number) {
+   //       lenis.raf(time * 1000);
+   //    }
+   //    gsap.ticker.add(update);
+   //    gsap.ticker.lagSmoothing(0);
+   //    return () => {
+   //       gsap.ticker.remove(update);
+   //    };
+   // }, [lenis]);
 
    return <MyWrapper>{children}</MyWrapper>;
 };
