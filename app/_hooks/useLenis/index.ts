@@ -15,16 +15,25 @@ export const useLenis = create<AppStore>((set) => ({
    setLenis: (value: Lenis) => set({ lenis: value }),
 }));
 
-const lenis = new Lenis({
-   duration: 1.2,
-   easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-   smoothWheel: true,
-   normalizeWheel: true,
-   infinite: false,
-   syncTouch: false,
-});
+// const lenis = new Lenis({
+//    duration: 1.2,
+//    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+//    smoothWheel: true,
+//    normalizeWheel: true,
+//    infinite: false,
+//    syncTouch: false,
+// });
 
 export const useLenisRegister = () => {
+   const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      normalizeWheel: true,
+      infinite: false,
+      syncTouch: false,
+   });
+
    useLenis.setState({ lenis });
 
    useEffect(() => {
