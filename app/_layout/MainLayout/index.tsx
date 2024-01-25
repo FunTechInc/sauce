@@ -1,4 +1,3 @@
-import { Lenis } from "@/app/_layout/Lenis";
 import { MainWrapper } from "./MainWrapper";
 import { Header } from "@/app/_components/Header";
 import { Footer } from "@/app/_components/Footer";
@@ -11,17 +10,15 @@ export const MainLayout = async ({
 }) => {
    return (
       <MainWrapper>
-         <Lenis>
-            <PageTransition.Context>
-               <Header />
-               <main>
-                  <PageTransition.Animation>
-                     <PageTransition.Layout>{children}</PageTransition.Layout>
-                  </PageTransition.Animation>
-               </main>
-               <Footer />
-            </PageTransition.Context>
-         </Lenis>
+         <PageTransition.Context>
+            <Header />
+            <main>
+               <PageTransition.Animation>
+                  <PageTransition.Layout>{children}</PageTransition.Layout>
+               </PageTransition.Animation>
+            </main>
+            <Footer />
+         </PageTransition.Context>
       </MainWrapper>
    );
 };

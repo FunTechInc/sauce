@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenis } from "@studio-freight/react-lenis";
+import { useLenis } from "@/app/_hooks/useLenis";
 
 export const ScrollToId = ({
    target,
@@ -11,7 +11,7 @@ export const ScrollToId = ({
    children: React.ReactNode;
    className?: string;
 }) => {
-   const lenis = useLenis();
+   const lenis = useLenis((s) => s.lenis);
 
    const isRefObj = (
       value: React.RefObject<HTMLElement> | string
