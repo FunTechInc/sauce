@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenisRegister } from "@/app/_hooks/useLenis";
+// import { useLenisRegister } from "@/app/_hooks/useLenis";
 import { WrapperLayout as MyWrapper } from "@funtech-inc/spice";
 import gsap from "gsap";
 import { useEffect } from "react";
