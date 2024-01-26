@@ -1,16 +1,16 @@
-import { useAppStore } from "@/app/_context/useAppStore";
+import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect, useRef } from "react";
 import { create } from "zustand";
+import { useAppStore } from "@/app/_context/useAppStore";
 
-type AppStore = {
+type LenisStore = {
    lenis: Lenis | null;
    setLenis: (value: Lenis) => void;
 };
 
-export const useLenis = create<AppStore>((set) => ({
+export const useLenis = create<LenisStore>((set) => ({
    lenis: null,
    setLenis: (value: Lenis) => set({ lenis: value }),
 }));
@@ -27,13 +27,25 @@ export const useLenisRegister = () => {
          normalizeWheel: true,
          infinite: false,
          syncTouch: false,
+         // syncTouchLerp: 0.05,
       });
+      setLenis(lenis.current);
 
+      // integrate with gsap
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.refresh();
       lenis.current.on("scroll", ScrollTrigger.update);
 
-      setLenis(lenis.current);
+      // raf with gsap ticker（r3fのaddEffectでrafをループさせたい場合はここを削除して、canvasコンテクストでuseLenisでlenisを参照する）
+      function update(time: number) {
+         lenis.current?.raf(time * 1000);
+      }
+      gsap.ticker.add(update);
+      gsap.ticker.lagSmoothing(0);
+
+      return () => {
+         gsap.ticker.remove(update);
+      };
    }, [setLenis]);
 
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
