@@ -10,20 +10,24 @@
       "lint": "next lint"
    },
    "dependencies": {
+      "@formatjs/intl-localematcher": "^0.5.4",
       "@types/node": "20.3.3",
       "@types/react": "^18.2.14",
       "@types/react-dom": "^18.2.6",
       "eslint": "8.44.0",
       "eslint-config-next": "13.4.8",
+      "negotiator": "^0.6.3",
       "next": "^14.0.3",
       "react": "18.2.0",
       "react-dom": "18.2.0",
+      "server-only": "^0.0.1",
       "typescript": "^5.3.2"
    },
    "devDependencies": {
       "@funtech-inc/mekuri": "^3.1.16",
       "@funtech-inc/spice": "^1.1.30",
       "@studio-freight/lenis": "^1.0.34",
+      "@types/negotiator": "^0.6.3",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
       "date-fns": "^2.30.0",
