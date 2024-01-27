@@ -29,12 +29,8 @@ const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request: NextRequest) {
    const pathname = request.nextUrl.pathname;
 
-   // skips adding the default prefix to API Routes and public files like fonts or images.
-   if (
-      pathname.startsWith("/_next") ||
-      pathname.includes("/api/") ||
-      PUBLIC_FILE.test(pathname)
-   ) {
+   // skips adding the public files
+   if (PUBLIC_FILE.test(pathname)) {
       return;
    }
 
