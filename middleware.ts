@@ -24,22 +24,17 @@ function getLocale(request: NextRequest): string | undefined {
    return locale;
 }
 
+const PUBLIC_FILE = /\.(.*)$/;
+
 export function middleware(request: NextRequest) {
    const pathname = request.nextUrl.pathname;
 
-   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
-   // // If you have one
-   // if (
-   //   [
-   //     '/manifest.json',
-   //     '/favicon.ico',
-   //     // Your other files in `public`
-   //   ].includes(pathname)
-   // )
-   //   return
-
-   // Ignore all files in the `public` directory
-   if (!pathname.startsWith("/api/") && !pathname.startsWith("/_next/")) {
+   // skips adding the default prefix to API Routes and public files like fonts or images.
+   if (
+      pathname.startsWith("/_next") ||
+      pathname.includes("/api/") ||
+      PUBLIC_FILE.test(pathname)
+   ) {
       return;
    }
 
