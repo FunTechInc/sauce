@@ -37,6 +37,7 @@ interface TextProps extends ClassName {
 
 const createClassName = (styles: ClassName) => {
    return (Object.keys(styles) as Array<keyof typeof styles>)
+      .filter((key) => styles[key] !== undefined)
       .map((key) => `${s[key + "_" + styles[key]]}`)
       .join(" ");
 };
@@ -49,7 +50,7 @@ const Text = ({
    size = "15",
    weight = "normal",
    color = "black",
-   align = "left",
+   align,
    lineHeight = "snug",
 }: TextProps) => {
    const TagName = tag || "p";
