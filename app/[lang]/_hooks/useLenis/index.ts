@@ -44,6 +44,7 @@ export const useLenisRegister = () => {
       gsap.ticker.lagSmoothing(0);
 
       return () => {
+         lenis.current?.destroy();
          gsap.ticker.remove(update);
       };
    }, [setLenis]);
