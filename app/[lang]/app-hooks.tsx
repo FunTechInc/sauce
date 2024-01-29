@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useStarter } from "@funtech-inc/spice";
 import { useAppStore } from "./_context/useAppStore";
+import { useLenisRegister } from "@/app/[lang]/_hooks/useLenis";
 import { poppins } from "./font";
 
 export const AppHooks = () => {
@@ -13,6 +14,7 @@ export const AppHooks = () => {
       areYouFun: true,
    });
    useFontsLoaded();
+   useLenisRegister();
    return (
       <style jsx global>{`
          .ff_en {
