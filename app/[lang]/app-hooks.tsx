@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useStarter } from "@funtech-inc/spice";
 import { useAppStore } from "./_context/useAppStore";
 import { useLenisRegister } from "@/app/[lang]/_hooks/useLenis";
-import { poppins } from "./font";
+import { poppins, FF_EN } from "./font";
 
 export const AppHooks = () => {
    useStarter({
@@ -17,7 +17,7 @@ export const AppHooks = () => {
    useLenisRegister();
    return (
       <style jsx global>{`
-         .ff_en {
+         .${FF_EN} {
             font-family: ${poppins.style.fontFamily};
          }
       `}</style>
