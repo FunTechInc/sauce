@@ -5,8 +5,8 @@
 }
 
 .w_wide {
-   width: min(100% - $spacing-3, 128rem);
+   width: min(100% - $inner-padding, $inner-wide);
 }
 .w_narrow {
-   width: min(100% - $spacing-3, 96rem);
+   width: min(100% - $inner-padding, $inner-narrow);
 }
