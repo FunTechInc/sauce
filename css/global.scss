@@ -114,6 +114,11 @@ br {
          display: none;
       }
    }
+   &.lgmd {
+      @include mq(sm) {
+         display: none;
+      }
+   }
    &.mdsm {
       display: none;
       @include mq(md) {
