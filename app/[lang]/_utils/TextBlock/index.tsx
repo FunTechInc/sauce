@@ -49,7 +49,7 @@ const Text = ({
    isEn = false,
    size = "15",
    weight = "normal",
-   color = "black",
+   color,
    align,
    lineHeight = "snug",
 }: TextProps) => {
