@@ -1,6 +1,6 @@
 # (hidden)sauce
 
-![sauce](public/app-head.jpg)
+![sauce](public/app.jpg)
 
 🥫 This is our 秘伝のタレ , means hidden sauce
 
