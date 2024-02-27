@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+   // You can Static Exports
+   // basePath: "/takuma/out",
+   // output: "export",
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
