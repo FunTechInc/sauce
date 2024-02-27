@@ -1,4 +1,4 @@
-# (hidden)sauce
+# ~hidden~ sauce
 
 ![sauce](public/app.jpg)
 
@@ -11,5 +11,5 @@
 -  [GSAP](https://greensock.com/gsap/)
 -  [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
 -  [Lenis](https://lenis.studiofreight.com/)
--  [(hidden)spice](https://github.com/FunTechInc/spice)
--  [(hidden)mekuri](https://github.com/FunTechInc/mekuri)
+-  [spice](https://github.com/FunTechInc/spice)
+-  [mekuri](https://github.com/FunTechInc/mekuri)
