@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal as MyModal } from "@funtech-inc/spice";
+import { ModalButton as MyModal } from "@funtech-inc/spice";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import s from "../home.module.scss";
 

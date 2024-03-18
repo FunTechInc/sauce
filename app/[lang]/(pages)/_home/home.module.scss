@@ -13,6 +13,14 @@
    margin-left: 100px;
 }
 
+.magnetTitle {
+   font-size: 2.4rem;
+   span {
+      will-change: transform;
+      display: inline-block;
+   }
+}
+
 /*===============================================
 modal
 ===============================================*/

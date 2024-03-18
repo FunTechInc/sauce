@@ -24,9 +24,10 @@
       "typescript": "^5.3.2"
    },
    "devDependencies": {
-      "@funtech-inc/mekuri": "^3.1.16",
-      "@funtech-inc/spice": "^1.1.30",
-      "@studio-freight/lenis": "^1.0.34",
+      "@funtech-inc/mekuri": "^3.1.19",
+      "@funtech-inc/spice": "^1.1.44",
+      "@gsap/react": "^2.1.0",
+      "@studio-freight/lenis": "^1.0.42",
       "@types/negotiator": "^0.6.3",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
@@ -37,7 +38,7 @@
       "postcss": "^8.4.28",
       "postcss-sort-media-queries": "^5.2.0",
       "sass": "^1.63.6",
-      "the-new-css-reset": "^1.9.0",
-      "zustand": "^4.4.7"
+      "the-new-css-reset": "^1.11.2",
+      "zustand": "^4.5.2"
    }
 }
