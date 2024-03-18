@@ -24,7 +24,6 @@ export const useLenisRegister = () => {
          duration: 1.2,
          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
          smoothWheel: true,
-         normalizeWheel: true,
          infinite: false,
          syncTouch: false,
          // syncTouchLerp: 0.05,
