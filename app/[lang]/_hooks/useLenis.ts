@@ -50,14 +50,11 @@ export const useLenisRegister = () => {
 
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
-
-   useEffect(() => {
-      if (isModalOpen || isMenuOpen) {
-         lenis.current?.stop();
-      } else {
-         lenis.current?.start();
-      }
-   }, [isModalOpen, isMenuOpen]);
+   if (isModalOpen || isMenuOpen) {
+      lenis.current?.stop();
+   } else {
+      lenis.current?.start();
+   }
 
    return lenis;
 };
