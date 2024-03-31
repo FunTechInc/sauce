@@ -2,20 +2,20 @@
 
 import { usePathname } from "next/navigation";
 import { MekuriContext } from "@funtech-inc/mekuri";
-import { useEffect, useRef } from "react";
+import { TRANSITION_DURATIONVAL } from "@/app/[lang]/_libs/constants";
 import { useLenis } from "@/app/[lang]/_hooks/useLenis";
+import { useRef } from "react";
+import Lenis from "@studio-freight/lenis";
 
 export const Context = ({ children }: { children: React.ReactNode }) => {
    const pathname = usePathname();
-   const lenisRef = useRef<any>();
+   const lenisRef = useRef<Lenis>();
    const lenis = useLenis((s) => s.lenis);
-   useEffect(() => {
-      lenisRef.current = lenis;
-   }, [lenis]);
+   if (lenis) lenisRef.current = lenis;
    return (
       <MekuriContext
          trigger={pathname}
-         millisecond={600}
+         millisecond={TRANSITION_DURATIONVAL * 1000}
          mode="wait"
          scrollRestoration={{
             scrollRestoration: "restore",
