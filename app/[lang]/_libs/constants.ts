@@ -33,6 +33,7 @@ animation
 export const TRIGGERTIMING = "top bottom-=10%";
 export const INTERSECTIONTIMING = "-10% 0px";
 export const DURATIONVAL = 0.8;
+export const TRANSITION_DURATIONVAL = 0.8;
 export const EASEVAL = "power3";
 export const EASING = {
    duration: DURATIONVAL,
