@@ -24,8 +24,8 @@
       "typescript": "^5.3.2"
    },
    "devDependencies": {
-      "@funtech-inc/mekuri": "^3.1.20",
-      "@funtech-inc/spice": "^1.1.45",
+      "@funtech-inc/mekuri": "^3.1.29",
+      "@funtech-inc/spice": "^1.1.47",
       "@gsap/react": "^2.1.0",
       "@studio-freight/lenis": "^1.0.42",
       "@types/negotiator": "^0.6.3",

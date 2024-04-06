@@ -7,30 +7,15 @@ import s from "./style.module.scss";
 import type { Metadata } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
-import { Suspense } from "react";
 
 const metadata: Metadata = {
    title: "sample",
    description: "samplesamplesamplesamplesamplesamplesamplesample",
 };
 
-const CMSSample = async () => {
-   const blogs = await getAllBlogs();
-   return (
-      <ul>
-         {blogs.map((blog) => (
-            <li key={blog.id}>
-               <Link href={`/sample/${blog.id}`} scroll={false}>
-                  {blog.title}
-               </Link>
-            </li>
-         ))}
-      </ul>
-   );
-};
-
 const Sample = async ({ params: { lang } }: { params: { lang: Locale } }) => {
    const dictionary = await getDictionary(lang);
+   const blogs = await getAllBlogs();
    return (
       <SampleLayout>
          <div className={s.wrapper}>
@@ -41,9 +26,15 @@ const Sample = async ({ params: { lang } }: { params: { lang: Locale } }) => {
             </div>
             <div className={s.block} id="scroll-target">
                <h3>Sample:microCMS</h3>
-               <Suspense fallback={null}>
-                  <CMSSample />
-               </Suspense>
+               <ul>
+                  {blogs.map((blog) => (
+                     <li key={blog.id}>
+                        <Link href={`/sample/${blog.id}`} scroll={false}>
+                           {blog.title}
+                        </Link>
+                     </li>
+                  ))}
+               </ul>
             </div>
          </div>
       </SampleLayout>
