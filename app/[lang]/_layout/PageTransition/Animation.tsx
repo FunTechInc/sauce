@@ -20,10 +20,12 @@ export const Animation = ({ children }: { children: React.ReactNode }) => {
             ...easing,
          });
       },
-      onEveryEnter: () => {
-         gsap.to(ref.current, {
-            opacity: 1,
-            ...easing,
+      onEveryEnter: ({ onStylesheetLoad }) => {
+         onStylesheetLoad(() => {
+            gsap.to(ref.current, {
+               opacity: 1,
+               ...easing,
+            });
          });
       },
    });

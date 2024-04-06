@@ -4,8 +4,8 @@ import { HeaderWrapper } from "./components/HeaderWrapper";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import LocaleSwitcher from "../LocaleSwitcher";
 import { Locale } from "@/i18n-config";
-import s from "./header.module.scss";
 import { ImageLoader } from "../../_utils/Loader";
+import s from "./header.module.scss";
 
 export const Header = ({ lang }: { lang: Locale }) => {
    return (
