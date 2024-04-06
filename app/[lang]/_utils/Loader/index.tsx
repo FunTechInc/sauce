@@ -2,7 +2,7 @@
 
 import { VideoHTMLAttributes, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import { LowPowerVideo, Loader } from "@funtech-inc/spice";
+import { LowPowerVideo, Loader, LowPowerVideoProps } from "@funtech-inc/spice";
 import s from "./loader.module.scss";
 
 export const VideoLoader = (props: VideoHTMLAttributes<HTMLVideoElement>) => {
@@ -14,11 +14,6 @@ export const VideoLoader = (props: VideoHTMLAttributes<HTMLVideoElement>) => {
       </div>
    );
 };
-
-interface LowPowerVideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
-   fallback: React.ReactNode;
-}
-
 export const LowPowerVideoLoader = (props: LowPowerVideoProps) => {
    const [isLoaded, setIsLoaded] = useState(false);
    return (
@@ -30,7 +25,6 @@ export const LowPowerVideoLoader = (props: LowPowerVideoProps) => {
       </div>
    );
 };
-
 export const ImageLoader = (props: ImageProps) => {
    const [isLoaded, setIsLoaded] = useState(false);
    const { alt, ...rest } = props;
