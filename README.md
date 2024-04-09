@@ -6,7 +6,7 @@
 
 ## WebGL
 
-you can refer to [blankcanvas](https://github.com/FunTechInc/blankcanvas) to integrate WebGL 　 🎨
+🎨 you can refer to [blankcanvas](https://github.com/FunTechInc/blankcanvas) to integrate WebGL
 
 ## Composition
 
