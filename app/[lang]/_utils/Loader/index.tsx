@@ -8,7 +8,7 @@ import s from "./loader.module.scss";
 export const VideoLoader = (props: VideoHTMLAttributes<HTMLVideoElement>) => {
    const [isLoaded, setIsLoaded] = useState(false);
    return (
-      <div className={s.loaderContainer}>
+      <div className={s.container}>
          <video {...props} onCanPlay={() => setIsLoaded(true)}></video>
          {!isLoaded && <Loader delay={0} className={s.loader} />}
       </div>
@@ -17,7 +17,7 @@ export const VideoLoader = (props: VideoHTMLAttributes<HTMLVideoElement>) => {
 export const LowPowerVideoLoader = (props: LowPowerVideoProps) => {
    const [isLoaded, setIsLoaded] = useState(false);
    return (
-      <div className={s.loaderContainer}>
+      <div className={s.container}>
          <LowPowerVideo
             {...props}
             onCanPlay={() => setIsLoaded(true)}></LowPowerVideo>
@@ -27,10 +27,15 @@ export const LowPowerVideoLoader = (props: LowPowerVideoProps) => {
 };
 export const ImageLoader = (props: ImageProps) => {
    const [isLoaded, setIsLoaded] = useState(false);
-   const { alt, ...rest } = props;
+   const { alt, fill, ...rest } = props;
    return (
-      <div className={s.loaderContainer}>
-         <Image {...rest} alt={alt || ""} onLoad={() => setIsLoaded(true)} />
+      <div className={fill ? s.fillContainer : s.container}>
+         <Image
+            {...rest}
+            alt={alt || ""}
+            fill={fill}
+            onLoad={() => setIsLoaded(true)}
+         />
          {!isLoaded && <Loader delay={0} className={s.loader} />}
       </div>
    );
