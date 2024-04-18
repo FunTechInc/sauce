@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { useRef } from "react";
-import { useMekuriAnimation, useMekuriDuration } from "@funtech-inc/mekuri";
+import { useMekuri, useMekuriDuration } from "@funtech-inc/mekuri";
 import { EASEVAL } from "@/app/[lang]/_libs/constants";
 
 export const Animation = ({ children }: { children: React.ReactNode }) => {
@@ -13,7 +13,7 @@ export const Animation = ({ children }: { children: React.ReactNode }) => {
       ease: `${EASEVAL}.out`,
    };
 
-   useMekuriAnimation({
+   useMekuri({
       onEveryLeave: () => {
          gsap.to(ref.current, {
             opacity: 0,
