@@ -10,7 +10,6 @@ export const useCloseOnEscapeKeyDown = () => {
    useEffect(() => {
       const handleKeydown = (e: KeyboardEvent) => {
          if (e.key === "Escape" && isMenuOpen) {
-            console.log("close");
             setIsMenuOpen(false);
          }
       };
