@@ -5,7 +5,7 @@ import { MekuriContext } from "@funtech-inc/mekuri";
 import { TRANSITION_DURATIONVAL } from "@/app/[lang]/_libs/constants";
 import { useLenis } from "@/app/[lang]/_hooks/useLenis";
 import { useRef } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 
 export const Context = ({ children }: { children: React.ReactNode }) => {
    const pathname = usePathname();

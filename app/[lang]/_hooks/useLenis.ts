@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { create } from "zustand";
@@ -23,19 +23,19 @@ export const useLenisRegister = () => {
       lenis.current = new Lenis({
          duration: 1.2,
          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-         smoothWheel: true,
-         infinite: false,
-         syncTouch: false,
-         // syncTouchLerp: 0.05,
+         // Virtual DOM on mobile is a bad idea, but if you must do it, the following is comfortable
+         // syncTouch: true,
+         // syncTouchLerp: 0.12,
+         // touchInertiaMultiplier: 16,
+         // touchMultiplier: 0.64,
       });
       setLenis(lenis.current);
 
-      // integrate with gsap
+      // integrate with GSAP
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.refresh();
       lenis.current.on("scroll", ScrollTrigger.update);
 
-      // raf with gsap ticker（You can also loop using r3f's addEffect instead of GSAP's ticker）
       function update(time: number) {
          lenis.current?.raf(time * 1000);
       }
