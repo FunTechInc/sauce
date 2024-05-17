@@ -13,7 +13,7 @@ export const MainLayout = async ({
 }) => {
    return (
       <MainWrapper>
-         <PageTransition.Context>
+         {/* <PageTransition.Context>
             <Header lang={lang} />
             <main>
                <PageTransition.Animation>
@@ -21,7 +21,10 @@ export const MainLayout = async ({
                </PageTransition.Animation>
             </main>
             <Footer />
-         </PageTransition.Context>
+         </PageTransition.Context> */}
+         <Header lang={lang} />
+         <main>{children}</main>
+         <Footer />
       </MainWrapper>
    );
 };
