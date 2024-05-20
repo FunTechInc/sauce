@@ -40,6 +40,10 @@
       16px * var(--mobile-ContentsRatio),
       16 * 100 / var(--mobile-DesignWidth) * 1vw
    );
+   /*===============================================
+	z-index
+	===============================================*/
+   --z-index-header: 9999;
 }
 
 /*===============================================
@@ -75,6 +79,9 @@ html {
    @else if $designRoot==3 {
       font-size: var(--mobile-root);
    }
+
+   touch-action: none;
+   user-select: none;
 }
 
 //set opacity to 1 after font is loaded

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ISDEV } from "@/app/[lang]/_libs/constants";
 import s from "./index.module.scss";
 
-export const ScrollTriggerText = ({
+export const ScrollTriggerContainer = ({
    isReverse = false,
    children,
    className,
@@ -39,7 +39,7 @@ export const ScrollTriggerText = ({
          <div
             ref={contentRef}
             className={isReverse ? s.content_reverse : s.content}>
-            <p className={className ? className : ""}>{children}</p>
+            <div className={className ? className : ""}>{children}</div>
          </div>
       </div>
    );
