@@ -1,35 +1,34 @@
-import Link from "next/link";
 import { Menu } from "./components/Menu";
 import { HeaderWrapper } from "./components/HeaderWrapper";
 import { Inner } from "@/app/[lang]/_layout/Inner";
-import LocaleSwitcher from "../LocaleSwitcher";
-import { Locale } from "@/i18n-config";
+import LocaleSwitcher from "../_elements/LocaleSwitcher";
+import { LocaleLink } from "../_elements/LocaleLink";
 import { ImageLoader } from "../../_utils/Loader";
 import s from "./header.module.scss";
 
-export const Header = ({ lang }: { lang: Locale }) => {
+export const Header = () => {
    return (
       <HeaderWrapper>
          <Inner width="wide" className={s.inner}>
             <h1 className={s.logo}>
-               <Link href={`/${lang}/`} scroll={false}>
+               <LocaleLink href={"/"}>
                   <ImageLoader
                      src={"/app.jpg"}
                      width={1800}
                      height={594}
                      alt="sauce"
                   />
-               </Link>
+               </LocaleLink>
             </h1>
             <Menu />
             <nav>
                <li>
-                  <Link
+                  <LocaleLink
                      className={s.link}
-                     href={`/${lang}/sample`}
+                     href={"/sample"}
                      scroll={false}>
                      sample
-                  </Link>
+                  </LocaleLink>
                </li>
             </nav>
             <LocaleSwitcher />

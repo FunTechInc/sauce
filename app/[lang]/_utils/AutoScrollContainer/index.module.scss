@@ -1,0 +1,10 @@
+@use "@/css" as *;
+
+.wrapper {
+   overflow: hidden;
+}
+
+.container {
+   white-space: nowrap;
+   display: flex;
+}
