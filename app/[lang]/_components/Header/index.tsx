@@ -1,8 +1,8 @@
 import { Menu } from "./components/Menu";
 import { HeaderWrapper } from "./components/HeaderWrapper";
 import { Inner } from "@/app/[lang]/_layout/Inner";
-import LocaleSwitcher from "../_elements/LocaleSwitcher";
-import { LocaleLink } from "../_elements/LocaleLink";
+import LocaleSwitcher from "../elements/LocaleSwitcher";
+import { LocaleLink } from "../elements/LocaleLink";
 import { ImageLoader } from "../../_utils/Loader";
 import s from "./header.module.scss";
 

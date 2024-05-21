@@ -6,7 +6,7 @@ import s from "./style.module.scss";
 
 import type { Metadata } from "next";
 import { Locale } from "@/i18n-config";
-import { getDictionary } from "@/get-dictionary";
+import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 
 const metadata: Metadata = {
    title: "sample",
