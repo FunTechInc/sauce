@@ -1,7 +1,6 @@
-import { MainWrapper } from "./MainWrapper";
 import { Header } from "@/app/[lang]/_components/Header";
 import { Footer } from "@/app/[lang]/_components/Footer";
-import { PageTransition } from "../PageTransition";
+import { WrapperLayout } from "@funtech-inc/spice";
 
 export const MainLayout = async ({
    children,
@@ -9,19 +8,10 @@ export const MainLayout = async ({
    children: React.ReactNode;
 }) => {
    return (
-      <MainWrapper>
-         {/* <PageTransition.Context>
-            <Header />
-            <main>
-               <PageTransition.Animation>
-                  <PageTransition.Layout>{children}</PageTransition.Layout>
-               </PageTransition.Animation>
-            </main>
-            <Footer />
-         </PageTransition.Context> */}
+      <WrapperLayout>
          <Header />
          <main>{children}</main>
          <Footer />
-      </MainWrapper>
+      </WrapperLayout>
    );
 };
