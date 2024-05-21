@@ -1,4 +1,3 @@
-import { Locale } from "@/i18n-config";
 import { create } from "zustand";
 
 export type AppStore = {

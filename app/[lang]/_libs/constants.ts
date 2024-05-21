@@ -40,3 +40,10 @@ export const EASING = {
    ease: `${EASEVAL}.out`,
 };
 export const STAGGERTIMING = 0.1;
+
+/*===============================================
+LINKS
+===============================================*/
+const LINKS = {
+   instagram: "https://www.instagram.com/",
+};

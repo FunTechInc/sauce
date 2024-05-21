@@ -7,7 +7,7 @@ import "@funtech-inc/spice/css";
 import "@/css/global.scss";
 import type { Metadata } from "next";
 import { SITEURL } from "./_libs/constants";
-import { getDictionary } from "@/get-dictionary";
+import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 
 // Meta data
 // const metadata: Metadata = {
