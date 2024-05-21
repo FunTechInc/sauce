@@ -79,9 +79,6 @@ html {
    @else if $designRoot==3 {
       font-size: var(--mobile-root);
    }
-
-   touch-action: none;
-   user-select: none;
 }
 
 //set opacity to 1 after font is loaded
