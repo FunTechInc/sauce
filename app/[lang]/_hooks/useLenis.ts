@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
+import { LinkProps } from "next/link";
+import { useRouter } from "next/navigation";
 
 type LenisStore = {
    lenis: Lenis | null;
@@ -57,4 +59,37 @@ export const useLenisRegister = () => {
    }
 
    return lenis;
+};
+
+/**
+ * Call `lenis.stop()` when routing because scrolling continues after page transitions if routing is done during `lenis-scrolling`.
+ * 
+ * ```tsx
+ * const bild = useLenisLink(props);
+   return <Link {...bild}>{children}</Link>;
+ * ```
+ */
+export const useLenisLink = (
+   props: LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
+) => {
+   const router = useRouter();
+   const lenis = useLenis((state) => state.lenis);
+
+   const onClick: React.MouseEventHandler<HTMLAnchorElement> = useCallback(
+      (e) => {
+         if (
+            (!props.target || props.target === "_self") &&
+            props.scroll !== false
+         ) {
+            e.preventDefault();
+            lenis?.stop();
+            router.push(props.href);
+            lenis?.start();
+            props.onClick && props.onClick(e);
+         }
+      },
+      [props, lenis, router]
+   );
+
+   return { ...props, onClick };
 };
