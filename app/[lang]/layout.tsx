@@ -3,7 +3,6 @@ import { AppHooks } from "./app-hooks";
 import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
 import { poppins, noto } from "./font";
 import "the-new-css-reset/css/reset.css";
-import "@funtech-inc/spice/css";
 import "@/css/global.scss";
 import type { Metadata } from "next";
 import { SITEURL } from "./_libs/constants";

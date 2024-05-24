@@ -48,19 +48,44 @@
 
 /*===============================================
 html body
+🌾 Other resets at `the-new-css-reset`
 ===============================================*/
+
+* {
+   min-height: 0vw;
+}
+
+html,
+body {
+   width: 100%;
+   min-height: 100%;
+   height: auto;
+}
+
 body {
    background-color: $color-bg;
    color: $color-txt;
    letter-spacing: $letter-spacing-base;
    line-height: $leading-none;
    transition: opacity #{$duration / 3 + "s"} ease-in-out;
+   font-style: normal;
+   font-weight: normal;
+   overflow-wrap: break-word;
+   font-feature-settings: "palt";
+   text-size-adjust: 100%;
+   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
+      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
    .ff_en {
       letter-spacing: $letter-spacing-base;
    }
 }
 
 html {
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   scroll-behavior: auto;
+   scrollbar-gutter: stable;
+   user-select: none;
+
    //liquid
    @if $designRoot==1 {
       font-size: var(--liquid-htmlroot);
@@ -79,14 +104,15 @@ html {
    @else if $designRoot==3 {
       font-size: var(--mobile-root);
    }
-
-   // ui
-   user-select: none;
 }
 
 //set opacity to 1 after font is loaded
 html.fonts-loaded body {
    opacity: 1 !important;
+}
+
+main {
+   flex: 1;
 }
 
 /*===============================================
@@ -95,6 +121,22 @@ UI
 a,
 button {
    display: block;
+   border: none;
+   outline: none;
+   text-decoration: none;
+   pointer-events: auto;
+   background: none;
+   > * {
+      pointer-events: none;
+   }
+
+   &:focus:not(:fous-visible) {
+      outline: none;
+   }
+
+   img {
+      border: none;
+   }
 }
 
 a,
@@ -103,6 +145,12 @@ input,
 label,
 textarea,
 select {
+   color: inherit;
+   cursor: pointer;
+   @media (hover: none) {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   }
+
    &:focus-visible {
       outline: $color-key solid 2px;
 
@@ -110,6 +158,36 @@ select {
          outline: none;
       }
    }
+}
+
+img {
+   border: 0;
+   height: auto;
+   pointer-events: none;
+   vertical-align: middle;
+   width: 100%;
+   image-rendering: -webkit-optimize-contrast;
+   image-rendering: crisp-edges;
+   backface-visibility: hidden;
+}
+
+picture {
+   display: block;
+}
+
+iframe {
+   width: 100%;
+}
+
+ul,
+ol,
+li {
+   font-size: 0;
+   list-style: none;
+}
+
+svg {
+   overflow: visible;
 }
 
 /*===============================================

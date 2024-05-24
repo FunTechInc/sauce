@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenisLink } from "@/app/[lang]/_hooks/useLenis";
+import { useLenisLink } from "@/hooks/useLenis";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 
