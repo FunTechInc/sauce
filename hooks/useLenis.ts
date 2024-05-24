@@ -6,6 +6,7 @@ import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
+import { useFrame } from "@funtech-inc/spice";
 
 type LenisStore = {
    lenis: Lenis | null;
@@ -38,17 +39,16 @@ export const useLenisRegister = () => {
       ScrollTrigger.refresh();
       lenis.current.on("scroll", ScrollTrigger.update);
 
-      function update(time: number) {
-         lenis.current?.raf(time * 1000);
-      }
-      gsap.ticker.add(update);
       gsap.ticker.lagSmoothing(0);
 
       return () => {
          lenis.current?.destroy();
-         gsap.ticker.remove(update);
       };
    }, [setLenis]);
+
+   useFrame((time) => {
+      lenis.current?.raf(time * 1000);
+   });
 
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);

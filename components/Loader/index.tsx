@@ -2,7 +2,8 @@
 
 import { VideoHTMLAttributes, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import { LowPowerVideo, Loader, LowPowerVideoProps } from "@funtech-inc/spice";
+import { LowPowerVideo, LowPowerVideoProps } from "@funtech-inc/spice";
+import { Loader } from "./Loader";
 import s from "./loader.module.scss";
 
 const FILL_STYLE = {
@@ -65,5 +66,3 @@ export const ImageLoader = (props: ImageProps) => {
       </div>
    );
 };
-
-export { Loader } from "@funtech-inc/spice";

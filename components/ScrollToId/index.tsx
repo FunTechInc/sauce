@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenis } from "@/app/[lang]/_hooks/useLenis";
+import { useLenis } from "@/hooks/useLenis";
 
 export const ScrollToId = ({
    target,

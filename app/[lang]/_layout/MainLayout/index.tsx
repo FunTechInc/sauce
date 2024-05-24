@@ -1,6 +1,6 @@
 import { Header } from "@/app/[lang]/_components/Header";
 import { Footer } from "@/app/[lang]/_components/Footer";
-import { WrapperLayout } from "@funtech-inc/spice";
+import { SpiceWrapper } from "@funtech-inc/spice";
 
 export const MainLayout = async ({
    children,
@@ -8,10 +8,10 @@ export const MainLayout = async ({
    children: React.ReactNode;
 }) => {
    return (
-      <WrapperLayout>
+      <SpiceWrapper>
          <Header />
          <main>{children}</main>
          <Footer />
-      </WrapperLayout>
+      </SpiceWrapper>
    );
 };
