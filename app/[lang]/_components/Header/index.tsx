@@ -1,4 +1,4 @@
-import { Menu } from "./components/Menu";
+import { Hamburger } from "./components/Hamburger";
 import { HeaderWrapper } from "./components/HeaderWrapper";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import LocaleSwitcher from "../elements/LocaleSwitcher";
@@ -20,7 +20,7 @@ export const Header = () => {
                   />
                </LocaleLink>
             </h1>
-            <Menu />
+            <Hamburger className={s.menuWrapper}>menu</Hamburger>
             <nav>
                <li>
                   <LocaleLink
