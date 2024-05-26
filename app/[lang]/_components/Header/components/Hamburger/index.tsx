@@ -4,9 +4,15 @@ import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import { useRef } from "react";
 import { FocusTrap } from "./FocusTrap";
 import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
-import s from "./menu.module.scss";
+import s from "./index.module.scss";
 
-export const Menu = () => {
+export const Hamburger = ({
+   children,
+   className,
+}: {
+   children: React.ReactNode;
+   className?: string;
+}) => {
    const { isMenuOpen, setIsMenuOpen } = useAppStore(
       ({ isMenuOpen, setIsMenuOpen }) => ({ isMenuOpen, setIsMenuOpen })
    );
@@ -23,14 +29,11 @@ export const Menu = () => {
             }}
             className={s.button}
             aria-expanded={isMenuOpen}>
-            {isMenuOpen ? "close" : "menu open"}
+            <span></span>
+            <span></span>
          </button>
-         <nav
-            className={`${s.nav} ${isMenuOpen ? "" : s.hidden}`}
-            area-hidden={`${!isMenuOpen}`}>
-            <button>nav0</button>
-            <button>nav1</button>
-            <button>nav2</button>
+         <nav className={className ? className : ""} aria-hidden={!isMenuOpen}>
+            {children}
             <FocusTrap focusTarget={buttonRef} />
          </nav>
       </>
