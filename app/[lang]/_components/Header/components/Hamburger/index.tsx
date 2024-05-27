@@ -32,6 +32,12 @@ export const Hamburger = ({
             <span></span>
             <span></span>
          </button>
+         <div
+            className={s.overlay}
+            aria-hidden={!isMenuOpen}
+            onClick={() => {
+               setIsMenuOpen(false);
+            }}></div>
          <nav className={className ? className : ""} aria-hidden={!isMenuOpen}>
             {children}
             <FocusTrap focusTarget={buttonRef} />

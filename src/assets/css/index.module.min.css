@@ -1,3 +1,17 @@
-.loader_wrapper{overflow:hidden;pointer-events:none}.loader_container{position:relative;width:100%;height:100%;opacity:0}.loader_skelton{position:absolute;width:100%;height:100%;top:0;left:0;-webkit-animation-name:skeleton;animation-name:skeleton;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes skeleton{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}@keyframes skeleton{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}.loader_circular{position:absolute;top:0;left:0;bottom:0;right:0;margin:auto;border-radius:50%;-webkit-animation-name:cicrular;animation-name:cicrular;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes cicrular{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes cicrular{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use "/css" as *;
+ *   | ^^^^^^^^^^^^^^^^
+ *   '
+ *   app/[lang]/_components/Header/components/Hamburger/index.module.scss 1:1  root stylesheet */
 
-/*# sourceMappingURL=index.module.min.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"/css\" as *;\a   \2502  ^^^^^^^^^^^^^^^^\a   \2575 \a   app/[lang]/_components/Header/components/Hamburger/index.module.scss 1:1  root stylesheet";
+}

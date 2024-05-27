@@ -28,16 +28,24 @@ export const WINDOWMD = 960;
 export const WINDOWLG = 1120;
 
 /*===============================================
-animation
+easing
 ===============================================*/
-export const TRIGGERTIMING = "top bottom-=10%";
-export const INTERSECTIONTIMING = "-10% 0px";
-export const DURATIONVAL = 0.8;
-export const TRANSITION_DURATIONVAL = 0.8;
-export const EASEVAL = "power3";
+export const TRIGGERTIMING = "top bottom-=8%";
+export const INTERSECTIONTIMING = "-8% 0px";
+
+export const DURATION = {
+   emphasized: 0.5,
+   emphasizedDecelerate: 0.4,
+   emphasizedAccelerate: 0.2,
+   standard: 0.3,
+   standardDecelerate: 0.25,
+   standardAccelerate: 0.2,
+};
+
+export const EASE = "power3";
 export const EASING = {
-   duration: DURATIONVAL,
-   ease: `${EASEVAL}.out`,
+   duration: DURATION.emphasized,
+   ease: `${EASE}.out`,
 };
 export const STAGGERTIMING = 0.1;
 
