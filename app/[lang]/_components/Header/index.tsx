@@ -20,7 +20,11 @@ export const Header = () => {
                   />
                </LocaleLink>
             </h1>
-            <Hamburger className={s.menuWrapper}>menu</Hamburger>
+            <Hamburger>
+               <div className={s.menuWrapper}>
+                  <LocaleLink href={"/sample"}>sample</LocaleLink>
+               </div>
+            </Hamburger>
             <nav>
                <li>
                   <LocaleLink

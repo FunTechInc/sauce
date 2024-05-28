@@ -1,18 +1,13 @@
 "use client";
 
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FocusTrap } from "./FocusTrap";
 import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
+import { usePathname } from "next/navigation";
 import s from "./index.module.scss";
 
-export const Hamburger = ({
-   children,
-   className,
-}: {
-   children: React.ReactNode;
-   className?: string;
-}) => {
+export const Hamburger = ({ children }: { children: React.ReactNode }) => {
    const { isMenuOpen, setIsMenuOpen } = useAppStore(
       ({ isMenuOpen, setIsMenuOpen }) => ({ isMenuOpen, setIsMenuOpen })
    );
@@ -20,8 +15,17 @@ export const Hamburger = ({
    useCloseOnEscapeKeyDown();
 
    const buttonRef = useRef<HTMLButtonElement>(null);
+
+   // Close the menu when the route changes
+   const pathname = usePathname();
+   useEffect(() => {
+      return () => {
+         setIsMenuOpen(false);
+      };
+   }, [pathname, setIsMenuOpen]);
+
    return (
-      <>
+      <div>
          <button
             ref={buttonRef}
             onClick={() => {
@@ -38,10 +42,10 @@ export const Hamburger = ({
             onClick={() => {
                setIsMenuOpen(false);
             }}></div>
-         <nav className={className ? className : ""} aria-hidden={!isMenuOpen}>
+         <nav aria-hidden={!isMenuOpen}>
             {children}
             <FocusTrap focusTarget={buttonRef} />
          </nav>
-      </>
+      </div>
    );
 };
