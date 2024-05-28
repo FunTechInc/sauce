@@ -1,19 +1,24 @@
+import { forwardRef } from "react";
 import s from "./inner.module.scss";
 
 type InnerProps = {
-   children: React.ReactNode;
-   className?: string;
-   /** "wide:128rem" | "narrow:96rem" */
-   width: "wide" | "narrow";
-};
+   /** "wide:112.8rem" | "narrow:96rem" | "outer:136rem" */
+   width: "wide" | "narrow" | "outer";
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export const Inner = ({ children, className, width }: InnerProps) => {
-   return (
-      <div
-         className={`${s.inner} ${s["w_" + width]} ${
-            className ? className : ""
-         }`}>
-         {children}
-      </div>
-   );
-};
+export const Inner = forwardRef<HTMLDivElement, InnerProps>(
+   ({ children, className, width, ...rest }, ref) => {
+      return (
+         <div
+            ref={ref}
+            className={`${s.inner} ${s["w_" + width]} ${
+               className ? className : ""
+            }`}
+            {...rest}>
+            {children}
+         </div>
+      );
+   }
+);
+
+Inner.displayName = "Inner";

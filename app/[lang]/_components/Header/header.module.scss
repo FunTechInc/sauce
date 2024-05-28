@@ -24,19 +24,20 @@
 }
 
 .menuWrapper {
-   position: fixed;
+   position: absolute;
+   display: inline-table;
    max-width: 100%;
    max-height: 100%;
    z-index: var(--z-index-menu);
-   background-color: $color-key;
-   color: #fff;
+   background-color: $color-bg;
+   color: $color-key;
    top: $spacing-1;
    right: $spacing-1;
    padding: $spacing-12;
    @include transition;
    transition-property: opacity, visibility, translate;
    border-radius: $spacing-1;
-   &[aria-hidden="true"] {
+   [aria-hidden="true"] & {
       visibility: hidden;
       opacity: 0;
       pointer-events: none;
