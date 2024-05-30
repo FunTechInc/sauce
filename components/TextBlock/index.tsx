@@ -5,11 +5,7 @@ type WrapperProps = {
    className?: string;
 };
 const Wrapper = ({ children, className }: WrapperProps) => {
-   return (
-      <div className={`${s.wrapper} ${className ? className : ""}`}>
-         {children}
-      </div>
-   );
+   return <div className={`${s.wrapper} ${className || ""}`}>{children}</div>;
 };
 
 type ClassName = {
@@ -58,7 +54,7 @@ const Text = ({
    return (
       <TagName
          className={`${createClassName(styles)} ${isEn ? "ff_en" : ""} ${
-            className ? className : ""
+            className || ""
          }`}>
          {children}
       </TagName>
