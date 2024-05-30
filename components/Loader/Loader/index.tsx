@@ -59,7 +59,7 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
       return (
          <div
             ref={ref}
-            className={`${className ? className : ""} ${s.loader_wrapper} `}
+            className={`${className || ""} ${s.loader_wrapper} `}
             style={
                hasChildren
                   ? {

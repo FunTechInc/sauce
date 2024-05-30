@@ -19,7 +19,7 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
             id={id ? id : ""}
             className={`${s["padding_" + padding]} ${
                bgColor ? s["bg_" + bgColor] : ""
-            } ${className ? className : ""}`}>
+            } ${className || ""}`}>
             {children}
          </section>
       );

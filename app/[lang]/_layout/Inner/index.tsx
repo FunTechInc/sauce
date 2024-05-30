@@ -11,9 +11,7 @@ export const Inner = forwardRef<HTMLDivElement, InnerProps>(
       return (
          <div
             ref={ref}
-            className={`${s.inner} ${s["w_" + width]} ${
-               className ? className : ""
-            }`}
+            className={`${s.inner} ${s["w_" + width]} ${className || ""}`}
             {...rest}>
             {children}
          </div>

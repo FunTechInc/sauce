@@ -34,7 +34,7 @@ export const ScrollToId = ({
       });
    };
    return (
-      <button onClick={clickHandler} className={className ? className : ""}>
+      <button onClick={clickHandler} className={className || ""}>
          {children}
       </button>
    );
