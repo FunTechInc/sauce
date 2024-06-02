@@ -1,7 +1,7 @@
 "use client";
 
 import { useLenisLink } from "@/hooks/useLenis";
-import { useLocaleHref } from "@/hooks/useLocaleHref";
+import { useLocalePathname } from "@/hooks/useLocalePathname";
 import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
 
@@ -10,7 +10,7 @@ export type LocaleLinkProps = LinkProps &
 
 export const LocaleLink = forwardRef<HTMLAnchorElement, LocaleLinkProps>(
    ({ children, href, ...props }, ref) => {
-      const { localeHref } = useLocaleHref(href);
+      const { localeHref } = useLocalePathname({ href });
       const bild = useLenisLink({ ...props, href: localeHref });
 
       return (
