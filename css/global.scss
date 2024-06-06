@@ -126,7 +126,6 @@ button {
    border: none;
    outline: none;
    text-decoration: none;
-   pointer-events: auto;
    background: none;
    > * {
       pointer-events: none;
@@ -148,6 +147,7 @@ label,
 textarea,
 select {
    color: inherit;
+   pointer-events: auto;
    cursor: pointer;
    @media (hover: none) {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
