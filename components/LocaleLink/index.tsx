@@ -12,9 +12,9 @@ export const LocaleLink = forwardRef<HTMLAnchorElement, LocaleLinkProps>(
    ({ children, href, isExternal, ...props }, ref) => {
       const { localeHref } = useLocalePathname({ href });
       const bild = useLenisLink({
-         ...props,
          href: isExternal ? href : localeHref,
-         target: isExternal ? "_blank" : "_self",
+         target: isExternal ? "_blank" : undefined,
+         ...props,
       });
       return (
          <Link {...bild} ref={ref}>
