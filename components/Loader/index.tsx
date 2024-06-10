@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import Image, { ImageProps } from "next/image";
 import {
    LowPowerVideo,
@@ -11,54 +11,67 @@ import {
 import { Loader } from "./Loader";
 import s from "./index.module.scss";
 
-const LoaderContainer = ({
-   fill,
-   children,
-}: {
-   fill?: boolean;
-   children: React.ReactNode;
-}) => {
+const LoaderContainer = forwardRef<
+   HTMLDivElement,
+   {
+      fill?: boolean;
+      children: React.ReactNode;
+   }
+>(({ fill, children }, ref) => {
    return (
-      <div className={fill ? s.fillContainer : s.container}>{children}</div>
+      <div ref={ref} className={fill ? s.fillContainer : s.container}>
+         {children}
+      </div>
    );
-};
+});
+LoaderContainer.displayName = "LoaderContainer";
 
-export const VideoLoader = (props: VideoProps) => {
+export const VideoLoader = forwardRef<HTMLDivElement, VideoProps>(
+   (props, ref) => {
+      const [isLoaded, setIsLoaded] = useState(false);
+      const { fill } = props;
+      return (
+         <LoaderContainer ref={ref} fill={fill}>
+            <Video {...props} onCanPlay={() => setIsLoaded(true)}></Video>
+            {!isLoaded && <Loader delay={0} className={s.loader} />}
+         </LoaderContainer>
+      );
+   }
+);
+VideoLoader.displayName = "VideoLoader";
+
+export const LowPowerVideoLoader = forwardRef<
+   HTMLDivElement,
+   LowPowerVideoProps
+>((props, ref) => {
    const [isLoaded, setIsLoaded] = useState(false);
    const { fill } = props;
    return (
-      <LoaderContainer fill={fill}>
-         <Video {...props} onCanPlay={() => setIsLoaded(true)}></Video>
-         {!isLoaded && <Loader delay={0} className={s.loader} />}
-      </LoaderContainer>
-   );
-};
-
-export const LowPowerVideoLoader = (props: LowPowerVideoProps) => {
-   const [isLoaded, setIsLoaded] = useState(false);
-   const { fill } = props;
-   return (
-      <LoaderContainer fill={fill}>
+      <LoaderContainer ref={ref} fill={fill}>
          <LowPowerVideo
             {...props}
             onCanPlay={() => setIsLoaded(true)}></LowPowerVideo>
          {!isLoaded && <Loader delay={0} className={s.loader} />}
       </LoaderContainer>
    );
-};
+});
+LowPowerVideoLoader.displayName = "LowPowerVideoLoader";
 
-export const ImageLoader = (props: ImageProps) => {
-   const [isLoaded, setIsLoaded] = useState(false);
-   const { alt, fill, ...rest } = props;
-   return (
-      <LoaderContainer fill={fill}>
-         <Image
-            {...rest}
-            alt={alt || ""}
-            fill={fill}
-            onLoad={() => setIsLoaded(true)}
-         />
-         {!isLoaded && <Loader delay={0} className={s.loader} />}
-      </LoaderContainer>
-   );
-};
+export const ImageLoader = forwardRef<HTMLDivElement, ImageProps>(
+   (props, ref) => {
+      const [isLoaded, setIsLoaded] = useState(false);
+      const { alt, fill, ...rest } = props;
+      return (
+         <LoaderContainer ref={ref} fill={fill}>
+            <Image
+               {...rest}
+               alt={alt || ""}
+               fill={fill}
+               onLoad={() => setIsLoaded(true)}
+            />
+            {!isLoaded && <Loader delay={0} className={s.loader} />}
+         </LoaderContainer>
+      );
+   }
+);
+ImageLoader.displayName = "ImageLoader";
