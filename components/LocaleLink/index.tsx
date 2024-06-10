@@ -5,14 +5,16 @@ import { useLocalePathname } from "@/hooks/useLocalePathname";
 import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
 
-export type LocaleLinkProps = LinkProps &
+export type LocaleLinkProps = { isExternal?: boolean } & LinkProps &
    React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const LocaleLink = forwardRef<HTMLAnchorElement, LocaleLinkProps>(
-   ({ children, href, ...props }, ref) => {
+   ({ children, href, isExternal, ...props }, ref) => {
       const { localeHref } = useLocalePathname({ href });
-      const bild = useLenisLink({ ...props, href: localeHref });
-
+      const bild = useLenisLink({
+         ...props,
+         href: isExternal ? href : localeHref,
+      });
       return (
          <Link {...bild} ref={ref}>
             {children}
