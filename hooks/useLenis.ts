@@ -41,8 +41,16 @@ export const useLenisRegister = () => {
 
       gsap.ticker.lagSmoothing(0);
 
+      // Scrolling is stopped at popstate because the scrolling before the transition is inherited.
+      const handlePopstate = () => {
+         lenis.current?.stop();
+         setTimeout(() => lenis.current?.start(), 0);
+      };
+      window.addEventListener("popstate", handlePopstate);
+
       return () => {
          lenis.current?.destroy();
+         window.removeEventListener("popstate", handlePopstate);
       };
    }, [setLenis]);
 
