@@ -26,7 +26,7 @@ const LoaderContainer = forwardRef<
 });
 LoaderContainer.displayName = "LoaderContainer";
 
-const WAVE_COLOR = "rgba(208,208,208,0.24)";
+const WAVE_COLOR = "red";
 
 export const VideoLoader = forwardRef<HTMLDivElement, VideoProps>(
    (props, ref) => {

@@ -25,7 +25,7 @@
       "typescript": "^5.3.2"
    },
    "devDependencies": {
-      "@funtech-inc/spice": "^1.2.28",
+      "@funtech-inc/spice": "^1.2.29",
       "@gsap/react": "^2.1.0",
       "@types/negotiator": "^0.6.3",
       "autoprefixer": "^10.4.14",
