@@ -1,3 +1,5 @@
+import "server-only"; //must be server-only
+
 import { createClient } from "microcms-js-sdk";
 
 // microCMS
