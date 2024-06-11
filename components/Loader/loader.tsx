@@ -1,7 +1,5 @@
-"use client";
-
 import { forwardRef, useEffect, useState } from "react";
-import s from "./index.module.scss";
+import s from "./loader.module.scss";
 
 export type LoaderProps = {
    className?: string;
@@ -14,7 +12,7 @@ export type LoaderProps = {
       /** ease-in-out */
       transitionTimingFunction?: React.CSSProperties["transitionTimingFunction"];
    };
-   skelton?: {
+   skeleton?: {
       /** rgba(255,255,255,0.64) */
       waveColor?: string;
       /** 1.6s */
@@ -28,7 +26,7 @@ export type LoaderProps = {
       /** 24px */
       height?: React.CSSProperties["height"];
       /** 2px solid #fff */
-      boder?: React.CSSProperties["border"];
+      border?: React.CSSProperties["border"];
       /** 1.6s */
       animationDuration?: React.CSSProperties["animationDuration"];
       /** linear */
@@ -44,7 +42,7 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
          loader = "skeleton",
          delay = 1000,
          onView,
-         skelton,
+         skeleton,
          circular,
          children,
       },
@@ -84,14 +82,15 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
                }>
                {loader === "skeleton" ? (
                   <div
-                     className={s.loader_skelton}
+                     className={s.loader_skeleton}
                      style={{
                         background: `linear-gradient(90deg,transparent,${
-                           skelton?.waveColor || "rgba(255,255,255,0.64)"
+                           skeleton?.waveColor || "rgba(255,255,255,0.64)"
                         },transparent)`,
-                        animationDuration: skelton?.animationDuration || "1.6s",
+                        animationDuration:
+                           skeleton?.animationDuration || "1.6s",
                         animationTimingFunction:
-                           skelton?.animationTimingFunction || "ease-in-out",
+                           skeleton?.animationTimingFunction || "ease-in-out",
                      }}></div>
                ) : loader === "circular" ? (
                   <div
@@ -99,11 +98,12 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
                      style={{
                         width: circular?.width ? circular?.width : "24px",
                         height: circular?.height ? circular?.height : "24px",
-                        border: circular?.boder || "2px solid #fff",
+                        border: circular?.border || "2px solid #fff",
                         borderBottomColor: "transparent",
-                        animationDuration: skelton?.animationDuration || "1.6s",
+                        animationDuration:
+                           skeleton?.animationDuration || "1.6s",
                         animationTimingFunction:
-                           skelton?.animationTimingFunction || "linear",
+                           skeleton?.animationTimingFunction || "linear",
                      }}></div>
                ) : (
                   loader

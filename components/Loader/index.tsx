@@ -8,7 +8,7 @@ import {
    Video,
    VideoProps,
 } from "@funtech-inc/spice";
-import { Loader } from "./Loader";
+import { Loader } from "./loader";
 import s from "./index.module.scss";
 
 const LoaderContainer = forwardRef<
@@ -26,6 +26,8 @@ const LoaderContainer = forwardRef<
 });
 LoaderContainer.displayName = "LoaderContainer";
 
+const WAVE_COLOR = "rgba(208,208,208,0.24)";
+
 export const VideoLoader = forwardRef<HTMLDivElement, VideoProps>(
    (props, ref) => {
       const [isLoaded, setIsLoaded] = useState(false);
@@ -33,7 +35,13 @@ export const VideoLoader = forwardRef<HTMLDivElement, VideoProps>(
       return (
          <LoaderContainer ref={ref} fill={fill}>
             <Video {...props} onCanPlay={() => setIsLoaded(true)}></Video>
-            {!isLoaded && <Loader delay={0} className={s.loader} />}
+            {!isLoaded && (
+               <Loader
+                  skeleton={{ waveColor: WAVE_COLOR }}
+                  delay={0}
+                  className={s.loader}
+               />
+            )}
          </LoaderContainer>
       );
    }
@@ -51,7 +59,13 @@ export const LowPowerVideoLoader = forwardRef<
          <LowPowerVideo
             {...props}
             onCanPlay={() => setIsLoaded(true)}></LowPowerVideo>
-         {!isLoaded && <Loader delay={0} className={s.loader} />}
+         {!isLoaded && (
+            <Loader
+               skeleton={{ waveColor: WAVE_COLOR }}
+               delay={0}
+               className={s.loader}
+            />
+         )}
       </LoaderContainer>
    );
 });
@@ -69,7 +83,13 @@ export const ImageLoader = forwardRef<HTMLDivElement, ImageProps>(
                fill={fill}
                onLoad={() => setIsLoaded(true)}
             />
-            {!isLoaded && <Loader delay={0} className={s.loader} />}
+            {!isLoaded && (
+               <Loader
+                  skeleton={{ waveColor: WAVE_COLOR }}
+                  delay={0}
+                  className={s.loader}
+               />
+            )}
          </LoaderContainer>
       );
    }
