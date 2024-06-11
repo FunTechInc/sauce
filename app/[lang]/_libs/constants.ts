@@ -50,8 +50,39 @@ export const EASING = {
 export const STAGGERTIMING = 0.1;
 
 /*===============================================
-LINKS
+External Links
 ===============================================*/
-const LINKS = {
+export const EXTERNAL_LINKS = {
    instagram: "https://www.instagram.com/",
+};
+
+/*===============================================
+ROUTES
+===============================================*/
+const ROUTES = {
+   sample: {
+      href: "/sample",
+      title: "sample",
+   },
+};
+
+type Routes = keyof typeof ROUTES;
+
+/**
+ * @param key - Key to get routing data
+ */
+export const getRoute = (key: Routes) => ROUTES[key];
+
+/**
+ * @param keys - Array of keys to get routing data
+ * @param isAll - If true, return all routing data
+ */
+export const getRouteArr = (
+   keys: Routes[] | null,
+   isAll: boolean = false
+): Array<{ href: string; title: string }> => {
+   if (isAll || keys === null) {
+      return Object.values(ROUTES);
+   }
+   return keys.map((key) => ROUTES[key]);
 };
