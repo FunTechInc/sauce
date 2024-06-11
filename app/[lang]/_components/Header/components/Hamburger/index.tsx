@@ -2,9 +2,9 @@
 
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import { useEffect, useRef } from "react";
-import { FocusTrap } from "./FocusTrap";
 import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
 import { usePathname } from "next/navigation";
+import { FocusTrap } from "@funtech-inc/spice";
 import s from "./index.module.scss";
 
 export const Hamburger = ({ children }: { children: React.ReactNode }) => {
