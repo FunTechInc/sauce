@@ -7,8 +7,8 @@ import {
    LowPowerVideoProps,
    Video,
    VideoProps,
+   Loader,
 } from "@funtech-inc/spice";
-import { Loader } from "./loader";
 import s from "./index.module.scss";
 
 const LoaderContainer = forwardRef<
