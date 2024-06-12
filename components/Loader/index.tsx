@@ -81,7 +81,7 @@ export const ImageLoader = forwardRef<HTMLDivElement, ImageProps>(
                {...rest}
                alt={alt || ""}
                fill={fill}
-               onLoad={() => setIsLoaded(true)}
+               onLoadingComplete={() => setIsLoaded(true)}
             />
             {!isLoaded && (
                <Loader
