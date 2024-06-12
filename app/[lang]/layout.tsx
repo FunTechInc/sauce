@@ -60,15 +60,13 @@ export async function generateStaticParams() {
 
 const RootLayout = ({
    children,
-   params,
+   params: { lang },
 }: {
    children: React.ReactNode;
    params: { lang: Locale };
 }) => {
    return (
-      <html
-         lang={params.lang}
-         className={`${poppins.variable} ${noto.variable}`}>
+      <html lang={lang} className={`${poppins.variable} ${noto.variable}`}>
          <body style={{ opacity: 0 }} className={noto.className}>
             <MainLayout>{children}</MainLayout>
          </body>
