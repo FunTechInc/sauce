@@ -75,13 +75,11 @@ export const getRoute = (key: Routes) => ROUTES[key];
 
 /**
  * @param keys - Array of keys to get routing data
- * @param isAll - If true, return all routing data
  */
 export const getRouteArr = (
-   keys: Routes[] | null,
-   isAll: boolean = false
+   keys?: Routes[]
 ): Array<{ href: string; title: string }> => {
-   if (isAll || keys === null) {
+   if (keys === undefined) {
       return Object.values(ROUTES);
    }
    return keys.map((key) => ROUTES[key]);
