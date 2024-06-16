@@ -69,7 +69,7 @@ body {
    color: $color-txt;
    letter-spacing: $letter-spacing-base;
    line-height: $leading-none;
-   transition: opacity #{$duration / 3 + "s"} ease-in-out;
+   transition: opacity #{$duration-standard / 3 + "s"} ease-in-out;
    font-style: normal;
    font-weight: normal;
    overflow-wrap: break-word;

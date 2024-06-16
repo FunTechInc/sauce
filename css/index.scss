@@ -31,7 +31,14 @@ $unit: inherit;
 /*===============================================
 duration
 ===============================================*/
-$duration: 0.3s; // standard
+$duration-emphasized: 0.5s;
+$duration-emphasizedDecelerate: 0.4s;
+$duration-emphasizedAccelerate: 0.2s;
+$duration-standard: 0.3s;
+$duration-standardDecelerate: 0.25s;
+$duration-standardAccelerate: 0.2s;
+$duration-standardDecelerate: 0.25s;
+$duration-standardAccelerate: 0.2s;
 
 /*===============================================
 spacing
@@ -174,7 +181,7 @@ Line Height Crop
 /*===============================================
 transition
 ===============================================*/
-@mixin transition($dur: all $duration) {
+@mixin transition($dur: all $duration-standard) {
    transition: $dur;
    @include easeOutQuart();
 }
