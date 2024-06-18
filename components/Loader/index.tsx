@@ -9,61 +9,101 @@ import {
    VideoProps,
    Loader,
 } from "@funtech-inc/spice";
-import s from "./index.module.scss";
 
+const WAVE_COLOR = "rgba(208,208,208,0.24)";
+const BG_COLOR = "#222222";
+
+const STYLES: {
+   fillContainer: React.CSSProperties;
+   container: React.CSSProperties;
+   loader: React.CSSProperties;
+} = {
+   fillContainer: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      top: 0,
+      left: 0,
+   },
+   container: {
+      position: "relative",
+   },
+   loader: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      top: 0,
+      left: 0,
+      zIndex: -1,
+      backgroundColor: BG_COLOR,
+   },
+};
+
+type ContainerProps = {
+   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, "children">;
+};
 const LoaderContainer = forwardRef<
    HTMLDivElement,
    {
       fill?: boolean;
       children: React.ReactNode;
-   }
->(({ fill, children }, ref) => {
+   } & ContainerProps
+>(({ fill, children, containerProps }, ref) => {
+   const { style, ...rest } = containerProps || {};
+
    return (
-      <div ref={ref} className={fill ? s.fillContainer : s.container}>
+      <div
+         ref={ref}
+         style={{
+            ...(fill ? STYLES.fillContainer : STYLES.container),
+            ...style,
+         }}
+         {...rest}>
          {children}
       </div>
    );
 });
 LoaderContainer.displayName = "LoaderContainer";
 
-const WAVE_COLOR = "red";
-
-export const VideoLoader = forwardRef<HTMLDivElement, VideoProps>(
-   (props, ref) => {
-      const [isLoaded, setIsLoaded] = useState(false);
-      const { fill } = props;
-      return (
-         <LoaderContainer ref={ref} fill={fill}>
-            <Video {...props} onCanPlay={() => setIsLoaded(true)}></Video>
-            {!isLoaded && (
-               <Loader
-                  skeleton={{ waveColor: WAVE_COLOR }}
-                  delay={0}
-                  className={s.loader}
-               />
-            )}
-         </LoaderContainer>
-      );
-   }
-);
-VideoLoader.displayName = "VideoLoader";
-
-export const LowPowerVideoLoader = forwardRef<
+export const VideoLoader = forwardRef<
    HTMLDivElement,
-   LowPowerVideoProps
+   VideoProps & ContainerProps
 >((props, ref) => {
    const [isLoaded, setIsLoaded] = useState(false);
-   const { fill } = props;
+   const { fill, containerProps, ...rest } = props;
    return (
-      <LoaderContainer ref={ref} fill={fill}>
-         <LowPowerVideo
-            {...props}
-            onCanPlay={() => setIsLoaded(true)}></LowPowerVideo>
+      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
+         <Video fill={fill} onCanPlay={() => setIsLoaded(true)} {...rest} />
          {!isLoaded && (
             <Loader
                skeleton={{ waveColor: WAVE_COLOR }}
                delay={0}
-               className={s.loader}
+               style={STYLES.loader}
+            />
+         )}
+      </LoaderContainer>
+   );
+});
+VideoLoader.displayName = "VideoLoader";
+
+export const LowPowerVideoLoader = forwardRef<
+   HTMLDivElement,
+   LowPowerVideoProps & ContainerProps
+>((props, ref) => {
+   const [isLoaded, setIsLoaded] = useState(false);
+   const { fill, containerProps, ...rest } = props;
+   return (
+      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
+         <LowPowerVideo
+            fill={fill}
+            onCanPlay={() => setIsLoaded(true)}
+            {...rest}
+         />
+         {!isLoaded && (
+            <Loader
+               skeleton={{ waveColor: WAVE_COLOR }}
+               delay={0}
+               style={STYLES.loader}
             />
          )}
       </LoaderContainer>
@@ -71,27 +111,28 @@ export const LowPowerVideoLoader = forwardRef<
 });
 LowPowerVideoLoader.displayName = "LowPowerVideoLoader";
 
-export const ImageLoader = forwardRef<HTMLDivElement, ImageProps>(
-   (props, ref) => {
-      const [isLoaded, setIsLoaded] = useState(false);
-      const { alt, fill, ...rest } = props;
-      return (
-         <LoaderContainer ref={ref} fill={fill}>
-            <Image
-               {...rest}
-               alt={alt || ""}
-               fill={fill}
-               onLoad={() => setIsLoaded(true)}
+export const ImageLoader = forwardRef<
+   HTMLDivElement,
+   ImageProps & ContainerProps
+>((props, ref) => {
+   const [isLoaded, setIsLoaded] = useState(false);
+   const { alt, fill, containerProps, ...rest } = props;
+   return (
+      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
+         <Image
+            alt={alt || ""}
+            fill={fill}
+            onLoad={() => setIsLoaded(true)}
+            {...rest}
+         />
+         {!isLoaded && (
+            <Loader
+               skeleton={{ waveColor: WAVE_COLOR }}
+               delay={0}
+               style={STYLES.loader}
             />
-            {!isLoaded && (
-               <Loader
-                  skeleton={{ waveColor: WAVE_COLOR }}
-                  delay={0}
-                  className={s.loader}
-               />
-            )}
-         </LoaderContainer>
-      );
-   }
-);
+         )}
+      </LoaderContainer>
+   );
+});
 ImageLoader.displayName = "ImageLoader";
