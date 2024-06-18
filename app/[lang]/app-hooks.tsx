@@ -18,6 +18,7 @@ export const AppHooks = () => {
       <style jsx global>{`
          .${FF_EN} {
             font-family: ${poppins.style.fontFamily};
+            letter-spacing: 0;
          }
       `}</style>
    );
