@@ -67,7 +67,6 @@ body {
 body {
    background-color: $color-bg;
    color: $color-txt;
-   letter-spacing: $letter-spacing-base;
    line-height: $leading-none;
    transition: opacity #{$duration-standard / 3 + "s"} ease-in-out;
    font-style: normal;
@@ -77,6 +76,7 @@ body {
    text-size-adjust: 100%;
    padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
       env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+   letter-spacing: 0;
 }
 
 html {
