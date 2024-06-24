@@ -4,6 +4,9 @@
    margin: 0 auto;
 }
 
+.w_outer {
+   width: min(100% - $inner-padding, $inner-outer);
+}
 .w_wide {
    width: min(100% - $inner-padding, $inner-wide);
 }

@@ -9,7 +9,7 @@ import s from "./header.module.scss";
 export const Header = () => {
    return (
       <HeaderWrapper>
-         <Inner width="wide" className={s.inner}>
+         <Inner width="outer" className={s.inner}>
             <h1 className={s.logo}>
                <LocaleLink href={"/"}>
                   <ImageLoader
