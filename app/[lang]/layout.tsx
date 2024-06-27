@@ -21,7 +21,6 @@ import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 //       creator: "@funtech_inc",
 //       siteId: "@funtech_inc",
 //    },
-//    metadataBase: SITEURL,
 //    alternates: {
 //       canonical: "/",
 //    },
@@ -47,7 +46,6 @@ export async function generateMetadata({
          creator: "@funtech_inc",
          siteId: "@funtech_inc",
       },
-      metadataBase: SITEURL,
       alternates: {
          canonical: "/",
       },
