@@ -54,14 +54,13 @@ html body
 ===============================================*/
 
 * {
-   min-height: 0vw;
+   padding: 0;
+   margin: 0;
 }
 
 html,
 body {
-   width: 100%;
-   min-height: 100%;
-   height: auto;
+   max-width: 100vw;
 }
 
 body {
@@ -74,8 +73,6 @@ body {
    overflow-wrap: break-word;
    font-feature-settings: "palt";
    text-size-adjust: 100%;
-   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
-      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
    letter-spacing: 0;
 }
 
@@ -113,6 +110,8 @@ html.fonts-loaded body {
 }
 
 main {
+   // Footer always at the bottom, even if content is less than 100vh
+   // Valid when wrapped with `SpiceWrapper`.
    flex: 1;
 }
 
@@ -167,9 +166,6 @@ img {
    pointer-events: none;
    vertical-align: middle;
    width: 100%;
-   image-rendering: -webkit-optimize-contrast;
-   image-rendering: crisp-edges;
-   backface-visibility: hidden;
 }
 
 picture {
