@@ -2,10 +2,9 @@ import { i18n, type Locale } from "../../i18n-config";
 import { AppHooks } from "./app-hooks";
 import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
 import { poppins, noto } from "./font";
-import "the-new-css-reset/css/reset.css";
+import "@/css/reset.css";
 import "@/css/global.scss";
 import type { Metadata } from "next";
-import { SITEURL } from "./_libs/constants";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 
 // Meta data
