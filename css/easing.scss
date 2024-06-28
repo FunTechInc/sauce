@@ -7,6 +7,9 @@
 @mixin easeInOutSine {
    transition-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
 }
+@mixin easeOutCubic {
+   transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
 @mixin easeInCubic {
    transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
 }
