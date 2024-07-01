@@ -6,12 +6,7 @@ import { useLenisRegister } from "@/hooks/useLenis";
 import { useFontsLoaded } from "@/hooks/useFontsLoaded";
 
 export const AppHooks = () => {
-   useStarter({
-      // reloadThresholds: [960, 560],
-      isFixViewportForSmall: true,
-      // TODO:自社プロジェクト以外はfalseにする
-      areYouFun: true,
-   });
+   useStarter();
    useFontsLoaded();
    useLenisRegister();
    return (
