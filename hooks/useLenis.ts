@@ -35,7 +35,6 @@ export const useLenisRegister = () => {
       setLenis(lenis.current);
 
       // integrate with GSAP
-      gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.refresh();
       lenis.current.on("scroll", ScrollTrigger.update);
 
