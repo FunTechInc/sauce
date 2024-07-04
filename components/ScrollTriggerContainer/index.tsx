@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ISDEV } from "@/app/[lang]/_libs/constants";
 import s from "./index.module.scss";
 
@@ -19,7 +18,6 @@ export const ScrollTriggerContainer = ({
    const contentRef = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const scrollTrigger = gsap.to(contentRef.current, {
          x: `${isReverse ? 50 : -50}vw`,
          scrollTrigger: {
