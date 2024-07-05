@@ -1,7 +1,7 @@
 "use client";
 
 import { useDeviceDetector, useStarter } from "@funtech-inc/spice";
-import { poppins, FF_EN } from "./font";
+import { poppins, FF_EN } from "./fonts";
 import { useLenisRegister } from "@/hooks/useLenis";
 import { useFontsLoaded } from "@/hooks/useFontsLoaded";
 import { useGsapRegister } from "@/hooks/useGsapRegister";
