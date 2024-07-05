@@ -12,7 +12,7 @@ import { useGsapRegister } from "@/hooks/useGsapRegister";
  * Use `window.screen.height` as some browsers may change the height of the viewport when the navigation bar is opened or closed.
  */
 
-export const AppHooks = () => {
+const AppSetup = () => {
    useStarter();
    useFontsLoaded();
    useGsapRegister();
@@ -33,3 +33,5 @@ export const AppHooks = () => {
       `}</style>
    );
 };
+
+export default AppSetup;

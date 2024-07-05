@@ -1,5 +1,5 @@
 import { i18n, type Locale } from "../../i18n-config";
-import { AppHooks } from "./app-hooks";
+import AppSetup from "./app-setup";
 import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
 import { poppins, noto } from "./fonts";
 import "@/css/reset.css";
@@ -67,7 +67,7 @@ const RootLayout = ({
          <body style={{ opacity: 0 }} className={noto.className}>
             <MainLayout>{children}</MainLayout>
          </body>
-         <AppHooks />
+         <AppSetup />
       </html>
    );
 };
