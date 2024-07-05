@@ -1,6 +1,6 @@
 .sample {
    display: flex;
-   height: 120vh;
+   height: calc(var(--fixed-svh) * 120);
    justify-content: center;
    flex-direction: column;
 }
