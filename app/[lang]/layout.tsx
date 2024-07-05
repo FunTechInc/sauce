@@ -1,7 +1,7 @@
 import { i18n, type Locale } from "../../i18n-config";
 import { AppHooks } from "./app-hooks";
 import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
-import { poppins, noto } from "./font";
+import { poppins, noto } from "./fonts";
 import "@/css/reset.css";
 import "@/css/global.scss";
 import type { Metadata } from "next";
