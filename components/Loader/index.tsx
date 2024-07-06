@@ -2,13 +2,7 @@
 
 import { forwardRef, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import {
-   LowPowerVideo,
-   LowPowerVideoProps,
-   Video,
-   VideoProps,
-   Loader,
-} from "@funtech-inc/spice";
+import { Video, VideoProps, Loader } from "@funtech-inc/spice";
 
 const WAVE_COLOR = "rgba(208,208,208,0.24)";
 const BG_COLOR = "#222222";
@@ -85,31 +79,6 @@ export const VideoLoader = forwardRef<
    );
 });
 VideoLoader.displayName = "VideoLoader";
-
-export const LowPowerVideoLoader = forwardRef<
-   HTMLDivElement,
-   LowPowerVideoProps & ContainerProps
->((props, ref) => {
-   const [isLoaded, setIsLoaded] = useState(false);
-   const { fill, containerProps, ...rest } = props;
-   return (
-      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
-         <LowPowerVideo
-            fill={fill}
-            onCanPlay={() => setIsLoaded(true)}
-            {...rest}
-         />
-         {!isLoaded && (
-            <Loader
-               skeleton={{ waveColor: WAVE_COLOR }}
-               delay={0}
-               style={STYLES.loader}
-            />
-         )}
-      </LoaderContainer>
-   );
-});
-LowPowerVideoLoader.displayName = "LowPowerVideoLoader";
 
 export const ImageLoader = forwardRef<
    HTMLDivElement,
