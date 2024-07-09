@@ -47,6 +47,8 @@
    left: 0;
    z-index: 0;
    background-color: rgba($color-key, 0.4);
+   @include transition;
+   transition-property: opacity, visibility;
    &[aria-hidden="true"] {
       visibility: hidden;
       opacity: 0;
