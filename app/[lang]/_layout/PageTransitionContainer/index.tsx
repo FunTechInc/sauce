@@ -19,7 +19,7 @@ export const PageTransitionContainer = ({
          },
          {
             opacity: 1,
-            duration: DURATION.emphasized * 2,
+            duration: DURATION.emphasized,
             ease: `${EASE}.inOut`,
          }
       );
