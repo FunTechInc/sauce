@@ -16,14 +16,14 @@ export const AppSetup = () => {
    useFontsLoaded();
    useGsapRegister();
    useLenisRegister();
-   const { testing } = useDeviceDetector((ua) => {
-      return /\b(Line|Instagram)\b/.test(ua);
-   });
+   const { isMobile } = useDeviceDetector();
    return (
       <style jsx global>{`
          :root {
-            --stable-svh: ${testing ? `${window.innerHeight / 100}px` : "1svh"};
-            --stable-lvh: ${testing
+            --stable-svh: ${isMobile
+               ? `${window.innerHeight / 100}px`
+               : "1svh"};
+            --stable-lvh: ${isMobile
                ? `${window.screen.height / 100}px`
                : "1lvh"};
          }
