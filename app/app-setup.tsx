@@ -8,7 +8,7 @@ import { useGsapRegister } from "@/hooks/useGsapRegister";
 
 /**
  * @description :root css variables
- * `Line` browsers show/hide the navigation bar due to scrolling, which changes the values of 100svh and 100lvh, so they are fixed by the values of window.
+ * some mobile browsers show/hide the navigation bar due to scrolling, which changes the values of 100svh and 100lvh, so they are fixed by the values of window.
  */
 
 export const AppSetup = () => {
