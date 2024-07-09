@@ -17,7 +17,7 @@ export const AppSetup = () => {
    useGsapRegister();
    useLenisRegister();
    const { testing } = useDeviceDetector((ua) => {
-      return /\bLine\b/.test(ua);
+      return /\b(Line|Instagram)\b/.test(ua);
    });
    return (
       <style jsx global>{`
