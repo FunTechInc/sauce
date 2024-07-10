@@ -17,6 +17,7 @@ export const AppSetup = () => {
    useGsapRegister();
    useLenisRegister();
    const { isMobile } = useDeviceDetector();
+
    return (
       <style jsx global>{`
          :root {
