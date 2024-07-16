@@ -1,38 +1,37 @@
-import { Hamburger } from "./components/Hamburger";
-import { HeaderWrapper } from "./components/HeaderWrapper";
+import { Hamburger } from "./Hamburger";
+import { HeaderWrapper } from "./HeaderWrapper";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import LocaleSwitcher from "../elements/LocaleSwitcher";
 import { LocaleLink } from "@/components/LocaleLink";
 import { ImageLoader } from "@/components/Loader";
 import s from "./header.module.scss";
+import { NavLink } from "./NavLink";
+import { Locale } from "@/i18n-config";
 
-export const Header = () => {
+export const Header = ({ lang }: { lang: Locale }) => {
    return (
       <HeaderWrapper>
          <Inner width="outer" className={s.inner}>
             <h1 className={s.logo}>
-               <LocaleLink href={"/"}>
+               <NavLink href={"/"}>
                   <ImageLoader
                      src={"/app.jpg"}
                      width={1800}
                      height={594}
                      alt="sauce"
                   />
-               </LocaleLink>
+               </NavLink>
             </h1>
-            <Hamburger>
+            <Hamburger lang={lang}>
                <div className={s.menuWrapper}>
                   <LocaleLink href={"/sample"}>sample</LocaleLink>
                </div>
             </Hamburger>
             <nav>
                <li>
-                  <LocaleLink
-                     className={s.link}
-                     href={"/sample"}
-                     scroll={false}>
+                  <NavLink className={s.link} href={"/sample"}>
                      sample
-                  </LocaleLink>
+                  </NavLink>
                </li>
             </nav>
             <LocaleSwitcher />
