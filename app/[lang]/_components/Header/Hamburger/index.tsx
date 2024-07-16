@@ -6,8 +6,26 @@ import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
 import { usePathname } from "next/navigation";
 import { FocusTrap } from "@funtech-inc/spice";
 import s from "./index.module.scss";
+import { Locale } from "@/i18n-config";
 
-export const Hamburger = ({ children }: { children: React.ReactNode }) => {
+const LabelText = {
+   open: {
+      ja: "メニューを開く",
+      en: "Open menu",
+   },
+   close: {
+      ja: "メニューを閉じる",
+      en: "Close menu",
+   },
+};
+
+export const Hamburger = ({
+   children,
+   lang,
+}: {
+   children: React.ReactNode;
+   lang: Locale;
+}) => {
    const { isMenuOpen, setIsMenuOpen } = useAppStore(
       ({ isMenuOpen, setIsMenuOpen }) => ({ isMenuOpen, setIsMenuOpen })
    );
@@ -32,6 +50,10 @@ export const Hamburger = ({ children }: { children: React.ReactNode }) => {
                setIsMenuOpen(!isMenuOpen);
             }}
             className={s.button}
+            aria-label={
+               isMenuOpen ? LabelText.close[lang] : LabelText.open[lang]
+            }
+            aria-haspopup={!isMenuOpen}
             aria-expanded={isMenuOpen}>
             <span></span>
             <span></span>

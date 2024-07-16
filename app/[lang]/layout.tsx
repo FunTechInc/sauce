@@ -65,7 +65,7 @@ const RootLayout = ({
    return (
       <html lang={lang} className={`${poppins.variable} ${noto.variable}`}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <MainLayout>{children}</MainLayout>
+            <MainLayout lang={lang}>{children}</MainLayout>
          </body>
          <AppSetup />
       </html>
