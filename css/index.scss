@@ -204,17 +204,6 @@ position absolute
 }
 
 /*===============================================
-hover effect
-===============================================*/
-@mixin hoverOpacity() {
-   @include transition;
-   @include hover {
-      opacity: 0.6;
-   }
-   transition-property: opacity;
-}
-
-/*===============================================
 fill
 ===============================================*/
 @mixin fill {
