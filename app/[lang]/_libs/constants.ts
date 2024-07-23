@@ -10,9 +10,6 @@ if (!SITEURL) {
    throw new Error("NEXT_PUBLIC_SITE_URL is not set");
 }
 export const SITEORIGIN = SITEURL.origin;
-const DEV_URL = "http://localhost:3000/";
-// const DEV_URL = "http://192.168.100.26:3000/";
-export const HREF = ISDEV ? DEV_URL : SITEURL;
 
 /*===============================================
 meta ※言語対応する場合はdictionariesのjsonで管理する
