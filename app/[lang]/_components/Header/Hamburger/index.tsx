@@ -66,7 +66,7 @@ export const Hamburger = ({
             }}></div>
          <nav aria-hidden={!isMenuOpen}>
             {children}
-            <FocusTrap focusTarget={buttonRef} />
+            {isMenuOpen && <FocusTrap focusTarget={buttonRef} />}
          </nav>
       </div>
    );
