@@ -122,8 +122,9 @@ $breakpoints: (
 
 /*===============================================
 Disable hover effects when on mobile
+If $parent is set, hover can be specified for the parent element.
 ===============================================*/
-@mixin hover {
+@mixin hover($parent: null) {
    @media (hover: none) {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
    }
@@ -132,8 +133,16 @@ Disable hover effects when on mobile
       (-ms-high-contrast: active),
       (-moz-touch-enabled: 0),
       (hover: hover) {
-      &:hover {
-         @content;
+      @if $parent == null {
+         &:hover,
+         &:focus-visible {
+            @content;
+         }
+      } @else {
+         #{$parent}:hover &,
+         #{$parent}:focus-visible & {
+            @content;
+         }
       }
    }
 }
