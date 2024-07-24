@@ -12,20 +12,20 @@ if (!SITEURL) {
 export const SITEORIGIN = SITEURL.origin;
 
 /*===============================================
-meta ※言語対応する場合はdictionariesのjsonで管理する
+Meta ※言語対応する場合はdictionariesのjsonで管理する
 ===============================================*/
 export const SITENAME = "(hidden)sauce";
 export const SITEDESCRIPTION = "this is our「秘伝のタレ」, means hidden sauce.";
 
 /*===============================================
-size
+Size
 ===============================================*/
 export const WINDOWSM = 560;
 export const WINDOWMD = 960;
 export const WINDOWLG = 1120;
 
 /*===============================================
-easing
+Easing
 ===============================================*/
 export const TRIGGERTIMING = "top bottom-=8%";
 export const INTERSECTIONTIMING = "-8% 0px";
