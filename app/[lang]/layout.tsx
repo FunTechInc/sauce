@@ -32,16 +32,16 @@ export async function generateMetadata({
 }: {
    params: { lang: Locale };
 }): Promise<Metadata> {
-   const dictionary = await getDictionary(params.lang);
+   const { meta } = await getDictionary(params.lang);
    return {
       title: {
-         default: dictionary.meta.title,
-         template: `%s | ${dictionary.meta.title}`,
+         default: meta.title,
+         template: `%s | ${meta.title}`,
       },
-      description: dictionary.meta.description,
+      description: meta.description,
       twitter: {
          card: "summary_large_image",
-         title: dictionary.meta.title,
+         title: meta.title,
          creator: "@funtech_inc",
          siteId: "@funtech_inc",
       },

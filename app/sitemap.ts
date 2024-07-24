@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { Locale } from "@/i18n-config";
-import { getRouteArr } from "./[lang]/_libs/constants";
+import { getRoutes } from "./[lang]/_libs/constants";
 
 type SitemapProps = {
    lastModified?: string | Date | undefined;
@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    /*===============================================
 	static pages
 	===============================================*/
-   const staticPages = getRouteArr();
+   const staticPages = getRoutes();
    const staticPaths: MetadataRoute.Sitemap = [];
 
    languages.forEach((lang) => {
