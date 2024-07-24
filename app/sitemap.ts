@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { Locale } from "@/i18n-config";
-import { getRoutes } from "./[lang]/_libs/constants";
+import { getConstantRoutes } from "./[lang]/_libs/constants";
 
 type SitemapProps = {
    lastModified?: string | Date | undefined;
@@ -38,13 +38,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    /*===============================================
 	static pages
 	===============================================*/
-   const staticPages = getRoutes();
+   const staticPages = getConstantRoutes();
    const staticPaths: MetadataRoute.Sitemap = [];
 
    languages.forEach((lang) => {
       addPath(staticPaths, `${baseURL}/${lang}`);
       staticPages.forEach((page) => {
-         const href = page.href.replace(/^\/+/, "");
+         const href = page.pathname.replace(/^\/+/, "");
          addPath(staticPaths, `${baseURL}/${lang}/${href}`);
       });
    });

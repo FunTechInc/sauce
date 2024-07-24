@@ -54,34 +54,40 @@ export const EXTERNAL_LINKS = {
 };
 
 /*===============================================
-ROUTES
+Constant Routes
 ===============================================*/
-export type RoutePaths = "sample";
-export type RouteProps = {
-   href: string;
+export type ConstantRouteKeys = "sample";
+export type ConstantRouteProps = {
+   pathname: string;
    title: string;
 };
 
-const ROUTES: Record<RoutePaths, RouteProps> = {
-   sample: {
-      href: "/sample",
-      title: "sample",
-   },
-};
+const CONSTANT_ROUTES: Record<ConstantRouteKeys, ConstantRouteProps> =
+   Object.freeze({
+      sample: {
+         pathname: "/sample",
+         title: "sample",
+      },
+   });
 
 /**
  * @param key - Key to get routing data
  */
-export const getRoute = (key: RoutePaths) => ROUTES[key];
+export const getConstantRoute = (key: ConstantRouteKeys) =>
+   CONSTANT_ROUTES[key];
 
 /**
  * @param keys - Array of keys to get routing data
  */
-export const getRoutes = (keys?: RoutePaths[]): Array<RouteProps> => {
+export const getConstantRoutes = (
+   keys?: ConstantRouteKeys[]
+): ConstantRouteProps[] => {
    if (keys === undefined) {
-      return Object.values(ROUTES);
+      return Object.values(CONSTANT_ROUTES);
    }
-   return keys.map((key) => ROUTES[key]);
+   return keys.map((key) => CONSTANT_ROUTES[key]);
 };
 
-export const getRoutePaths = () => Object.keys(ROUTES) as RoutePaths[];
+export const getConstantRouteKeys = (): ConstantRouteKeys[] => {
+   return Object.keys(CONSTANT_ROUTES) as ConstantRouteKeys[];
+};
