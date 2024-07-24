@@ -56,32 +56,32 @@ export const EXTERNAL_LINKS = {
 /*===============================================
 ROUTES
 ===============================================*/
-const ROUTES: {
-   [key: string]: RouteProps;
-} = {
+export type RoutePaths = "sample";
+export type RouteProps = {
+   href: string;
+   title: string;
+};
+
+const ROUTES: Record<RoutePaths, RouteProps> = {
    sample: {
       href: "/sample",
       title: "sample",
    },
 };
 
-type Routes = keyof typeof ROUTES;
-export type RouteProps = {
-   href: string;
-   title: string;
-};
-
 /**
  * @param key - Key to get routing data
  */
-export const getRoute = (key: Routes) => ROUTES[key];
+export const getRoute = (key: RoutePaths) => ROUTES[key];
 
 /**
  * @param keys - Array of keys to get routing data
  */
-export const getRouteArr = (keys?: Routes[]): Array<RouteProps> => {
+export const getRoutes = (keys?: RoutePaths[]): Array<RouteProps> => {
    if (keys === undefined) {
       return Object.values(ROUTES);
    }
    return keys.map((key) => ROUTES[key]);
 };
+
+export const getRoutePaths = () => Object.keys(ROUTES) as RoutePaths[];
