@@ -4,8 +4,8 @@ import { forwardRef, useState } from "react";
 import Image, { ImageProps } from "next/image";
 import { Video, VideoProps, Loader } from "@funtech-inc/spice";
 
-const WAVE_COLOR = "rgba(208,208,208,0.24)";
-const BG_COLOR = "#222222";
+const WAVE_COLOR = "#ffffff";
+const BG_COLOR = "#F0F0F0";
 
 const STYLES: {
    fillContainer: React.CSSProperties;
@@ -35,7 +35,9 @@ const STYLES: {
 
 type ContainerProps = {
    containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, "children">;
+   containerRef?: React.RefObject<HTMLDivElement>;
 };
+
 const LoaderContainer = forwardRef<
    HTMLDivElement,
    {
@@ -60,14 +62,22 @@ const LoaderContainer = forwardRef<
 LoaderContainer.displayName = "LoaderContainer";
 
 export const VideoLoader = forwardRef<
-   HTMLDivElement,
+   HTMLVideoElement,
    VideoProps & ContainerProps
 >((props, ref) => {
    const [isLoaded, setIsLoaded] = useState(false);
-   const { fill, containerProps, ...rest } = props;
+   const { fill, containerProps, containerRef, ...rest } = props;
    return (
-      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
-         <Video fill={fill} onCanPlay={() => setIsLoaded(true)} {...rest} />
+      <LoaderContainer
+         ref={containerRef}
+         fill={fill}
+         containerProps={containerProps}>
+         <Video
+            ref={ref}
+            fill={fill}
+            onCanPlay={() => setIsLoaded(true)}
+            {...rest}
+         />
          {!isLoaded && (
             <Loader
                skeleton={{ waveColor: WAVE_COLOR }}
@@ -81,14 +91,18 @@ export const VideoLoader = forwardRef<
 VideoLoader.displayName = "VideoLoader";
 
 export const ImageLoader = forwardRef<
-   HTMLDivElement,
+   HTMLImageElement,
    ImageProps & ContainerProps
 >((props, ref) => {
    const [isLoaded, setIsLoaded] = useState(false);
-   const { alt, fill, containerProps, ...rest } = props;
+   const { alt, fill, containerProps, containerRef, ...rest } = props;
    return (
-      <LoaderContainer ref={ref} fill={fill} containerProps={containerProps}>
+      <LoaderContainer
+         ref={containerRef}
+         fill={fill}
+         containerProps={containerProps}>
          <Image
+            ref={ref}
             alt={alt || ""}
             fill={fill}
             onLoad={() => setIsLoaded(true)}
