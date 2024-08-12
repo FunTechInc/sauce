@@ -31,6 +31,9 @@ export const TRIGGERTIMING = "top bottom-=8%";
 export const INTERSECTIONTIMING = "-8% 0px";
 
 export const DURATION = {
+   strong: 1.2,
+   strongDecelerate: 1,
+   strongAccelerate: 0.8,
    emphasized: 0.5,
    emphasizedDecelerate: 0.4,
    emphasizedAccelerate: 0.2,
