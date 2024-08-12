@@ -152,7 +152,7 @@ transition
 ===============================================*/
 @mixin transition($dur: all $duration-standard) {
    transition: $dur;
-   @include easeOutQuart();
+   transition-timing-function: $easeOutQuart;
 }
 
 /*===============================================
