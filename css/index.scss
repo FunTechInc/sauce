@@ -149,6 +149,10 @@ If $parent is set, hover can be specified for the parent element.
 
 /*===============================================
 transition
+power1 : quad
+power2 : cubic
+power3 : quart
+power4 : quint
 ===============================================*/
 @mixin transition($dur: all $duration-standard) {
    transition: $dur;
