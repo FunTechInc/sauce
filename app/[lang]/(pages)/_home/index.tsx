@@ -7,12 +7,8 @@ const HomeContent = async ({ lang }: { lang: Locale }) => {
    const dictionary = await getDictionary(lang);
    return (
       <SampleLayout>
-         <AutoScrollContainer>
-            <p style={{ fontSize: "24vw" }}>
-               {dictionary.title}
-               {dictionary.title}
-               {dictionary.title}
-            </p>
+         <AutoScrollContainer speed={-1}>
+            <p style={{ fontSize: "24vw" }}>{dictionary.title}</p>
          </AutoScrollContainer>
       </SampleLayout>
    );
