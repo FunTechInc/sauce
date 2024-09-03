@@ -1,10 +1,10 @@
 import Image from "next/image";
 import parse, { Element } from "html-react-parser";
 
-type ConvertBodyProps = {
+type HTMLConverterProps = {
    contentHTML: string;
 };
-export const ConvertHTML = ({ contentHTML }: ConvertBodyProps) => {
+export const HTMLConverter = ({ contentHTML }: HTMLConverterProps) => {
    return parse(contentHTML, {
       replace: (domNode) => {
          if (
