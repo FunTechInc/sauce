@@ -5,6 +5,7 @@ import { AutoScrollContainer } from "@funtech-inc/spice";
 
 const HomeContent = async ({ lang }: { lang: Locale }) => {
    const dictionary = await getDictionary(lang);
+
    return (
       <SampleLayout>
          <AutoScrollContainer speed={-1}>
