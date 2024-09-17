@@ -14,6 +14,7 @@ const STYLES: {
 } = {
    fillContainer: {
       position: "absolute",
+      zIndex: 1,
       width: "100%",
       height: "100%",
       top: 0,
@@ -21,6 +22,7 @@ const STYLES: {
    },
    container: {
       position: "relative",
+      zIndex: 1,
    },
    loader: {
       position: "absolute",
