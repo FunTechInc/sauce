@@ -25,6 +25,7 @@
       "gsap": "^3.12.5",
       "html-react-parser": "^4.2.1",
       "lenis": "^1.1.4",
+      "lqip-modern": "^2.1.0",
       "microcms-js-sdk": "^2.5.0",
       "negotiator": "^0.6.3",
       "next": "^14.2.4",
