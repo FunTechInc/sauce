@@ -1,27 +1,22 @@
 "use client";
 
-import { useLenisLink } from "@/hooks/useLenis";
-import { useLocalePathname } from "@/hooks/useLocalePathname";
-import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
+import { useLocalePathname } from "@/hooks/useLocalePathname";
+import { LenisLink } from "../LenisLink";
+import { LinkProps } from "next/link";
 
-export type LocaleLinkProps = { isExternal?: boolean } & LinkProps &
-   React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
-export const LocaleLink = forwardRef<HTMLAnchorElement, LocaleLinkProps>(
-   ({ children, href, isExternal, ...props }, ref) => {
-      const { localeHref } = useLocalePathname({ href });
-      const bild = useLenisLink({
-         href: isExternal ? href : localeHref,
-         target: isExternal ? "_blank" : undefined,
-         ...props,
-      });
-      return (
-         <Link {...bild} ref={ref}>
-            {children}
-         </Link>
-      );
-   }
-);
+export const LocaleLink = forwardRef<
+   HTMLAnchorElement,
+   LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
+>(({ href, ...props }, ref) => {
+   const { localeHref } = useLocalePathname({ href });
+   return (
+      <LenisLink
+         ref={ref}
+         href={props.target === "_blank" ? href : localeHref}
+         {...props}
+      />
+   );
+});
 
 LocaleLink.displayName = "LocaleLink";

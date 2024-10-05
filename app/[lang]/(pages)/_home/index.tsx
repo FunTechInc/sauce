@@ -22,7 +22,7 @@ const HomeContent = async ({ lang }: { lang: Locale }) => {
                margin: "auto",
             }}>
             <Image
-               src={blur}
+               src={"/app.jpg"}
                alt="image"
                placeholder="blur"
                blurDataURL={blur}
