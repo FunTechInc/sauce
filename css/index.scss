@@ -31,6 +31,9 @@ $unit: inherit;
 /*===============================================
 duration
 ===============================================*/
+$duration-strong: 1.2s;
+$duration-strongDecelerate: 1s;
+$duration-strongAccelerate: 0.8s;
 $duration-emphasized: 0.5s;
 $duration-emphasizedDecelerate: 0.4s;
 $duration-emphasizedAccelerate: 0.2s;
