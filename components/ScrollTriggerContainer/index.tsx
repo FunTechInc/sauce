@@ -37,7 +37,7 @@ export const ScrollTriggerContainer = ({
          <div
             ref={contentRef}
             className={isReverse ? s.content_reverse : s.content}>
-            <div className={className || ""}>{children}</div>
+            <div className={className}>{children}</div>
          </div>
       </div>
    );

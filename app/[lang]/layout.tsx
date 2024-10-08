@@ -6,6 +6,7 @@ import "@/css/reset.css";
 import "@/css/global.scss";
 import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
+import classnames from "classnames";
 
 // Meta data
 // const metadata: Metadata = {
@@ -63,7 +64,7 @@ const RootLayout = ({
    params: { lang: Locale };
 }) => {
    return (
-      <html lang={lang} className={`${poppins.variable} ${noto.variable}`}>
+      <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
             <MainLayout lang={lang}>{children}</MainLayout>
          </body>
