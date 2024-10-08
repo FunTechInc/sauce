@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import s from "./inner.module.scss";
+import classnames from "classnames";
 
 type InnerProps = {
    /** "wide:112.8rem" | "narrow:96rem" | "outer:136rem" */
@@ -11,7 +12,7 @@ export const Inner = forwardRef<HTMLDivElement, InnerProps>(
       return (
          <div
             ref={ref}
-            className={`${s.inner} ${s["w_" + width]} ${className || ""}`}
+            className={classnames(s.inner, s["w_" + width], className)}
             {...rest}>
             {children}
          </div>
