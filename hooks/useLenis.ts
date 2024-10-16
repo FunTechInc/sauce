@@ -8,6 +8,11 @@ import { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { useFrame } from "@funtech-inc/spice";
 
+export const LENIS_CONFIG = {
+   duration: 1.2,
+   easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+};
+
 type LenisStore = {
    lenis: Lenis | null;
    setLenis: (value: Lenis) => void;
@@ -23,15 +28,7 @@ export const useLenisRegister = () => {
    const setLenis = useLenis((state) => state.setLenis);
 
    useEffect(() => {
-      lenis.current = new Lenis({
-         duration: 1.2,
-         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-         // Virtual DOM on mobile is a bad idea, but if you must do it, the following is comfortable
-         // syncTouch: true,
-         // syncTouchLerp: 0.12,
-         // touchInertiaMultiplier: 16,
-         // touchMultiplier: 0.64,
-      });
+      lenis.current = new Lenis(LENIS_CONFIG);
       setLenis(lenis.current);
 
       // integrate with GSAP
