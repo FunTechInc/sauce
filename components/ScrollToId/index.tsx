@@ -1,41 +1,48 @@
 "use client";
 
-import { useLenis } from "@/hooks/useLenis";
+import { useLenis, LENIS_CONFIG } from "@/hooks/useLenis";
+import { useCallback } from "react";
+
+type Target = React.RefObject<HTMLElement> | number | string | HTMLElement;
+
+type ScrollToIdProps = {
+   target: Target;
+   offset?: number;
+   duration?: number;
+   easing?: (t: number) => number;
+} & React.HTMLAttributes<HTMLButtonElement>;
 
 export const ScrollToId = ({
    target,
-   children,
-   className,
-}: {
-   target: React.RefObject<HTMLElement> | string;
-   children: React.ReactNode;
-   className?: string;
-}) => {
+   offset = 0,
+   duration = LENIS_CONFIG.duration,
+   easing = LENIS_CONFIG.easing,
+   ...rest
+}: ScrollToIdProps) => {
    const lenis = useLenis((s) => s.lenis);
 
-   const isRefObj = (
-      value: React.RefObject<HTMLElement> | string
-   ): value is React.RefObject<HTMLElement> => {
+   const isRefObj = (value: Target): value is React.RefObject<HTMLElement> => {
       return value !== null && typeof value === "object" && "current" in value;
    };
 
-   const clickHandler = () => {
-      const scrollTarget = isRefObj(target) ? target.current : target;
-      if (!scrollTarget) {
-         console.error("scrollTarget is not valid");
-         return;
-      }
-      lenis?.scrollTo(scrollTarget, {
-         offset: -80,
-         lock: true,
-         force: true,
-         duration: 1.2,
-         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-   };
-   return (
-      <button onClick={clickHandler} className={className}>
-         {children}
-      </button>
+   const onClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(
+      (e) => {
+         const scrollTarget = isRefObj(target) ? target.current : target;
+         if (!scrollTarget) {
+            console.error("scrollTarget is not valid");
+            return;
+         }
+         lenis?.scrollTo(scrollTarget, {
+            lock: true,
+            force: true,
+            offset,
+            duration,
+            easing,
+         });
+         rest.onClick && rest.onClick(e);
+      },
+      [lenis, target, rest, offset, duration, easing]
    );
+
+   return <button {...{ ...rest, onClick }} />;
 };
