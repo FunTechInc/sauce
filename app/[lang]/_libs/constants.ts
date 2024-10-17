@@ -83,9 +83,9 @@ export const getConstantRoute = (key: ConstantRouteKeys) =>
  * @param keys - Array of keys to get routing data
  */
 export const getConstantRoutes = (
-   keys?: ConstantRouteKeys[]
+   ...keys: ConstantRouteKeys[]
 ): ConstantRouteProps[] => {
-   if (keys === undefined) {
+   if (keys.length === 0) {
       return Object.values(CONSTANT_ROUTES);
    }
    return keys.map((key) => CONSTANT_ROUTES[key]);
