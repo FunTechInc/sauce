@@ -23,7 +23,6 @@ export const ScrollTriggerContainer = ({
          scrollTrigger: {
             start: "top bottom",
             trigger: wrapperRef.current,
-            markers: ISDEV,
             scrub: 1,
          },
       });
