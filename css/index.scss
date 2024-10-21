@@ -196,39 +196,12 @@ background image
 }
 
 /*===============================================
-position absolute
-===============================================*/
-//  @include absolute(0,0,0,0);  @include absolute($top:0, $bottom:0);
-@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
-   position: absolute;
-
-   @if $top !=null {
-      top: $top;
-   }
-
-   @if $right !=null {
-      right: $right;
-   }
-
-   @if $bottom !=null {
-      bottom: $bottom;
-   }
-
-   @if $left !=null {
-      left: $left;
-   }
-}
-
-/*===============================================
 fill
 ===============================================*/
 @mixin fill {
    position: absolute;
+   inset: 0;
    width: 100%;
    height: 100%;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
    color: transparent;
 }

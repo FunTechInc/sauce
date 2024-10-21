@@ -7,29 +7,28 @@ import { Video, VideoProps, Loader } from "@funtech-inc/spice";
 const WAVE_COLOR = "#ffffff";
 const BG_COLOR = "#F0F0F0";
 
+const FILL_STYLE = {
+   position: "absolute",
+   width: "100%",
+   height: "100%",
+   inset: 0,
+} as React.CSSProperties;
+
 const STYLES: {
    fillContainer: React.CSSProperties;
    container: React.CSSProperties;
    loader: React.CSSProperties;
 } = {
    fillContainer: {
-      position: "absolute",
+      ...FILL_STYLE,
       zIndex: 1,
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: 0,
    },
    container: {
       position: "relative",
       zIndex: 1,
    },
    loader: {
-      position: "absolute",
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: 0,
+      ...FILL_STYLE,
       zIndex: -1,
       backgroundColor: BG_COLOR,
    },
