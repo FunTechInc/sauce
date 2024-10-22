@@ -15,9 +15,10 @@ export const Header = ({ lang }: { lang: Locale }) => {
             <h1 className={s.logo}>
                <NavLink href={"/"}>
                   <ImageLoader
+                     fill
                      src={"/app.jpg"}
-                     width={1800}
-                     height={594}
+                     // width={1800}
+                     // height={594}
                      alt="sauce"
                   />
                </NavLink>
