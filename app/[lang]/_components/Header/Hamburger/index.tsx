@@ -4,9 +4,9 @@ import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import { useEffect, useRef } from "react";
 import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
 import { usePathname } from "next/navigation";
-import { FocusTrap } from "@funtech-inc/spice";
-import s from "./index.module.scss";
 import { Locale } from "@/i18n-config";
+import { FocusTrap } from "@mui/base";
+import s from "./index.module.scss";
 
 const LabelText = {
    open: {
@@ -43,31 +43,30 @@ export const Hamburger = ({
    }, [pathname, setIsMenuOpen]);
 
    return (
-      <div>
-         <button
-            ref={buttonRef}
-            onClick={() => {
-               setIsMenuOpen(!isMenuOpen);
-            }}
-            className={s.button}
-            aria-label={
-               isMenuOpen ? LabelText.close[lang] : LabelText.open[lang]
-            }
-            aria-haspopup={!isMenuOpen}
-            aria-expanded={isMenuOpen}>
-            <span></span>
-            <span></span>
-         </button>
-         <div
-            className={s.overlay}
-            aria-hidden={!isMenuOpen}
-            onClick={() => {
-               setIsMenuOpen(false);
-            }}></div>
-         <nav aria-hidden={!isMenuOpen}>
-            {children}
-            {isMenuOpen && <FocusTrap focusTarget={buttonRef} />}
-         </nav>
-      </div>
+      <FocusTrap open={isMenuOpen}>
+         <div tabIndex={-1}>
+            <button
+               ref={buttonRef}
+               onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+               }}
+               className={s.button}
+               aria-label={
+                  isMenuOpen ? LabelText.close[lang] : LabelText.open[lang]
+               }
+               aria-haspopup={!isMenuOpen}
+               aria-expanded={isMenuOpen}>
+               <span></span>
+               <span></span>
+            </button>
+            <div
+               className={s.overlay}
+               aria-hidden={!isMenuOpen}
+               onClick={() => {
+                  setIsMenuOpen(false);
+               }}></div>
+            <nav aria-hidden={!isMenuOpen}>{children}</nav>
+         </div>
+      </FocusTrap>
    );
 };
