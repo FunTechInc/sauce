@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useFrame } from "@funtech-inc/spice";
 
 export const LENIS_CONFIG = {
+   duration: 1.2,
    // syncTouch: true,
 };
 
