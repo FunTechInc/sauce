@@ -1,6 +1,6 @@
 import { Header } from "@/app/[lang]/_components/Header";
 import { Footer } from "@/app/[lang]/_components/Footer";
-import { SpiceWrapper } from "@funtech-inc/spice";
+import { TouchScroller } from "@funtech-inc/spice";
 import { Locale } from "@/i18n-config";
 
 export const MainLayout = async ({
@@ -11,10 +11,17 @@ export const MainLayout = async ({
    lang: Locale;
 }) => {
    return (
-      <SpiceWrapper>
-         <Header lang={lang} />
-         <main>{children}</main>
-         <Footer />
-      </SpiceWrapper>
+      <TouchScroller style={{ overscrollBehaviorY: "none" }}>
+         <div
+            style={{
+               flexDirection: "column",
+               display: "flex",
+               minHeight: "100svh",
+            }}>
+            <Header lang={lang} />
+            <main style={{ flex: 1 }}>{children}</main>
+            <Footer />
+         </div>
+      </TouchScroller>
    );
 };

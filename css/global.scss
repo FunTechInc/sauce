@@ -72,6 +72,8 @@ body {
    overflow-wrap: break-word;
    font-feature-settings: "palt";
    letter-spacing: 0;
+   overflow: hidden;
+   overscroll-behavior-y: none;
 }
 
 html {
@@ -105,12 +107,6 @@ html {
 //set opacity to 1 after font is loaded
 html.fonts-loaded body {
    opacity: 1 !important;
-}
-
-main {
-   // Footer always at the bottom, even if content is less than 100vh
-   // Valid when wrapped with `SpiceWrapper`.
-   flex: 1;
 }
 
 /*===============================================
