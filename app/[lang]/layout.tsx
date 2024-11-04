@@ -4,6 +4,7 @@ import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
 import { poppins, noto } from "../fonts";
 import "@/css/reset.css";
 import "@/css/global.scss";
+import "lenis/dist/lenis.css";
 import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
