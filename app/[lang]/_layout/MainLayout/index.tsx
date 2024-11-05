@@ -1,6 +1,6 @@
 import { Header } from "@/app/[lang]/_components/Header";
 import { Footer } from "@/app/[lang]/_components/Footer";
-import { TouchScroller } from "@funtech-inc/spice";
+import { StableScroller } from "@funtech-inc/spice";
 import { Locale } from "@/i18n-config";
 
 export const MainLayout = async ({
@@ -11,7 +11,7 @@ export const MainLayout = async ({
    lang: Locale;
 }) => {
    return (
-      <TouchScroller style={{ overscrollBehaviorY: "none" }}>
+      <StableScroller style={{ overscrollBehaviorY: "none" }}>
          <div
             style={{
                flexDirection: "column",
@@ -22,6 +22,6 @@ export const MainLayout = async ({
             <main style={{ flex: 1 }}>{children}</main>
             <Footer />
          </div>
-      </TouchScroller>
+      </StableScroller>
    );
 };
