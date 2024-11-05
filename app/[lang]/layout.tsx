@@ -8,6 +8,7 @@ import "lenis/dist/lenis.css";
 import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
+import { StableScroller } from "@funtech-inc/spice";
 
 // Meta data
 // const metadata: Metadata = {
@@ -67,7 +68,9 @@ const RootLayout = ({
    return (
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <MainLayout lang={lang}>{children}</MainLayout>
+            <StableScroller>
+               <MainLayout lang={lang}>{children}</MainLayout>
+            </StableScroller>
          </body>
          <AppSetup />
       </html>
