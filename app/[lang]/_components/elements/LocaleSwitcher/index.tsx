@@ -1,23 +1,11 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { i18n, type Locale } from "@/i18n-config";
+import { i18n } from "@/i18n-config";
+import { useLocalePathname } from "@/hooks/useLocalePathname";
 
 export default function LocaleSwitcher() {
-   const pathName = usePathname();
-
-   const redirectedPathName = (locale: Locale) => {
-      if (!pathName) return "/";
-      const segments = pathName.split("/");
-      segments[1] = locale;
-      return segments.join("/");
-   };
-
-   const getActiveLocale = (): Locale => {
-      if (!pathName) return "ja";
-      return pathName.split("/")[1] as Locale;
-   };
+   const { getRedirectedPathname, activeLocale } = useLocalePathname();
 
    return (
       <div>
@@ -27,8 +15,8 @@ export default function LocaleSwitcher() {
                return (
                   <li key={locale} style={{ fontSize: "16px" }}>
                      <Link
-                        href={redirectedPathName(locale)}
-                        className={getActiveLocale() === locale ? "" : ""}>
+                        href={getRedirectedPathname(locale)}
+                        className={activeLocale === locale ? "" : ""}>
                         {locale}
                      </Link>
                   </li>

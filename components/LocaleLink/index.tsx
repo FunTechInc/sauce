@@ -9,11 +9,11 @@ export const LocaleLink = forwardRef<
    HTMLAnchorElement,
    LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
 >(({ href, ...props }, ref) => {
-   const { localeHref } = useLocalePathname({ href });
+   const { getLocalizedHref } = useLocalePathname();
    return (
       <LenisLink
          ref={ref}
-         href={props.target === "_blank" ? href : localeHref}
+         href={props.target === "_blank" ? href : getLocalizedHref(href)}
          {...props}
       />
    );
