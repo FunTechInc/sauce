@@ -2,10 +2,17 @@
 
 import { parseISO, format } from "date-fns";
 
-export const DateParser = ({ date, format:_format = "yyyy.MM.dd"}: { date: string, format?: string }) => {
+export const DateParser = ({
+   children,
+   format: _format = "yyyy.MM.dd",
+}: {
+   children: string;
+   format?: string;
+}) => {
    return (
       <span suppressHydrationWarning={true}>
-         {format(parseISO(date), _format)}
+         {format(parseISO(children), _format)}
       </span>
    );
 };
+
