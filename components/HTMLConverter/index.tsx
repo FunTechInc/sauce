@@ -1,11 +1,8 @@
 import Image from "next/image";
 import parse, { Element } from "html-react-parser";
 
-type HTMLConverterProps = {
-   contentHTML: string;
-};
-export const HTMLConverter = ({ contentHTML }: HTMLConverterProps) => {
-   return parse(contentHTML, {
+export const HTMLConverter = ({ children }: { children: string }) => {
+   return parse(children, {
       replace: (domNode) => {
          if (
             domNode instanceof Element &&
