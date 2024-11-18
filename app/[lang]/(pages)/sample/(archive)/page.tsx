@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archive } from "./_components/Archive";
+import { Archive } from "./Archive";
 
 const metadata: Metadata = {
    title: "NEWS",

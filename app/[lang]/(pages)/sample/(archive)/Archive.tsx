@@ -1,6 +1,6 @@
 import "server-only";
 import * as CMS from "@/app/[lang]/_libs/cms";
-import { Pagination } from "../Pagination";
+import { Pagination } from "./_components/Pagination";
 import { LocaleLink } from "@/components/LocaleLink";
 
 export const Archive = async ({
