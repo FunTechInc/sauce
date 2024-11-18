@@ -1,17 +1,20 @@
 import * as CMS from "@/app/[lang]/_libs/cms";
 import { Archive } from "../../Archive";
+import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 
 export async function generateMetadata({
-   params: { category },
+   params: { category, lang },
 }: {
-   params: { category: string };
+   params: { category: string; lang: Locale };
 }) {
-   const { name: categoryName } = (await CMS.get({
+   const { meta } = await getDictionary(lang);
+   const { name: categoryName } = await CMS.get<CMS.CategoriesType>({
       endpoint: "categories",
       contentId: category,
-   })) as any;
+   });
    return {
-      title: `${categoryName}`,
+      title: `${meta.sample.title}(${categoryName})`,
    };
 }
 

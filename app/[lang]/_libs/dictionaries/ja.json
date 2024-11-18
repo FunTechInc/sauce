@@ -1,7 +1,11 @@
 {
    "meta": {
       "title": "(秘伝)のタレ",
-      "description": "this is our「秘伝のタレ」, means hidden sauce."
+      "description": "this is our「秘伝のタレ」, means hidden sauce.",
+      "sample": {
+         "title": "サンプル",
+         "description": "サンプルサンプルサンプルサンプルサンプルサンプル"
+      }
    },
    "title": "(秘伝)のタレ",
    "sample": "IDまでスクロール"

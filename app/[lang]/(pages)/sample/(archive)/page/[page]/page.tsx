@@ -1,11 +1,19 @@
 import * as CMS from "@/app/[lang]/_libs/cms";
-import type { Metadata } from "next";
 import { utils } from "@funtech-inc/spice/server";
 import { Archive } from "../../Archive";
+import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
+import { Locale } from "@/i18n-config";
 
-const metadata: Metadata = {
-   title: "NEWS",
-};
+export async function generateMetadata({
+   params: { page, lang },
+}: {
+   params: { page: number; lang: Locale };
+}) {
+   const { meta } = await getDictionary(lang);
+   return {
+      title: `${meta.sample.title}(${page}p)`,
+   };
+}
 
 export const generateStaticParams = async () => {
    const { totalCount } = await CMS.getList({
@@ -16,9 +24,8 @@ export const generateStaticParams = async () => {
    }));
 };
 
-const News = async ({ params: { page } }: { params: { page: number } }) => {
+const Page = async ({ params: { page } }: { params: { page: number } }) => {
    return <Archive page={page} />;
 };
 
-export { metadata };
-export default News;
+export default Page;
