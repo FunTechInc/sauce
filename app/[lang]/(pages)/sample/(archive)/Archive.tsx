@@ -10,13 +10,13 @@ export const Archive = async ({
    page?: number;
    category?: string;
 }) => {
-   const articleList = await CMS.getList({
+   const { totalCount, contents } = await CMS.getList({
       endpoint: "news",
       page: page,
       category: category,
    });
 
-   if (articleList.totalCount === 0) {
+   if (totalCount === 0) {
       return <div style={{ marginTop: "40px" }}>記事がありません</div>;
    }
 
@@ -29,7 +29,7 @@ export const Archive = async ({
                flexDirection: "column",
                gap: "16px",
             }}>
-            {articleList.contents.map((item, i) => (
+            {contents.map((item, i) => (
                <LocaleLink
                   key={i}
                   href={`/sample/${item.id}`}
@@ -41,8 +41,8 @@ export const Archive = async ({
          <Pagination
             style={{ marginTop: "40px" }}
             category={category}
-            currentPage={page}
-            totalCount={articleList.totalCount}
+            page={page}
+            totalCount={totalCount}
          />
       </>
    );

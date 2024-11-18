@@ -8,18 +8,17 @@ export const NavArrow = ({ style }: { style?: React.CSSProperties }) => {
 };
 
 export const Pagination = ({
-   currentPage = 1,
+   page = 1,
    totalCount,
    category,
-   style,
    ...rest
 }: {
-   category?: string;
-   currentPage?: number;
+   page?: number;
    totalCount: number;
+   category?: string;
 } & React.HTMLAttributes<HTMLDivElement>) => {
-   const _currentPage = +currentPage;
-   const range = utils.getPaginationRange(_currentPage, totalCount, PER_PAGE);
+   const currentPage = +page; // to number
+   const range = utils.getPaginationRange(currentPage, totalCount, PER_PAGE);
 
    const hrefPath = category
       ? `/sample/category/${category}/page`
@@ -37,10 +36,10 @@ export const Pagination = ({
             alignItems: "center",
             justifyContent: "center",
             gap: "2.4rem",
-            ...style,
+            ...rest.style,
          }}>
-         {_currentPage !== 1 && (
-            <LocaleLink href={`${hrefPath}/${_currentPage - 1}`}>
+         {currentPage !== 1 && (
+            <LocaleLink href={`${hrefPath}/${currentPage - 1}`}>
                <NavArrow
                   style={{ rotate: "180deg", display: "inline-block" }}
                />
@@ -54,7 +53,7 @@ export const Pagination = ({
                   <LocaleLink
                      href={`${hrefPath}/${page}`}
                      style={{
-                        color: _currentPage === page ? "red" : "",
+                        color: currentPage === page ? "red" : "",
                      }}
                      key={i}>
                      {page}
@@ -62,8 +61,8 @@ export const Pagination = ({
                );
             }
          })}
-         {_currentPage !== range[range.length - 1] && (
-            <LocaleLink href={`${hrefPath}/${_currentPage + 1}`}>
+         {currentPage !== range[range.length - 1] && (
+            <LocaleLink href={`${hrefPath}/${currentPage + 1}`}>
                <NavArrow />
             </LocaleLink>
          )}
