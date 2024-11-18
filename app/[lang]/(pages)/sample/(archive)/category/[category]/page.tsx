@@ -1,5 +1,5 @@
 import * as CMS from "@/app/[lang]/_libs/cms";
-import { Archive } from "../../_components/Archive";
+import { Archive } from "../../Archive";
 
 export async function generateMetadata({
    params: { category },

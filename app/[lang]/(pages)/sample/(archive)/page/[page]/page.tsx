@@ -1,7 +1,7 @@
 import * as CMS from "@/app/[lang]/_libs/cms";
 import type { Metadata } from "next";
 import { utils } from "@funtech-inc/spice/server";
-import { Archive } from "../../_components/Archive";
+import { Archive } from "../../Archive";
 
 const metadata: Metadata = {
    title: "NEWS",

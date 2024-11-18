@@ -1,4 +1,4 @@
-import { Archive } from "../../../../_components/Archive";
+import { Archive } from "../../../../Archive";
 
 const Page = async ({
    params: { page, category },
