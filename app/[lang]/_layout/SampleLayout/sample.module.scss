@@ -2,5 +2,6 @@
    display: flex;
    height: calc(var(--stable-svh) * 120);
    justify-content: center;
+   align-items: center;
    flex-direction: column;
 }
