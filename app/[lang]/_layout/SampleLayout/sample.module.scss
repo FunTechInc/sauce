@@ -1,8 +1,9 @@
 .sample {
    display: flex;
-   height: calc(var(--stable-svh) * 120);
    justify-content: center;
    align-items: center;
    flex-direction: column;
    overflow: hidden;
+   padding: 32rem 0;
+   background-color: lightblue;
 }

@@ -1,7 +1,10 @@
 import "server-only";
+
 import * as CMS from "@/app/[lang]/_libs/cms";
 import { Pagination } from "./_components/Pagination";
 import { LocaleLink } from "@/components/LocaleLink";
+import { SampleLayout } from "@/app/[lang]/_layout/SampleLayout";
+import { CategoryNav } from "./_components/CategoryNav";
 
 export const Archive = async ({
    page,
@@ -10,6 +13,11 @@ export const Archive = async ({
    page?: number;
    category?: string;
 }) => {
+   const categoryList = await CMS.getList<CMS.CategoriesType>({
+      endpoint: "categories",
+      perPage: 100,
+   });
+
    const { totalCount, contents } = await CMS.getList({
       endpoint: "news",
       page: page,
@@ -21,7 +29,16 @@ export const Archive = async ({
    }
 
    return (
-      <>
+      <SampleLayout>
+         <nav>
+            <ul style={{ display: "flex", gap: "16px" }}>
+               {categoryList.contents.map((category, i) => (
+                  <li key={i}>
+                     <CategoryNav id={category.id}>{category.name}</CategoryNav>
+                  </li>
+               ))}
+            </ul>
+         </nav>
          <div
             style={{
                marginTop: "40px",
@@ -44,6 +61,6 @@ export const Archive = async ({
             page={page}
             totalCount={totalCount}
          />
-      </>
+      </SampleLayout>
    );
 };
