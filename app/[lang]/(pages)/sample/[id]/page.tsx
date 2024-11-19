@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 const Single = async ({ params }: { params: { id: string } }) => {
    const content = await CMS.get({ endpoint: "news", contentId: params.id });
    return (
-      <article style={{ margin: "320px 0" }}>
+      <article>
          <Inner width="narrow">
             <div className={s.article}>
                <h1>{content.title}</h1>
