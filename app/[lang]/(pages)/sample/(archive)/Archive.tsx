@@ -6,18 +6,12 @@ import { LocaleLink } from "@/components/LocaleLink";
 import { SampleLayout } from "@/app/[lang]/_layout/SampleLayout";
 import { CategoryNav } from "./_components/CategoryNav";
 
-export const Archive = async ({
-   page,
-   category,
-}: {
+type ContentsListProps = {
    page?: number;
    category?: string;
-}) => {
-   const categoryList = await CMS.getList<CMS.CategoriesType>({
-      endpoint: "categories",
-      perPage: 100,
-   });
+};
 
+const ContentsList = async ({ page, category }: ContentsListProps) => {
    const { totalCount, contents } = await CMS.getList({
       endpoint: "news",
       page: page,
@@ -27,18 +21,8 @@ export const Archive = async ({
    if (totalCount === 0) {
       return <div style={{ marginTop: "40px" }}>記事がありません</div>;
    }
-
    return (
-      <SampleLayout>
-         <nav>
-            <ul style={{ display: "flex", gap: "16px" }}>
-               {categoryList.contents.map((category, i) => (
-                  <li key={i}>
-                     <CategoryNav id={category.id}>{category.name}</CategoryNav>
-                  </li>
-               ))}
-            </ul>
-         </nav>
+      <div>
          <div
             style={{
                marginTop: "40px",
@@ -61,6 +45,28 @@ export const Archive = async ({
             page={page}
             totalCount={totalCount}
          />
+      </div>
+   );
+};
+
+export const Archive = async (props: ContentsListProps) => {
+   const categoryList = await CMS.getList<CMS.CategoriesType>({
+      endpoint: "categories",
+      perPage: 100,
+   });
+
+   return (
+      <SampleLayout>
+         <nav>
+            <ul style={{ display: "flex", gap: "16px" }}>
+               {categoryList.contents.map((category, i) => (
+                  <li key={i}>
+                     <CategoryNav id={category.id}>{category.name}</CategoryNav>
+                  </li>
+               ))}
+            </ul>
+         </nav>
+         <ContentsList {...props} />
       </SampleLayout>
    );
 };
