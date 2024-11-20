@@ -4,7 +4,8 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: $spacing-2 0;
+   padding: 0 14.4rem 0 2.4rem;
+   height: var(--header-height);
 }
 
 .logo {
@@ -13,34 +14,11 @@
 
 .link {
    font-size: 16px;
-   color: $color-key;
    @include hover {
       opacity: 0.6;
    }
    body[data-spice-rendered] & {
       @include transition;
       transition-property: opacity;
-   }
-}
-
-.menuWrapper {
-   position: absolute;
-   display: inline-table;
-   max-width: 100%;
-   max-height: 100%;
-   z-index: var(--z-index-menu);
-   background-color: $color-bg;
-   color: $color-key;
-   top: $spacing-1;
-   right: $spacing-1;
-   padding: $spacing-12;
-   @include transition;
-   transition-property: opacity, visibility, translate;
-   border-radius: $spacing-1;
-   [aria-hidden="true"] & {
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      translate: 8px -8px;
    }
 }

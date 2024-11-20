@@ -1,0 +1,50 @@
+@use "@/css" as *;
+
+.buttonContainer {
+   position: fixed;
+   width: $spacing-7;
+   height: var(--header-height);
+   display: flex;
+   align-items: center;
+   z-index: var(--z-index-menuButton);
+   top: 0;
+   right: $spacing-2;
+   mix-blend-mode: difference;
+}
+
+.button {
+   position: relative;
+   cursor: pointer;
+   width: 100%;
+   height: $spacing-2;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 0.6rem;
+   span {
+      width: 100%;
+      height: 1px;
+      background-color: $color-txt;
+      display: block;
+      transform-origin: center;
+      @include transition;
+      transition-property: rotate, scale, translate;
+   }
+   @include hover {
+      span {
+         scale: 1.2 1;
+      }
+   }
+   &[aria-expanded="true"] {
+      span {
+         &:nth-child(1) {
+            rotate: 15deg;
+            translate: 0 0.4rem;
+         }
+         &:nth-child(2) {
+            rotate: -15deg;
+            translate: 0 -0.4rem;
+         }
+      }
+   }
+}
