@@ -4,16 +4,16 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 0 14.4rem 0 2.4rem;
+   padding: 0 144rem 0 24rem;
    height: var(--header-height);
 }
 
 .logo {
-   width: 16rem;
+   width: 160rem;
 }
 
 .link {
-   font-size: 16px;
+   font-size: 16rem;
    @include hover {
       opacity: 0.6;
    }
