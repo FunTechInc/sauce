@@ -4,24 +4,18 @@
    /*===============================================
 	①liquid design
 	===============================================*/
-   --liquid-lgDesignRatio: calc(#{$lg-design-width} / 10);
-   --liquid-mdDesignRatio: calc(#{$md-design-width} / 10);
-   --liquid-smDesignRatio: calc(#{$sm-design-width} / 10);
-   --liquid-htmlroot: calc(
-      calc(var(--vw, 1vw) * 100) / var(--liquid-lgDesignRatio)
-   );
-   --liquid-bodyroot: 1.6rem;
+   --liquid-lgDesignRatio: #{$lg-design-width};
+   --liquid-mdDesignRatio: #{$md-design-width};
+   --liquid-smDesignRatio: #{$sm-design-width};
+   --liquid-htmlroot: calc(100vw / var(--liquid-lgDesignRatio));
+   --liquid-bodyroot: 16rem;
 
    @include mq(md) {
-      --liquid-htmlroot: calc(
-         calc(var(--vw, 1vw) * 100) / var(--liquid-mdDesignRatio)
-      );
+      --liquid-htmlroot: calc(100vw / var(--liquid-mdDesignRatio));
    }
 
    @include mq(sm) {
-      --liquid-htmlroot: calc(
-         calc(var(--vw, 1vw) * 100) / var(--liquid-smDesignRatio)
-      );
+      --liquid-htmlroot: calc(100vw / var(--liquid-smDesignRatio));
    }
 
    /*===============================================
@@ -46,7 +40,7 @@
    --z-index-header: 9999;
    --z-index-menu: 10000;
    --z-index-menuButton: 10001;
-   --header-height: 8rem;
+   --header-height: 80rem;
 }
 
 /*===============================================

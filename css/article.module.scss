@@ -33,17 +33,17 @@
       --block_margin: #{$spacing-4 0};
    }
    //fons size
-   --title_large: 2.4rem;
-   --title_medium: 2rem;
-   --title_small: 1.8rem;
-   --text_normal: 1.5rem;
-   --text_small: 1.4rem;
+   --title_large: 24rem;
+   --title_medium: 20rem;
+   --title_small: 18rem;
+   --text_normal: 15rem;
+   --text_small: 14rem;
    @include mq(md) {
-      --title_large: 2rem;
-      --title_medium: 1.8rem;
-      --title_small: 1.6rem;
-      --text_normal: 1.3rem;
-      --text_small: 1.2rem;
+      --title_large: 20rem;
+      --title_medium: 18rem;
+      --title_small: 16rem;
+      --text_normal: 13rem;
+      --text_small: 12rem;
    }
 
    h1,
@@ -134,8 +134,8 @@
       li {
          &::after {
             content: "";
-            width: 0.4rem;
-            height: 0.4rem;
+            width: 4rem;
+            height: 4rem;
             background-color: $color-key;
             border-radius: 50%;
          }
@@ -170,14 +170,14 @@
          left: $spacing-2;
          content: "";
          position: absolute;
-         width: 3.2rem;
-         height: 2.7rem;
+         width: 32rem;
+         height: 27rem;
          @include bg_img_contain;
          z-index: 1;
          @include quoteIcon(re-color($color-key));
          @include mq(sm) {
             left: $spacing-1;
-            width: 2.4rem;
+            width: 24rem;
          }
       }
       &:after {

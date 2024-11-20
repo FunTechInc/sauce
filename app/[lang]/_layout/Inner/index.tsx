@@ -3,7 +3,7 @@ import s from "./inner.module.scss";
 import classnames from "classnames";
 
 type InnerProps = {
-   /** "wide:112.8rem" | "narrow:96rem" | "outer:136rem" */
+   /** "wide:1128rem" | "narrow:960rem" | "outer:1360rem" */
    width: "wide" | "narrow" | "outer";
 } & React.HTMLAttributes<HTMLDivElement>;
 

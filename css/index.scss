@@ -47,30 +47,30 @@ $duration-standardAccelerate: 0.2s;
 spacing
 ===============================================*/
 $spacing-0: if($designRoot==1, 0, 0);
-$spacing-half: if($designRoot==1, 0.8rem, 8px);
-$spacing-mini: if($designRoot==1, 1.2rem, 12px);
-$spacing-1: if($designRoot==1, 1.6rem, 16px);
-$spacing-2: if($designRoot==1, 2.4rem, 24px);
-$spacing-3: if($designRoot==1, 3.2rem, 32px);
-$spacing-4: if($designRoot==1, 4rem, 40px);
-$spacing-4half: if($designRoot==1, 4.8rem, 48px);
-$spacing-5: if($designRoot==1, 5.6rem, 56px);
-$spacing-6: if($designRoot==1, 6.4rem, 64px);
-$spacing-7: if($designRoot==1, 7.2rem, 72px);
-$spacing-8: if($designRoot==1, 8rem, 80px);
-$spacing-8half: if($designRoot==1, 8.8rem, 88px);
-$spacing-9: if($designRoot==1, 9.6rem, 96px);
-$spacing-10: if($designRoot==1, 10.4rem, 104px);
-$spacing-11: if($designRoot==1, 11.2rem, 112px);
-$spacing-12: if($designRoot==1, 12rem, 120px);
+$spacing-half: if($designRoot==1, 8rem, 8px);
+$spacing-mini: if($designRoot==1, 12rem, 12px);
+$spacing-1: if($designRoot==1, 16rem, 16px);
+$spacing-2: if($designRoot==1, 24rem, 24px);
+$spacing-3: if($designRoot==1, 32rem, 32px);
+$spacing-4: if($designRoot==1, 40rem, 40px);
+$spacing-4half: if($designRoot==1, 48rem, 48px);
+$spacing-5: if($designRoot==1, 56rem, 56px);
+$spacing-6: if($designRoot==1, 64rem, 64px);
+$spacing-7: if($designRoot==1, 72rem, 72px);
+$spacing-8: if($designRoot==1, 80rem, 80px);
+$spacing-8half: if($designRoot==1, 88rem, 88px);
+$spacing-9: if($designRoot==1, 96rem, 96px);
+$spacing-10: if($designRoot==1, 104rem, 104px);
+$spacing-11: if($designRoot==1, 112rem, 112px);
+$spacing-12: if($designRoot==1, 120rem, 120px);
 
 /*===============================================
 inner
 ===============================================*/
-$inner-outer: 136rem;
-$inner-wide: 112.8rem;
-$inner-middle: 128rem;
-$inner-narrow: 96rem;
+$inner-outer: 1360rem;
+$inner-wide: 1128rem;
+$inner-middle: 1280rem;
+$inner-narrow: 960rem;
 $inner-padding: $spacing-3;
 
 /*===============================================

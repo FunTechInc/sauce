@@ -35,7 +35,7 @@ export const Pagination = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "2.4rem",
+            gap: "24rem",
             ...rest.style,
          }}>
          {currentPage !== 1 && (
