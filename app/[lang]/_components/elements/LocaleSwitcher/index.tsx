@@ -8,9 +8,17 @@ export default function LocaleSwitcher() {
    const { getRedirectedPathname, activeLocale } = useLocalePathname();
 
    return (
-      <div>
+      <div
+         style={{
+            display: "flex",
+            gap: "16px",
+         }}>
          <p>Locale:</p>
-         <ul>
+         <ul
+            style={{
+               display: "flex",
+               gap: "8px",
+            }}>
             {i18n.locales.map((locale) => {
                return (
                   <li key={locale} style={{ fontSize: "16px" }}>

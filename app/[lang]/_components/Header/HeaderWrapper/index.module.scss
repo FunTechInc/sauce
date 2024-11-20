@@ -1,10 +1,10 @@
 @use "@/css" as *;
 
 .header {
-   border-bottom: 1px solid $color-key;
    position: fixed;
    z-index: var(--z-index-header);
    width: 100vw;
    top: 0;
    left: 0;
+   mix-blend-mode: difference;
 }
