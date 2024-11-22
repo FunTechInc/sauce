@@ -6,7 +6,7 @@ import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
-import { useFrame } from "@funtech-inc/spice";
+import { useFrame, useStableScroller } from "@funtech-inc/spice";
 
 export const LENIS_CONFIG = {
    duration: 1.2,
@@ -27,8 +27,10 @@ export const useLenisRegister = () => {
    const lenis = useRef<Lenis | null>(null);
    const setLenis = useLenis((state) => state.setLenis);
 
+   const stableScroller = useStableScroller();
+
    useEffect(() => {
-      lenis.current = new Lenis(LENIS_CONFIG);
+      lenis.current = new Lenis({ ...LENIS_CONFIG, wrapper: stableScroller });
       setLenis(lenis.current);
 
       // integrate with GSAP
@@ -48,7 +50,7 @@ export const useLenisRegister = () => {
          lenis.current?.destroy();
          window.removeEventListener("popstate", handlePopstate);
       };
-   }, [setLenis]);
+   }, [setLenis, stableScroller]);
 
    useFrame((time) => {
       lenis.current?.raf(time * 1000);

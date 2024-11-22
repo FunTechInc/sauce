@@ -70,9 +70,9 @@ const RootLayout = ({
          <body style={{ opacity: 0 }} className={noto.className}>
             <StableScroller>
                <MainLayout lang={lang}>{children}</MainLayout>
+               <AppSetup />
             </StableScroller>
          </body>
-         <AppSetup />
       </html>
    );
 };

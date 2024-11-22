@@ -5,20 +5,20 @@ import { useCallback } from "react";
 
 type Target = React.RefObject<HTMLElement> | number | string | HTMLElement;
 
-type ScrollToIdProps = {
+type ScrollToProps = {
    target: Target;
    offset?: number;
    duration?: number;
    easing?: (t: number) => number;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-export const ScrollToId = ({
+export const ScrollTo = ({
    target,
    offset = 0,
    duration = LENIS_CONFIG.duration,
    easing = LENIS_CONFIG.easing,
    ...rest
-}: ScrollToIdProps) => {
+}: ScrollToProps) => {
    const lenis = useLenis((s) => s.lenis);
 
    const isRefObj = (value: Target): value is React.RefObject<HTMLElement> => {
