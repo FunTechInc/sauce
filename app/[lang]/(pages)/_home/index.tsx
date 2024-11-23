@@ -1,6 +1,6 @@
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
-import { AutoScrollContainer } from "@funtech-inc/spice";
+import { InfinityLoopOnView } from "@funtech-inc/spice";
 import { SampleLayout } from "../../_layout/SampleLayout";
 import { ScrollTo } from "@/components/ScrollTo";
 
@@ -10,9 +10,9 @@ const HomeContent = async ({ lang }: { lang: Locale }) => {
    return (
       <SampleLayout>
          <ScrollTo target={"#target"}>scroll down</ScrollTo>
-         <AutoScrollContainer speed={-0.5}>
+         <InfinityLoopOnView speed={-1} style={{ width: "100%" }}>
             <p style={{ fontSize: "24vw" }}>{dictionary.title}</p>
-         </AutoScrollContainer>
+         </InfinityLoopOnView>
          <div id="target"></div>
       </SampleLayout>
    );
