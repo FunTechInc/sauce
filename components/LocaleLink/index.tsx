@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react";
 import { useLocalePathname } from "@/hooks/useLocalePathname";
-import { LenisLink } from "../LenisLink";
+import { LenisLink } from "../Lenis";
 import { LinkProps } from "next/link";
 
 export const LocaleLink = forwardRef<

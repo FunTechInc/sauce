@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenis, LENIS_CONFIG } from "@/hooks/useLenis";
+import { useLenis, LENIS_CONFIG } from "@/components/Lenis";
 import { useCallback } from "react";
 
 type Target = React.RefObject<HTMLElement> | number | string | HTMLElement;

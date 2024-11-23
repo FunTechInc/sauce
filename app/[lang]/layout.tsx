@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
 import { StableScroller } from "@funtech-inc/spice";
+import { Lenis } from "@/components/Lenis";
 
 // Meta data
 // const metadata: Metadata = {
@@ -70,9 +71,10 @@ const RootLayout = ({
          <body style={{ opacity: 0 }} className={noto.className}>
             <StableScroller>
                <MainLayout lang={lang}>{children}</MainLayout>
-               <AppSetup />
+               <Lenis />
             </StableScroller>
          </body>
+         <AppSetup />
       </html>
    );
 };
