@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
-import Lenis from "lenis";
+"use client";
+
+import { forwardRef, useCallback, useEffect, useRef } from "react";
+import LenisScroller from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
-import { LinkProps } from "next/link";
+import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { useFrame, useStableScroller } from "@funtech-inc/spice";
 
@@ -14,23 +16,26 @@ export const LENIS_CONFIG = {
 };
 
 type LenisStore = {
-   lenis: Lenis | null;
-   setLenis: (value: Lenis) => void;
+   lenis: LenisScroller | null;
+   setLenis: (value: LenisScroller) => void;
 };
 
 export const useLenis = create<LenisStore>((set) => ({
    lenis: null,
-   setLenis: (value: Lenis) => set({ lenis: value }),
+   setLenis: (value: LenisScroller) => set({ lenis: value }),
 }));
 
-export const useLenisRegister = () => {
-   const lenis = useRef<Lenis | null>(null);
+export const Lenis = () => {
+   const lenis = useRef<LenisScroller | null>(null);
    const setLenis = useLenis((state) => state.setLenis);
 
    const stableScroller = useStableScroller();
 
    useEffect(() => {
-      lenis.current = new Lenis({ ...LENIS_CONFIG, wrapper: stableScroller });
+      lenis.current = new LenisScroller({
+         ...LENIS_CONFIG,
+         wrapper: stableScroller,
+      });
       setLenis(lenis.current);
 
       // integrate with GSAP
@@ -64,7 +69,7 @@ export const useLenisRegister = () => {
       lenis.current?.start();
    }
 
-   return lenis;
+   return null;
 };
 
 /**
@@ -99,3 +104,17 @@ export const useLenisLink = (
 
    return { ...props, onClick };
 };
+
+export const LenisLink = forwardRef<
+   HTMLAnchorElement,
+   LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
+>(({ children, ...props }, ref) => {
+   const bild = useLenisLink(props);
+   return (
+      <Link ref={ref} {...bild}>
+         {children}
+      </Link>
+   );
+});
+
+LenisLink.displayName = "LenisLink";
