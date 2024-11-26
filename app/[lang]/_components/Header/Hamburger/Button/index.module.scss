@@ -2,20 +2,22 @@
 
 .buttonContainer {
    position: fixed;
-   width: $spacing-7;
+   width: 100vw;
    height: var(--header-height);
    display: flex;
    align-items: center;
+   justify-content: flex-end;
    z-index: var(--z-index-menuButton);
    top: 0;
-   right: $spacing-2;
+   left: 0;
+   padding-right: $spacing-4;
    mix-blend-mode: difference;
 }
 
 .button {
    position: relative;
    cursor: pointer;
-   width: 100%;
+   width: $spacing-7;
    height: $spacing-2;
    display: flex;
    flex-direction: column;
