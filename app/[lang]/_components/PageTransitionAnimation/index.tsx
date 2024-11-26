@@ -4,26 +4,31 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { DURATION, EASE } from "../../_libs/constants";
+import { usePathname } from "next/navigation";
 
 export const PageTransitionAnimation = ({
    children,
 }: {
    children: React.ReactNode;
 }) => {
+   const pathname = usePathname();
    const ref = useRef(null);
-   useGSAP(() => {
-      gsap.fromTo(
-         ref.current,
-         {
-            opacity: 0,
-         },
-         {
-            opacity: 1,
-            duration: DURATION.emphasized,
-            ease: `${EASE}.inOut`,
-         }
-      );
-   });
+   useGSAP(
+      () => {
+         gsap.fromTo(
+            ref.current,
+            {
+               opacity: 0,
+            },
+            {
+               opacity: 1,
+               duration: DURATION.emphasized,
+               ease: `${EASE}.inOut`,
+            }
+         );
+      },
+      { dependencies: [pathname] }
+   );
    return (
       <div ref={ref} style={{ opacity: 0 }}>
          {children}
