@@ -1,5 +1,7 @@
 import { Locale } from "@/i18n-config";
 import { Header } from "../_components/Header";
+import { PageTransitionAnimation } from "../_components/PageTransitionAnimation";
+import { Footer } from "../_components/Footer";
 
 const PagesLayout = ({
    children,
@@ -11,7 +13,17 @@ const PagesLayout = ({
    return (
       <>
          <Header lang={lang} />
-         {children}
+         <PageTransitionAnimation>
+            <div
+               style={{
+                  flexDirection: "column",
+                  display: "flex",
+                  minHeight: "100svh",
+               }}>
+               <main style={{ flex: 1 }}>{children}</main>
+               <Footer />
+            </div>
+         </PageTransitionAnimation>
       </>
    );
 };
