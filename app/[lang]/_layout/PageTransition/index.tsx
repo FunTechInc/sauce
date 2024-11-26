@@ -6,11 +6,7 @@ import { useRef } from "react";
 import { DURATION, EASE } from "../../_libs/constants";
 import { usePathname } from "next/navigation";
 
-export const PageTransitionAnimation = ({
-   children,
-}: {
-   children: React.ReactNode;
-}) => {
+export const PageTransition = ({ children }: { children: React.ReactNode }) => {
    const pathname = usePathname();
    const ref = useRef(null);
    useGSAP(
