@@ -1,6 +1,7 @@
 import { Header } from "@/app/[lang]/_components/Header";
 import { Footer } from "@/app/[lang]/_components/Footer";
 import { Locale } from "@/i18n-config";
+import { PageTransitionAnimation } from "../PageTransitionAnimation";
 
 export const MainLayout = async ({
    children,
@@ -10,15 +11,19 @@ export const MainLayout = async ({
    lang: Locale;
 }) => {
    return (
-      <div
-         style={{
-            flexDirection: "column",
-            display: "flex",
-            minHeight: "100svh",
-         }}>
+      <div>
          <Header lang={lang} />
-         <main style={{ flex: 1 }}>{children}</main>
-         <Footer />
+         <PageTransitionAnimation>
+            <div
+               style={{
+                  flexDirection: "column",
+                  display: "flex",
+                  minHeight: "100svh",
+               }}>
+               <main style={{ flex: 1 }}>{children}</main>
+               <Footer />
+            </div>
+         </PageTransitionAnimation>
       </div>
    );
 };
