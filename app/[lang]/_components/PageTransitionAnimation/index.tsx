@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { DURATION, EASE } from "../../_libs/constants";
 
-export const PageTransitionContainer = ({
+export const PageTransitionAnimation = ({
    children,
 }: {
    children: React.ReactNode;

@@ -1,6 +1,5 @@
 import { i18n, type Locale } from "../../i18n-config";
 import { AppSetup } from "../app-setup";
-import { MainLayout } from "@/app/[lang]/_layout/MainLayout";
 import { poppins, noto } from "../fonts";
 import "@/css/reset.css";
 import "@/css/global.scss";
@@ -70,7 +69,7 @@ const RootLayout = ({
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
             <StableScroller>
-               <MainLayout lang={lang}>{children}</MainLayout>
+               {children}
                <Lenis />
             </StableScroller>
          </body>
