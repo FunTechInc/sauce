@@ -96,7 +96,7 @@ export const useLenisLink = (
             lenis?.stop();
             router.push(props.href);
             lenis?.start();
-            props.onClick && props.onClick(e);
+            props?.onClick?.(e);
          }
       },
       [props, lenis, router]
