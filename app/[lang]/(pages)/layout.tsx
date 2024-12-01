@@ -1,6 +1,6 @@
 import { Locale } from "@/i18n-config";
 import { Header } from "../_components/Header";
-import { PageTransition } from "../_layout//PageTransition";
+import { PageTransition } from "../_layout/PageTransition";
 import { Footer } from "../_components/Footer";
 
 const PagesLayout = ({
