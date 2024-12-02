@@ -4,10 +4,11 @@ import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 
 export async function generateMetadata({
-   params: { category, lang },
+   params,
 }: {
-   params: { category: string; lang: Locale };
+   params: Promise<{ category: string; lang: Locale }>;
 }) {
+   const { lang, category } = await params;
    const { meta } = await getDictionary(lang);
    const { name: categoryName } = await CMS.get<CMS.CategoriesType>({
       endpoint: "categories",
@@ -28,11 +29,8 @@ export const generateStaticParams = async () => {
    return path;
 };
 
-const Page = async ({
-   params: { category },
-}: {
-   params: { category: string };
-}) => {
+const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
+   const { category } = await params;
    return <Archive category={category} />;
 };
 

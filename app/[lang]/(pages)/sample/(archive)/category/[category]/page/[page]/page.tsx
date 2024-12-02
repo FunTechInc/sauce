@@ -5,10 +5,11 @@ import { Locale } from "@/i18n-config";
 import { utils } from "@funtech-inc/spice/server";
 
 export async function generateMetadata({
-   params: { page, category, lang },
+   params,
 }: {
-   params: { page: number; category: string; lang: Locale };
+   params: Promise<{ page: number; category: string; lang: Locale }>;
 }) {
+   const { page, category, lang } = await params;
    const { meta } = await getDictionary(lang);
    const { name: categoryName } = await CMS.get<CMS.CategoriesType>({
       endpoint: "categories",
@@ -20,10 +21,11 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async ({
-   params: { category },
+   params,
 }: {
-   params: { category: string };
+   params: Promise<{ category: string }>;
 }) => {
+   const { category } = await params;
    const { totalCount } = await CMS.getList({
       endpoint: "news",
       category: category,
@@ -34,10 +36,11 @@ export const generateStaticParams = async ({
 };
 
 const Page = async ({
-   params: { page, category },
+   params,
 }: {
-   params: { page: number; category: string };
+   params: Promise<{ page: number; category: string }>;
 }) => {
+   const { page, category } = await params;
    return <Archive page={page} category={category} />;
 };
 

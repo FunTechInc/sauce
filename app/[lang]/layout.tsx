@@ -9,6 +9,8 @@ import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
 import { StableScroller } from "@funtech-inc/spice";
 import { Lenis } from "@/components/Lenis";
+import { userAgent } from "next/server";
+import { headers } from "next/headers";
 
 // Meta data
 // const metadata: Metadata = {
@@ -33,9 +35,10 @@ import { Lenis } from "@/components/Lenis";
 export async function generateMetadata({
    params,
 }: {
-   params: { lang: Locale };
+   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
-   const { meta } = await getDictionary(params.lang);
+   const { lang } = await params;
+   const { meta } = await getDictionary(lang);
    return {
       title: {
          default: meta.title,
@@ -58,17 +61,21 @@ export async function generateStaticParams() {
    return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-const RootLayout = ({
+const RootLayout = async ({
    children,
-   params: { lang },
+   params,
 }: {
    children: React.ReactNode;
-   params: { lang: Locale };
+   params: Promise<{ lang: Locale }>;
 }) => {
+   const { lang } = await params;
+   const headersList = await headers();
+   const { device } = userAgent({ headers: headersList });
+
    return (
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <StableScroller>
+            <StableScroller active={device.type === "mobile"}>
                {children}
                <Lenis />
             </StableScroller>

@@ -18,6 +18,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
                         width={1800}
                         height={594}
                         alt="sauce"
+                        priority
                      />
                   </NavLink>
                </h1>
