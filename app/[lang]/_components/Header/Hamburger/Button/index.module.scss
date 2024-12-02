@@ -12,6 +12,7 @@
    left: 0;
    padding-right: $spacing-4;
    mix-blend-mode: difference;
+   pointer-events: none;
 }
 
 .button {

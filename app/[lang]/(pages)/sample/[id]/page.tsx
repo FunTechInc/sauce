@@ -7,9 +7,10 @@ import s from "@/css/article.module.scss";
 export async function generateMetadata({
    params,
 }: {
-   params: { id: string };
+   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-   const blog = await CMS.get({ contentId: params.id, endpoint: "news" });
+   const { id } = await params;
+   const blog = await CMS.get({ contentId: id, endpoint: "news" });
    return {
       title: blog.title,
    };
@@ -23,8 +24,9 @@ export async function generateStaticParams() {
    }));
 }
 
-const Single = async ({ params }: { params: { id: string } }) => {
-   const content = await CMS.get({ endpoint: "news", contentId: params.id });
+const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
+   const { id } = await params;
+   const content = await CMS.get({ endpoint: "news", contentId: id });
    return (
       <article style={{ margin: "320rem 0" }}>
          <Inner width="narrow">

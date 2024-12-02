@@ -6,9 +6,10 @@ import { Locale } from "@/i18n-config";
 export async function generateMetadata({
    params,
 }: {
-   params: { lang: Locale };
+   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
-   const { meta } = await getDictionary(params.lang);
+   const { lang } = await params;
+   const { meta } = await getDictionary(lang);
    return {
       title: meta.sample.title,
       description: meta.sample.description,

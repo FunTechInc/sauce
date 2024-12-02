@@ -61,7 +61,7 @@ body {
    background-color: $color-bg;
    color: $color-txt;
    line-height: $leading-none;
-   transition: opacity #{$duration-standard / 3 + "s"} ease-in-out;
+   transition: opacity #{$duration-standardAccelerate + "s"} ease-in-out;
    font-style: normal;
    font-weight: normal;
    overflow-wrap: break-word;

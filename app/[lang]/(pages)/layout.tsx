@@ -3,13 +3,15 @@ import { Header } from "../_components/Header";
 import { PageTransition } from "../_layout/PageTransition";
 import { Footer } from "../_components/Footer";
 
-const PagesLayout = ({
+const PagesLayout = async ({
    children,
-   params: { lang },
+   params,
 }: {
    children: React.ReactNode;
-   params: { lang: Locale };
+   params: Promise<{ lang: Locale }>;
 }) => {
+   const { lang } = await params;
+
    return (
       <>
          <Header lang={lang} />

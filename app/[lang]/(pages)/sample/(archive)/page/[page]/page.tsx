@@ -5,10 +5,11 @@ import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import { Locale } from "@/i18n-config";
 
 export async function generateMetadata({
-   params: { page, lang },
+   params,
 }: {
-   params: { page: number; lang: Locale };
+   params: Promise<{ page: number; lang: Locale }>;
 }) {
+   const { page, lang } = await params;
    const { meta } = await getDictionary(lang);
    return {
       title: `${meta.sample.title}(${page}p)`,
@@ -24,7 +25,8 @@ export const generateStaticParams = async () => {
    }));
 };
 
-const Page = async ({ params: { page } }: { params: { page: number } }) => {
+const Page = async ({ params }: { params: Promise<{ page: number }> }) => {
+   const { page } = await params;
    return <Archive page={page} />;
 };
 
