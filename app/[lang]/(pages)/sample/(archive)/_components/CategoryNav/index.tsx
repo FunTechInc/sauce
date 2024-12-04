@@ -15,6 +15,7 @@ export const CategoryNav = ({
    const isCurrent = isCategory && pathname[3] === id;
    return (
       <LocaleLink
+         scroll={false}
          href={`/sample${id ? `/category/${id}` : ""}`}
          style={{
             textDecoration: "underline",
