@@ -57,17 +57,19 @@ export const Lenis = () => {
       };
    }, [setLenis, stableScroller]);
 
-   useFrame((time) => {
-      lenis.current?.raf(time * 1000);
-   });
+   // runtime
+   useFrame((time) => lenis.current?.raf(time * 1000));
 
+   // stop scrolling
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
-   if (isModalOpen || isMenuOpen) {
-      lenis.current?.stop();
-   } else {
-      lenis.current?.start();
-   }
+   useEffect(() => {
+      if (isModalOpen || isMenuOpen) {
+         lenis.current?.stop();
+      } else {
+         lenis.current?.start();
+      }
+   }, [isMenuOpen, isModalOpen]);
 
    return null;
 };

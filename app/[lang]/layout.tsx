@@ -1,5 +1,5 @@
 import { i18n, type Locale } from "../../i18n-config";
-import { AppSetup } from "../app-setup";
+import { AppSetup } from "@/components/AppSetup";
 import { poppins, noto } from "../fonts";
 import "@/css/reset.css";
 import "@/css/global.scss";
@@ -75,7 +75,9 @@ const RootLayout = async ({
    return (
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <StableScroller active={device.type === "mobile"}>
+            <StableScroller
+               active={device.type === "mobile"}
+               style={{ overscrollBehaviorY: "none" }}>
                {children}
                <Lenis />
             </StableScroller>
