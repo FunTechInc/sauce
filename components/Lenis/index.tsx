@@ -63,14 +63,18 @@ export const Lenis = () => {
    // Next.js may not correctly inspect the top-level element of a DOM node. This is particularly noticeable in Route Groups when using layout.tsx.
    const pathname = usePathname();
    useEffect(() => {
-      if (!isPopstate.current) lenis.current?.scrollTo(0, { immediate: true });
+      if (!isPopstate.current) {
+         lenis.current?.scrollTo(0, {
+            immediate: true,
+            force: true,
+            lock: true,
+         });
+      }
       isPopstate.current = false;
    }, [pathname]);
 
    // runtime
-   useFrame((time) => {
-      lenis.current?.raf(time * 1000);
-   });
+   useFrame((time) => lenis.current?.raf(time * 1000));
 
    // stop scrolling
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
