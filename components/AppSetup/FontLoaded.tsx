@@ -1,10 +1,9 @@
+"use client";
+
 import { useEffect } from "react";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 
-/**
- * set opacity to 1 after font is loaded
- */
-export const useFontsLoaded = () => {
+export const FontLoaded = () => {
    useEffect(() => {
       const maxWaitTime = 1500;
 
@@ -32,4 +31,6 @@ export const useFontsLoaded = () => {
          onReady();
       }
    }, []);
+
+   return null;
 };
