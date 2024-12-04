@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useFrame, useStableScroller } from "@funtech-inc/spice";
 
 export const LENIS_CONFIG = {
@@ -29,6 +29,8 @@ export const Lenis = () => {
    const lenis = useRef<LenisScroller | null>(null);
    const setLenis = useLenis((state) => state.setLenis);
 
+   const isPopstate = useRef(false);
+
    const stableScroller = useStableScroller();
 
    useEffect(() => {
@@ -46,6 +48,7 @@ export const Lenis = () => {
 
       // Scrolling is stopped at popstate because the scrolling before the transition is inherited.
       const handlePopstate = () => {
+         isPopstate.current = true;
          lenis.current?.stop();
          setTimeout(() => lenis.current?.start(), 0);
       };
@@ -57,10 +60,19 @@ export const Lenis = () => {
       };
    }, [setLenis, stableScroller]);
 
+   // Next.js may not correctly inspect the top-level element of a DOM node. This is particularly noticeable in Route Groups when using layout.tsx.
+   const pathname = usePathname();
+   useEffect(() => {
+      if (!isPopstate.current) lenis.current?.scrollTo(0, { immediate: true });
+      isPopstate.current = false;
+   }, [pathname]);
+
+   // runtime
    useFrame((time) => {
       lenis.current?.raf(time * 1000);
    });
 
+   // stop scrolling
    const isModalOpen = useAppStore(({ isModalOpen }) => isModalOpen);
    const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
    if (isModalOpen || isMenuOpen) {
