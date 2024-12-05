@@ -73,6 +73,24 @@ export const getList = async <T = NewsType>({
    }
 };
 
+export const getObject = async <T = NewsType>({
+   endpoint = "news",
+}: {
+   endpoint: Endpoint;
+}) => {
+   try {
+      const response = await client.getObject<T>({
+         customRequestInit: {
+            cache: "force-cache",
+         },
+         endpoint,
+      });
+      return response;
+   } catch (error) {
+      throw new Error("Failed to fetch data");
+   }
+};
+
 export const getAllContentIds = async ({
    endpoint = "news",
 }: {
