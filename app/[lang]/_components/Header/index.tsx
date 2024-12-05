@@ -4,6 +4,7 @@ import LocaleSwitcher from "../elements/LocaleSwitcher";
 import { ImageLoader } from "@/components/Loader";
 import { NavLink } from "./NavLink";
 import { Locale } from "@/i18n-config";
+import Logo from "@/public/app.jpg";
 import s from "./header.module.scss";
 
 export const Header = ({ lang }: { lang: Locale }) => {
@@ -14,8 +15,9 @@ export const Header = ({ lang }: { lang: Locale }) => {
                <h1 className={s.logo}>
                   <NavLink href={"/"}>
                      <ImageLoader
-                        src={"/app.jpg"}
+                        src={Logo}
                         width={1800}
+                        placeholder="blur"
                         height={594}
                         alt="sauce"
                         priority
