@@ -5,18 +5,30 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { DURATION, EASE } from "../../_libs/constants";
 
-export const PageTransition = ({ children }: { children: React.ReactNode }) => {
+type PageTransitionProps = {
+   fromVars?: gsap.TweenVars;
+   toVars?: gsap.TweenVars;
+   children: React.ReactNode;
+};
+
+export const PageTransition = ({
+   children,
+   fromVars,
+   toVars,
+}: PageTransitionProps) => {
    const ref = useRef(null);
    useGSAP(() => {
       gsap.fromTo(
          ref.current,
          {
             opacity: 0,
+            ...fromVars,
          },
          {
             opacity: 1,
             duration: DURATION.emphasized,
             ease: `${EASE}.inOut`,
+            ...toVars,
          }
       );
    });
