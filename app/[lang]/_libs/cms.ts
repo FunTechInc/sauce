@@ -57,9 +57,6 @@ export const getList = async <T = NewsType>({
       .join("[and]");
    try {
       const response = await client.getList<T>({
-         customRequestInit: {
-            cache: "force-cache",
-         },
          endpoint,
          queries: {
             offset: (page - 1) * perPage,
@@ -80,9 +77,6 @@ export const getObject = async <T = NewsType>({
 }) => {
    try {
       const response = await client.getObject<T>({
-         customRequestInit: {
-            cache: "force-cache",
-         },
          endpoint,
       });
       return response;
@@ -98,9 +92,6 @@ export const getAllContentIds = async ({
 }) => {
    try {
       const response = await client.getAllContentIds({
-         customRequestInit: {
-            cache: "force-cache",
-         },
          endpoint,
       });
       return response;
@@ -118,9 +109,6 @@ export const get = async <T = NewsType>({
 }) => {
    try {
       const response = await client.get<T>({
-         customRequestInit: {
-            cache: "force-cache",
-         },
          endpoint: endpoint,
          contentId: contentId,
       });
