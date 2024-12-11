@@ -9,24 +9,37 @@ export async function generateMetadata({
 }: {
    params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+   const draftKey = await CMS.getDraftkey();
+
    const { id } = await params;
-   const blog = await CMS.get({ contentId: id, endpoint: "news" });
+   const blog = await CMS.get({
+      contentId: id,
+      endpoint: "news",
+      draftKey: draftKey,
+   });
    return {
-      title: blog.title,
+      title: (draftKey ? "プレビュー | " : "") + blog.title,
    };
 }
 
 export async function generateStaticParams() {
    const news = await CMS.getAllContentIds({ endpoint: "news" });
-
    return news.map((id) => ({
       id: id,
    }));
 }
 
 const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
+   const draftKey = await CMS.getDraftkey();
+
    const { id } = await params;
-   const content = await CMS.get({ endpoint: "news", contentId: id });
+
+   const content = await CMS.get({
+      endpoint: "news",
+      contentId: id,
+      draftKey: draftKey,
+   });
+
    return (
       <article style={{ margin: "320rem 0" }}>
          <Inner width="narrow">
