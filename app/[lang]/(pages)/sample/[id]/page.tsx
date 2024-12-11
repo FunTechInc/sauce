@@ -9,7 +9,7 @@ export async function generateMetadata({
 }: {
    params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-   const draftKey = await CMS.getDraftkey();
+   const { draftKey, isDraftMode } = await CMS.getDraftkey();
 
    const { id } = await params;
    const blog = await CMS.get({
@@ -18,7 +18,7 @@ export async function generateMetadata({
       draftKey: draftKey,
    });
    return {
-      title: (draftKey ? "プレビュー | " : "") + blog.title,
+      title: (isDraftMode ? "プレビュー | " : "") + blog.title,
    };
 }
 
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 }
 
 const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
-   const draftKey = await CMS.getDraftkey();
+   const { draftKey } = await CMS.getDraftkey();
 
    const { id } = await params;
 
