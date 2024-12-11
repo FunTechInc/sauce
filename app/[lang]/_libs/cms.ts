@@ -1,5 +1,6 @@
 import "server-only"; //must be server-only
 
+import { draftMode, cookies } from "next/headers";
 import { createClient } from "microcms-js-sdk";
 
 // microCMS
@@ -103,17 +104,36 @@ export const getAllContentIds = async ({
 export const get = async <T = NewsType>({
    endpoint = "news",
    contentId,
+   draftKey,
 }: {
    endpoint: Endpoint;
    contentId: string;
+   draftKey?: string;
 }) => {
    try {
       const response = await client.get<T>({
          endpoint: endpoint,
          contentId: contentId,
+         queries: {
+            draftKey: draftKey,
+         },
       });
       return response;
    } catch (error) {
       throw new Error("Failed to fetch data");
    }
+};
+
+export const setDraftkey = async (draftKey: string) => {
+   const draft = await draftMode();
+   const cookieStore = await cookies();
+   draft.enable();
+   cookieStore.set("draftKey", draftKey);
+};
+
+export const getDraftkey = async () => {
+   const { isEnabled } = await draftMode();
+   const cookieStore = await cookies();
+   const draftKey = isEnabled ? cookieStore.get("draftKey")?.value : undefined;
+   return draftKey;
 };
