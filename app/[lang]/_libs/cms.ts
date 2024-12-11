@@ -135,5 +135,5 @@ export const getDraftkey = async () => {
    const { isEnabled } = await draftMode();
    const cookieStore = await cookies();
    const draftKey = isEnabled ? cookieStore.get("draftKey")?.value : undefined;
-   return draftKey;
+   return { draftKey, isDraftMode: isEnabled };
 };
