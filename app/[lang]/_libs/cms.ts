@@ -124,6 +124,37 @@ export const get = async <T = NewsType>({
    }
 };
 
+/*===============================================
+draft mode
+===============================================*/
+export const getDraftByRequest = async <T = NewsType>({
+   request,
+   endpoint = "news",
+}: {
+   request: Request;
+   endpoint: Endpoint;
+}) => {
+   const { searchParams } = new URL(request.url);
+   const draftKey = searchParams.get("draftKey");
+   const id = searchParams.get("id");
+
+   if (!id || !draftKey) {
+      throw new Error("Invalid token");
+   }
+
+   const response = await get<T>({
+      contentId: id,
+      endpoint: endpoint,
+      draftKey: draftKey,
+   });
+
+   if (!response) {
+      throw new Error("Invalid contentId");
+   }
+
+   return { response, draftKey, id };
+};
+
 export const setDraftkey = async (draftKey: string) => {
    const draft = await draftMode();
    const cookieStore = await cookies();
