@@ -21,11 +21,11 @@ const STYLES: {
 } = {
    fillContainer: {
       ...FILL_STYLE,
-      zIndex: 1,
+      zIndex: 0,
    },
    container: {
       position: "relative",
-      zIndex: 1,
+      zIndex: 0,
    },
    loader: {
       ...FILL_STYLE,
