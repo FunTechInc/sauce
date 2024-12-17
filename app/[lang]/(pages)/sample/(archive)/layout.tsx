@@ -4,7 +4,7 @@ import { SampleLayout } from "@/app/[lang]/_layout/SampleLayout";
 import { CategoryNav } from "./_components/CategoryNav";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-   const categoryList = await CMS.getList<CMS.CategoriesType>({
+   const categoryList = await CMS.getList<CMS.Categories>({
       endpoint: "categories",
       perPage: 100,
    });

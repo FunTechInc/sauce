@@ -11,7 +11,7 @@ export async function generateMetadata({
 }) {
    const { page, category, lang } = await params;
    const { meta } = await getDictionary(lang);
-   const { name: categoryName } = await CMS.get<CMS.CategoriesType>({
+   const { name: categoryName } = await CMS.get<CMS.Categories>({
       endpoint: "categories",
       contentId: category,
    });
