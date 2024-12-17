@@ -17,7 +17,7 @@ export const PER_PAGE = 1;
 /*===============================================
 types
 ===============================================*/
-export type NewsType = {
+export type News = {
    id: string;
    title: string;
    content: string;
@@ -27,7 +27,7 @@ export type NewsType = {
       id: string;
    };
 };
-export type CategoriesType = {
+export type Categories = {
    id: string;
    name: string;
 };
@@ -37,7 +37,7 @@ type Endpoint = "news" | "categories";
 /*===============================================
 api
 ===============================================*/
-export const getList = async <T = NewsType>({
+export const getList = async <T = News>({
    endpoint = "news",
    page = 1,
    perPage = PER_PAGE,
@@ -71,7 +71,7 @@ export const getList = async <T = NewsType>({
    }
 };
 
-export const getObject = async <T = NewsType>({
+export const getObject = async <T = News>({
    endpoint = "news",
 }: {
    endpoint: Endpoint;
@@ -101,7 +101,7 @@ export const getAllContentIds = async ({
    }
 };
 
-export const get = async <T = NewsType>({
+export const get = async <T = News>({
    endpoint = "news",
    contentId,
    draftKey,
@@ -127,7 +127,7 @@ export const get = async <T = NewsType>({
 /*===============================================
 draft mode
 ===============================================*/
-export const getDraftByRequest = async <T = NewsType>({
+export const getDraftByRequest = async <T = News>({
    request,
    endpoint = "news",
 }: {

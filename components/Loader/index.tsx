@@ -1,11 +1,16 @@
 "use client";
 
-import { forwardRef, useCallback, useEffect, useState } from "react";
+import { forwardRef, useCallback, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import { Video, VideoProps, Loader } from "@funtech-inc/spice";
+import {
+   Video,
+   VideoProps,
+   Loader,
+   useIsomorphicLayoutEffect,
+} from "@funtech-inc/spice";
 
 const WAVE_COLOR = "#ffffff";
-const BG_COLOR = "#DCDCDC";
+const BG_COLOR = "#E8E8E8";
 
 const FILL_STYLE = {
    position: "absolute",
@@ -66,7 +71,7 @@ const useLoader = () => {
    const [isLoaded, setIsLoaded] = useState(false);
    const [showLoader, setShowLoader] = useState(false);
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       const timer = setTimeout(() => {
          if (!isLoaded) setShowLoader(true);
       }, 300);
@@ -81,27 +86,32 @@ const useLoader = () => {
    return { showLoader, handleLoad };
 };
 
+const Skelton = ({ visible }: { visible: boolean }) => {
+   return (
+      <Loader
+         skeleton={{ waveColor: WAVE_COLOR }}
+         delay={0}
+         style={{
+            ...STYLES.loader,
+            visibility: visible ? "visible" : "hidden",
+         }}
+      />
+   );
+};
+
 export const VideoLoader = forwardRef<
    HTMLVideoElement,
    VideoProps & ContainerProps
 >((props, ref) => {
    const { fill, containerProps, containerRef, ...rest } = props;
-
    const { showLoader, handleLoad } = useLoader();
-
    return (
       <LoaderContainer
          ref={containerRef}
          fill={fill}
          containerProps={containerProps}>
          <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
-         {showLoader && (
-            <Loader
-               skeleton={{ waveColor: WAVE_COLOR }}
-               delay={0}
-               style={STYLES.loader}
-            />
-         )}
+         <Skelton visible={showLoader} />
       </LoaderContainer>
    );
 });
@@ -112,9 +122,7 @@ export const ImageLoader = forwardRef<
    ImageProps & ContainerProps
 >((props, ref) => {
    const { alt, fill, containerProps, containerRef, ...rest } = props;
-
    const { showLoader, handleLoad } = useLoader();
-
    return (
       <LoaderContainer
          ref={containerRef}
@@ -127,13 +135,7 @@ export const ImageLoader = forwardRef<
             onLoad={handleLoad}
             {...rest}
          />
-         {showLoader && (
-            <Loader
-               skeleton={{ waveColor: WAVE_COLOR }}
-               delay={0}
-               style={STYLES.loader}
-            />
-         )}
+         <Skelton visible={showLoader} />
       </LoaderContainer>
    );
 });
