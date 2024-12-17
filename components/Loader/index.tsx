@@ -1,13 +1,8 @@
 "use client";
 
-import { forwardRef, useCallback, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import {
-   Video,
-   VideoProps,
-   Loader,
-   useIsomorphicLayoutEffect,
-} from "@funtech-inc/spice";
+import { Video, VideoProps, Loader } from "@funtech-inc/spice";
 
 const WAVE_COLOR = "#ffffff";
 const BG_COLOR = "#E8E8E8";
@@ -71,7 +66,7 @@ const useLoader = () => {
    const [isLoaded, setIsLoaded] = useState(false);
    const [showLoader, setShowLoader] = useState(false);
 
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       const timer = setTimeout(() => {
          if (!isLoaded) setShowLoader(true);
       }, 300);
