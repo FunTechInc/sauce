@@ -2,7 +2,7 @@ import { SpiceStarter } from "@funtech-inc/spice";
 import { GlobalStyle } from "./GlobalStyle";
 import { FontLoaded } from "./FontLoaded";
 import { GSAP } from "./GSAP";
-import { ForceScrollToTop } from "./ForceScrollToTop";
+import { PageTransitionRoute } from "./PageTransitionRoute";
 
 export const AppSetup = () => {
    return (
@@ -11,7 +11,7 @@ export const AppSetup = () => {
          <SpiceStarter areYouFun />
          <FontLoaded />
          <GSAP />
-         <ForceScrollToTop />
+         <PageTransitionRoute />
       </>
    );
 };
