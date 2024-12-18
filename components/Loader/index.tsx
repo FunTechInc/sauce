@@ -126,7 +126,14 @@ export const VideoLoader = forwardRef<
          fill={fill}
          containerProps={containerProps}>
          <ImageContainer fill={fill} visible={!showLoader}>
-            <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
+            <Video
+               ref={ref}
+               fill={fill}
+               onLoadedMetadata={handleLoad}
+               onLoadedData={handleLoad}
+               onCanPlay={handleLoad} // for autoPlay
+               {...rest}
+            />
          </ImageContainer>
          <Skelton visible={showLoader} />
       </LoaderContainer>
