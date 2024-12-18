@@ -1,13 +1,8 @@
 "use client";
 
-import { forwardRef, useCallback, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import Image, { ImageProps } from "next/image";
-import {
-   Video,
-   VideoProps,
-   Loader,
-   useIsomorphicLayoutEffect,
-} from "@funtech-inc/spice";
+import { Video, VideoProps, Loader } from "@funtech-inc/spice";
 
 const WAVE_COLOR = "#ffffff";
 const BG_COLOR = "#E8E8E8";
@@ -52,7 +47,6 @@ const LoaderContainer = forwardRef<
    } & ContainerProps
 >(({ fill, children, containerProps }, ref) => {
    const { style, ...rest } = containerProps || {};
-
    return (
       <div
          ref={ref}
@@ -67,11 +61,32 @@ const LoaderContainer = forwardRef<
 });
 LoaderContainer.displayName = "LoaderContainer";
 
+const ImageContainer = ({
+   fill,
+   children,
+   visible,
+}: {
+   fill?: boolean;
+   children: React.ReactNode;
+   visible: boolean;
+}) => {
+   return (
+      <div
+         style={{
+            ...(fill ? STYLES.fillContainer : STYLES.container),
+            opacity: visible ? 1 : 0,
+            transition: "opacity 0.3s",
+         }}>
+         {children}
+      </div>
+   );
+};
+
 const useLoader = () => {
    const [isLoaded, setIsLoaded] = useState(false);
    const [showLoader, setShowLoader] = useState(false);
 
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       const timer = setTimeout(() => {
          if (!isLoaded) setShowLoader(true);
       }, 300);
@@ -110,7 +125,9 @@ export const VideoLoader = forwardRef<
          ref={containerRef}
          fill={fill}
          containerProps={containerProps}>
-         <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
+         <ImageContainer fill={fill} visible={!showLoader}>
+            <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
+         </ImageContainer>
          <Skelton visible={showLoader} />
       </LoaderContainer>
    );
@@ -128,13 +145,15 @@ export const ImageLoader = forwardRef<
          ref={containerRef}
          fill={fill}
          containerProps={containerProps}>
-         <Image
-            ref={ref}
-            alt={alt || ""}
-            fill={fill}
-            onLoad={handleLoad}
-            {...rest}
-         />
+         <ImageContainer fill={fill} visible={!showLoader}>
+            <Image
+               ref={ref}
+               alt={alt || ""}
+               fill={fill}
+               onLoad={handleLoad}
+               {...rest}
+            />
+         </ImageContainer>
          <Skelton visible={showLoader} />
       </LoaderContainer>
    );
