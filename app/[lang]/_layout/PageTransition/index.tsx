@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { DURATION, EASE } from "../../_libs/constants";
+import { utils } from "@/components/AppSetup/PageTransitionRoute";
 
 type PageTransitionProps = {
    fromVars?: gsap.TweenVars;
@@ -33,7 +34,9 @@ export const PageTransition = ({
       );
    });
    return (
-      <div ref={ref} style={{ opacity: 0 }}>
+      <div
+         ref={ref}
+         style={{ opacity: 0, visibility: `var(${utils.visibility})` as any }}>
          {children}
       </div>
    );

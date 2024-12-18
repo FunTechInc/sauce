@@ -9,7 +9,7 @@ import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { useFrame, useStableScroller } from "@funtech-inc/spice";
-import { forceScrollToTop } from "../AppSetup/ForceScrollToTop";
+import * as PageTrans from "../AppSetup/PageTransitionRoute";
 
 export const LENIS_CONFIG = {
    duration: 1.2,
@@ -96,7 +96,7 @@ export const useLenisLink = (
             props.scroll !== false
          ) {
             e.preventDefault();
-            forceScrollToTop.enable();
+            PageTrans.utils.forceScrollToTop.enable();
             lenis?.stop();
             router.push(props.href);
             lenis?.start();
