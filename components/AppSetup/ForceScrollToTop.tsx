@@ -27,9 +27,12 @@ export const ForceScrollToTop = () => {
 
    useEffect(() => {
       if (!isPopstate.current && forceScrollToTop.isEnabled()) {
-         lenis
-            ? lenis.scrollTo(0, { immediate: true, force: true, lock: true })
-            : window.scrollTo(0, 0);
+         // Separate threads for more stable operation
+         setTimeout(() => {
+            lenis
+               ? lenis.scrollTo(0, { immediate: true, force: true, lock: true })
+               : window.scrollTo(0, 0);
+         }, 0);
       }
       isPopstate.current = false;
       forceScrollToTop.disable();
