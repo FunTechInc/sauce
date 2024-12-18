@@ -47,7 +47,6 @@ const LoaderContainer = forwardRef<
    } & ContainerProps
 >(({ fill, children, containerProps }, ref) => {
    const { style, ...rest } = containerProps || {};
-
    return (
       <div
          ref={ref}
@@ -61,6 +60,27 @@ const LoaderContainer = forwardRef<
    );
 });
 LoaderContainer.displayName = "LoaderContainer";
+
+const ImageContainer = ({
+   fill,
+   children,
+   visible,
+}: {
+   fill?: boolean;
+   children: React.ReactNode;
+   visible: boolean;
+}) => {
+   return (
+      <div
+         style={{
+            ...(fill ? STYLES.fillContainer : STYLES.container),
+            opacity: visible ? 1 : 0,
+            transition: "opacity 0.3s",
+         }}>
+         {children}
+      </div>
+   );
+};
 
 const useLoader = () => {
    const [isLoaded, setIsLoaded] = useState(false);
@@ -105,7 +125,9 @@ export const VideoLoader = forwardRef<
          ref={containerRef}
          fill={fill}
          containerProps={containerProps}>
-         <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
+         <ImageContainer fill={fill} visible={!showLoader}>
+            <Video ref={ref} fill={fill} onCanPlay={handleLoad} {...rest} />
+         </ImageContainer>
          <Skelton visible={showLoader} />
       </LoaderContainer>
    );
@@ -123,13 +145,15 @@ export const ImageLoader = forwardRef<
          ref={containerRef}
          fill={fill}
          containerProps={containerProps}>
-         <Image
-            ref={ref}
-            alt={alt || ""}
-            fill={fill}
-            onLoad={handleLoad}
-            {...rest}
-         />
+         <ImageContainer fill={fill} visible={!showLoader}>
+            <Image
+               ref={ref}
+               alt={alt || ""}
+               fill={fill}
+               onLoad={handleLoad}
+               {...rest}
+            />
+         </ImageContainer>
          <Skelton visible={showLoader} />
       </LoaderContainer>
    );
