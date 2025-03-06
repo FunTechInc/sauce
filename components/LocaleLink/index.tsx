@@ -8,9 +8,15 @@ import { LinkProps } from "next/link";
 export const LocaleLink = forwardRef<
    HTMLAnchorElement,
    LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
->(({ locale, ...props }, ref) => {
-   const { activeLocale } = useLocalePathname();
-   return <LenisLink ref={ref} locale={locale ?? activeLocale} {...props} />;
+>(({ href, ...props }, ref) => {
+   const { getLocalizedHref } = useLocalePathname();
+   return (
+      <LenisLink
+         ref={ref}
+         href={props.target === "_blank" ? href : getLocalizedHref(href)}
+         {...props}
+      />
+   );
 });
 
 LocaleLink.displayName = "LocaleLink";
