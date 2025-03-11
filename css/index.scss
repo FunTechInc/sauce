@@ -66,8 +66,8 @@ $spacing-12: if($designRoot==1, 120rem, 120px);
 inner
 ===============================================*/
 $inner-outer: 1360rem;
-$inner-wide: 1128rem;
-$inner-middle: 1280rem;
+$inner-wide: 1280rem;
+$inner-default: 1128rem;
 $inner-narrow: 960rem;
 $inner-padding: $spacing-3;
 

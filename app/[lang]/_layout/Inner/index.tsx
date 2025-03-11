@@ -3,8 +3,8 @@ import s from "./inner.module.scss";
 import classnames from "classnames";
 
 type InnerProps = {
-   /** "wide:1128rem" | "narrow:960rem" | "outer:1360rem" */
-   width: "wide" | "narrow" | "outer";
+   /** "default: 1128rem", "outer: 1360rem", "wide: 1280rem", "narrow: 960rem" */   
+   width: "default" | "outer" | "wide" | "narrow";
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Inner = forwardRef<HTMLDivElement, InnerProps>(
