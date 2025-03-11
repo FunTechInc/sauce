@@ -27,6 +27,33 @@ function getLocale(request: NextRequest): string | undefined {
 const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
+
+   // Basic Auth
+   if (process.env.NODE_ENV !== "development" && process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD) {      
+      const basicAuth = request.headers.get("authorization");
+  
+      if (!basicAuth) {
+        return new Response("Authentication required", {
+          status: 401,
+          headers: {
+            "WWW-Authenticate": 'Basic realm="Secure Area"',
+          },
+        });
+      }
+  
+      try {
+        const authValue = basicAuth.split(" ")[1];
+        const [user, pwd] = atob(authValue).split(":");
+  
+        if (user !== process.env.BASIC_AUTH_USERNAME || pwd !== process.env.BASIC_AUTH_PASSWORD) {
+          return new Response("Unauthorized", { status: 401 });
+        }
+      } catch (e) {
+        return new Response("Invalid Authentication", { status: 400 });
+      }
+   }
+
+
    const pathname = request.nextUrl.pathname;
 
    // skips adding the public files
