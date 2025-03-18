@@ -30,6 +30,7 @@ export const generateStaticParams = async ({
       endpoint: "news",
       category: category,
    });
+   if (totalCount === 0) return [];
    return utils.getPageRange(totalCount, CMS.PER_PAGE).map((page) => ({
       page: `${page}`,
    }));
