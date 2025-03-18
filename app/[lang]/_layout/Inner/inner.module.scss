@@ -8,10 +8,10 @@
    width: min(100% - $inner-padding, $inner-outer);
 }
 .w_wide {
-   width: min(100% - $inner-padding, $inner-middle);
+   width: min(100% - $inner-padding, $inner-wide);
 }
 .w_default {
-   width: min(100% - $inner-padding, $inner-wide);
+   width: min(100% - $inner-padding, $inner-default);
 }
 .w_narrow {
    width: min(100% - $inner-padding, $inner-narrow);
