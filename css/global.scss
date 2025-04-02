@@ -117,7 +117,7 @@ button {
       pointer-events: none;
    }
 
-   &:focus:not(:fous-visible) {
+   &:focus:not(:focus-visible) {
       outline: none;
    }
 
