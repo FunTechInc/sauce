@@ -11,9 +11,8 @@ import { Button } from "./Button";
 import s from "./index.module.scss";
 
 export const Hamburger = ({ lang }: { lang: Locale }) => {
-   const { isMenuOpen, setIsMenuOpen } = useAppStore(
-      ({ isMenuOpen, setIsMenuOpen }) => ({ isMenuOpen, setIsMenuOpen })
-   );
+   const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
+   const setIsMenuOpen = useAppStore(({ setIsMenuOpen }) => setIsMenuOpen);
 
    useCloseOnEscapeKeyDown();
 

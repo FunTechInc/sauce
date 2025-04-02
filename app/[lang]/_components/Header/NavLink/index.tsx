@@ -9,7 +9,7 @@ export const NavLink = (
 ) => {
    const { basePathname } = useLocalePathname();
    const href = props.href || "";
-   let isCurretPage = basePathname === href;
+   const isCurretPage = basePathname === href;
    return (
       <LocaleLink {...props} aria-current={isCurretPage ? "page" : undefined} />
    );

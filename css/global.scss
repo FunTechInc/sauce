@@ -10,14 +10,6 @@
    --liquid-htmlroot: calc(100vw / var(--liquid-lgDesignRatio));
    --liquid-bodyroot: 16rem;
 
-   @include mq(md) {
-      --liquid-htmlroot: calc(100vw / var(--liquid-mdDesignRatio));
-   }
-
-   @include mq(sm) {
-      --liquid-htmlroot: calc(100vw / var(--liquid-smDesignRatio));
-   }
-
    /*===============================================
 	②solid design
 	===============================================*/
@@ -34,6 +26,7 @@
       16px * var(--mobile-ContentsRatio),
       16 * 100 / var(--mobile-DesignWidth) * 1vw
    );
+
    /*===============================================
 	css vars
 	===============================================*/
@@ -41,6 +34,14 @@
    --z-index-menu: 10000;
    --z-index-menuButton: 10001;
    --header-height: 80rem;
+
+   @include mq(md) {
+      --liquid-htmlroot: calc(100vw / var(--liquid-mdDesignRatio));
+   }
+
+   @include mq(sm) {
+      --liquid-htmlroot: calc(100vw / var(--liquid-smDesignRatio));
+   }
 }
 
 /*===============================================

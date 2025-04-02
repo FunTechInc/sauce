@@ -39,7 +39,9 @@ export const ScrollTo = ({
             duration,
             easing,
          });
-         rest.onClick && rest.onClick(e);
+         if (rest.onClick) {
+            rest.onClick(e);
+         }
       },
       [lenis, target, rest, offset, duration, easing]
    );

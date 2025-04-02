@@ -9,8 +9,6 @@ import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
 import { StableScroller } from "@funtech-inc/spice";
 import { Lenis } from "@/components/Lenis";
-import { userAgent } from "next/server";
-import { headers } from "next/headers";
 
 // Meta data
 // const metadata: Metadata = {
@@ -69,15 +67,11 @@ const RootLayout = async ({
    params: Promise<{ lang: Locale }>;
 }) => {
    const { lang } = await params;
-   const headersList = await headers();
-   const { device } = userAgent({ headers: headersList });
 
    return (
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <StableScroller
-               active={device.type === "mobile"}
-               style={{ overscrollBehaviorY: "none" }}>
+            <StableScroller style={{ overscrollBehaviorY: "none" }}>
                {children}
                <Lenis />
             </StableScroller>

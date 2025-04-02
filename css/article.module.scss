@@ -1,23 +1,14 @@
+@use "sass:string";
 @use "@/css" as *;
 
 @mixin quoteIcon($color) {
    background-image: url('data:image/svg+xml;utf8,<svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.19114 27.7398C2.54598 27.7398 0.0390625 24.0532 0.0390625 17.7122C0.0390625 10.1915 3.7257 4.51403 11.099 0.679932L13.6059 5.47256C8.81326 8.05321 6.38008 11.2237 6.38008 15.9426C6.67501 15.8689 6.89621 15.8689 7.19114 15.8689C10.3616 15.8689 13.0898 18.0071 13.0898 21.5463C13.0898 25.3804 10.6566 27.7398 7.19114 27.7398ZM25.6243 27.7398C20.9792 27.7398 18.4722 24.0532 18.4722 17.7122C18.4722 10.1915 22.1589 4.51403 29.5321 0.679932L32.0391 5.47256C27.2464 8.05321 24.8133 11.2237 24.8133 15.9426C25.1082 15.8689 25.3294 15.8689 25.6243 15.8689C28.7948 15.8689 31.5229 18.0071 31.5229 21.5463C31.5229 25.3804 29.016 27.7398 25.6243 27.7398Z" fill="%23#{$color}"/></svg>');
 }
 @function re-color($code) {
-   @return str-slice("#{$code}", 2);
+   @return string.slice("#{$code}", 2);
 }
 
 .article {
-   position: relative;
-   z-index: 10;
-   > *:first-child {
-      margin-top: 0 !important;
-   }
-
-   > *:last-child {
-      margin-bottom: 0 !important;
-   }
-
    //color
    --color-txt: currentColor;
    --color-bg: #{$color-grey2};
@@ -31,18 +22,20 @@
    --title_margin_s: #{$spacing-4 0 $spacing-1};
    --text_margin: #{$spacing-1 0};
    --block_margin: #{$spacing-6 0};
-   @include mq(md) {
-      --title_margin: #{$spacing-4 0 $spacing-1};
-      --title_margin_s: #{$spacing-3 0 $spacing-1};
-      --text_margin: #{$spacing-1 0};
-      --block_margin: #{$spacing-4 0};
-   }
+
    //fons size
    --title_large: 24rem;
    --title_medium: 20rem;
    --title_small: 18rem;
    --text_normal: 15rem;
    --text_small: 14rem;
+
+   @include mq(md) {
+      --title_margin: #{$spacing-4 0 $spacing-1};
+      --title_margin_s: #{$spacing-3 0 $spacing-1};
+      --text_margin: #{$spacing-1 0};
+      --block_margin: #{$spacing-4 0};
+   }
    @include mq(md) {
       --title_large: 20rem;
       --title_medium: 18rem;
@@ -51,7 +44,19 @@
       --text_small: 12rem;
    }
 
-   color: var(--color-txt);
+   & {
+      color: var(--color-txt);
+      position: relative;
+      z-index: 10;
+   }
+
+   > *:first-child {
+      margin-top: 0 !important;
+   }
+
+   > *:last-child {
+      margin-bottom: 0 !important;
+   }
 
    h1,
    h2 {

@@ -36,7 +36,12 @@ export const PageTransition = ({
    return (
       <div
          ref={ref}
-         style={{ opacity: 0, visibility: `var(${utils.visibility})` as any }}>
+         style={
+            {
+               opacity: 0,
+               visibility: `var(${utils.visibility})` as string,
+            } as React.CSSProperties
+         }>
          {children}
       </div>
    );
