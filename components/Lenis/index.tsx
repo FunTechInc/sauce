@@ -95,7 +95,6 @@ export const useLenisLink = (
             (!props.target || props.target === "_self") &&
             props.scroll !== false
          ) {
-            return;
             e.preventDefault();
             PageTrans.utils.forceScrollToTop.enable();
             lenis?.stop();
