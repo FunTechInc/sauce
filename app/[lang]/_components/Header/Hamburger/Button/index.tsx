@@ -14,9 +14,8 @@ const LabelText = {
 };
 
 export const Button = ({ lang }: { lang: Locale }) => {
-   const { isMenuOpen, setIsMenuOpen } = useAppStore(
-      ({ isMenuOpen, setIsMenuOpen }) => ({ isMenuOpen, setIsMenuOpen })
-   );
+   const isMenuOpen = useAppStore(({ isMenuOpen }) => isMenuOpen);
+   const setIsMenuOpen = useAppStore(({ setIsMenuOpen }) => setIsMenuOpen);
    return (
       <div className={s.buttonContainer}>
          <button

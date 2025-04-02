@@ -67,7 +67,7 @@ export const getList = async <T = News>({
       });
       return response;
    } catch (error) {
-      throw new Error("Failed to fetch data");
+      throw new Error(`Failed to fetch data: ${error}`);
    }
 };
 
@@ -82,7 +82,7 @@ export const getObject = async <T = News>({
       });
       return response;
    } catch (error) {
-      throw new Error("Failed to fetch data");
+      throw new Error(`Failed to fetch data: ${error}`);
    }
 };
 
@@ -97,7 +97,7 @@ export const getAllContentIds = async ({
       });
       return response;
    } catch (error) {
-      throw new Error("Failed to fetch data");
+      throw new Error(`Failed to fetch data: ${error}`);
    }
 };
 
@@ -120,7 +120,7 @@ export const get = async <T = News>({
       });
       return response;
    } catch (error) {
-      throw new Error("Failed to fetch data");
+      throw new Error(`Failed to fetch data: ${error}`);
    }
 };
 

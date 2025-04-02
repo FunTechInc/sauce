@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 @use "./easing.scss" as *;
 
 /*===============================================
@@ -116,7 +117,7 @@ $breakpoints: (
 ) !default;
 
 @mixin mq($breakpoint) {
-   @media #{map-get($breakpoints, $breakpoint)} {
+   @media #{map.get($breakpoints, $breakpoint)} {
       @content;
    }
 }

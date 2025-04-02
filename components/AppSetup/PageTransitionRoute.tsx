@@ -45,13 +45,15 @@ export const PageTransitionRoute = () => {
          if (!isPopstate.current) {
             // Separate threads for more stable operation
             setTimeout(() => {
-               lenis
-                  ? lenis.scrollTo(0, {
-                       immediate: true,
-                       force: true,
-                       lock: true,
-                    })
-                  : window.scrollTo(0, 0);
+               if (lenis) {
+                  lenis.scrollTo(0, {
+                     immediate: true,
+                     force: true,
+                     lock: true,
+                  });
+               } else {
+                  window.scrollTo(0, 0);
+               }
                visible();
             }, 0);
          } else {
