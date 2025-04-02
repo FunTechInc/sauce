@@ -5,7 +5,6 @@ import { ImageLoader } from "@/components/Loader";
 import { NavLink } from "./NavLink";
 import { Locale } from "@/i18n-config";
 import Logo from "@/public/app.jpg";
-import Link from "next/link";
 import s from "./header.module.scss";
 
 export const Header = ({ lang }: { lang: Locale }) => {
@@ -30,7 +29,6 @@ export const Header = ({ lang }: { lang: Locale }) => {
                      <NavLink className={s.link} href={"/sample"}>
                         sample
                      </NavLink>
-                     <Link href={"/test"}>test</Link>
                   </li>
                </nav>
                <LocaleSwitcher />
