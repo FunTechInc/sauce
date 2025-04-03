@@ -1,6 +1,6 @@
 import "server-only"; //must be server-only
 
-import { draftMode, cookies } from "next/headers";
+import { cookies } from "next/headers";
 import { createClient } from "microcms-js-sdk";
 
 // microCMS
