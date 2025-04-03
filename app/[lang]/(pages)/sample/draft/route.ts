@@ -1,15 +1,43 @@
 import { redirect } from "next/navigation";
 import * as CMS from "@/app/[lang]/_libs/cms";
+import { draftMode, cookies } from "next/headers";
 
 /*===============================================
 http://localhost:3000/ja/sample/draft?draftKey=xxxx&id=xxxx
+http://localhost:3000/ja/sample/draft?draftKey=Qi01mRBcyI&id=0qrvb8byc
 ===============================================*/
 
 export async function GET(request: Request) {
-   const { response, draftKey } = await CMS.getDraftByRequest({
-      request,
+   const { searchParams } = new URL(request.url);
+   const draftKey = searchParams.get("draftKey");
+   const id = searchParams.get("id");
+
+   if (!draftKey || !id) {
+      return new Response("Invalid draftKey", { status: 401 });
+   }
+
+   const cookieStore = await cookies();
+   cookieStore.set("draftKey", draftKey);
+
+   const post = await CMS.get<CMS.News>({
+      contentId: id,
       endpoint: "news",
+      draftKey: draftKey,
    });
-   await CMS.setDraftkey(draftKey);
-   redirect("draft/" + response.id);
+
+   if (!post) {
+      return new Response("Invalid id", { status: 401 });
+   }
+
+   const draft = await draftMode();
+   draft.enable();
+
+   redirect("draft/" + post.id);
 }
+
+/*===============================================
+1. route.tsのコードを公式通りにすうr
+2 setDraftkeyも不要になる
+3. getDraftkeyはdraft modeの判定不要
+4. disable routeつくる
+===============================================*/

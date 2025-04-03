@@ -127,44 +127,43 @@ export const get = async <T = News>({
 /*===============================================
 draft mode
 ===============================================*/
-export const getDraftByRequest = async <T = News>({
-   request,
-   endpoint = "news",
-}: {
-   request: Request;
-   endpoint: Endpoint;
-}) => {
-   const { searchParams } = new URL(request.url);
-   const draftKey = searchParams.get("draftKey");
-   const id = searchParams.get("id");
+// export const getDraftByRequest = async <T = News>({
+//    request,
+//    endpoint = "news",
+// }: {
+//    request: Request;
+//    endpoint: Endpoint;
+// }) => {
+//    const { searchParams } = new URL(request.url);
+//    const draftKey = searchParams.get("draftKey");
+//    const id = searchParams.get("id");
 
-   if (!id || !draftKey) {
-      throw new Error("Invalid token");
-   }
+//    if (!id || !draftKey) {
+//       throw new Error("Invalid token");
+//    }
 
-   const response = await get<T>({
-      contentId: id,
-      endpoint: endpoint,
-      draftKey: draftKey,
-   });
+//    const response = await get<T>({
+//       contentId: id,
+//       endpoint: endpoint,
+//       draftKey: draftKey,
+//    });
 
-   if (!response) {
-      throw new Error("Invalid contentId");
-   }
+//    if (!response) {
+//       throw new Error("Invalid contentId");
+//    }
 
-   return { response, draftKey, id };
-};
+//    return { response, draftKey, id };
+// };
 
-export const setDraftkey = async (draftKey: string) => {
-   const draft = await draftMode();
-   const cookieStore = await cookies();
-   draft.enable();
-   cookieStore.set("draftKey", draftKey);
-};
+// export const setDraftkey = async (draftKey: string) => {
+//    const draft = await draftMode();
+//    const cookieStore = await cookies();
+//    draft.enable();
+//    cookieStore.set("draftKey", draftKey);
+// };
 
 export const getDraftkey = async () => {
-   const { isEnabled } = await draftMode();
    const cookieStore = await cookies();
-   const draftKey = isEnabled ? cookieStore.get("draftKey")?.value : undefined;
-   return { draftKey, isDraftMode: isEnabled };
+   const draftKey = cookieStore.get("draftKey")?.value;
+   return draftKey;
 };
