@@ -2,9 +2,8 @@ import * as CMS from "@/app/[lang]/_libs/cms";
 import { HTMLConverter } from "@/components/HTMLConverter";
 import type { Metadata } from "next";
 import { Inner } from "@/app/[lang]/_layout/Inner";
-import s from "@/css/article.module.scss";
-import Link from "next/link";
 import { LocaleLink } from "@/components/LocaleLink";
+import s from "@/css/article.module.scss";
 
 export async function generateMetadata({
    params,
