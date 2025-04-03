@@ -4,7 +4,6 @@ import { draftMode, cookies } from "next/headers";
 
 /*===============================================
 http://localhost:3000/ja/sample/draft?draftKey=xxxx&id=xxxx
-http://localhost:3000/ja/sample/draft?draftKey=Qi01mRBcyI&id=0qrvb8byc
 ===============================================*/
 
 export async function GET(request: Request) {

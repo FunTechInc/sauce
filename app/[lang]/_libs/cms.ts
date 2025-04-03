@@ -1,6 +1,5 @@
 import "server-only"; //must be server-only
 
-import { cookies } from "next/headers";
 import { createClient } from "microcms-js-sdk";
 
 // microCMS
@@ -122,48 +121,4 @@ export const get = async <T = News>({
    } catch (error) {
       throw new Error(`Failed to fetch data: ${error}`);
    }
-};
-
-/*===============================================
-draft mode
-===============================================*/
-// export const getDraftByRequest = async <T = News>({
-//    request,
-//    endpoint = "news",
-// }: {
-//    request: Request;
-//    endpoint: Endpoint;
-// }) => {
-//    const { searchParams } = new URL(request.url);
-//    const draftKey = searchParams.get("draftKey");
-//    const id = searchParams.get("id");
-
-//    if (!id || !draftKey) {
-//       throw new Error("Invalid token");
-//    }
-
-//    const response = await get<T>({
-//       contentId: id,
-//       endpoint: endpoint,
-//       draftKey: draftKey,
-//    });
-
-//    if (!response) {
-//       throw new Error("Invalid contentId");
-//    }
-
-//    return { response, draftKey, id };
-// };
-
-// export const setDraftkey = async (draftKey: string) => {
-//    const draft = await draftMode();
-//    const cookieStore = await cookies();
-//    draft.enable();
-//    cookieStore.set("draftKey", draftKey);
-// };
-
-export const getDraftkey = async () => {
-   const cookieStore = await cookies();
-   const draftKey = cookieStore.get("draftKey")?.value;
-   return draftKey;
 };

@@ -3,6 +3,7 @@ import { HTMLConverter } from "@/components/HTMLConverter";
 import type { Metadata } from "next";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import { LocaleLink } from "@/components/LocaleLink";
+import { cookies } from "next/headers";
 import s from "@/css/article.module.scss";
 
 export async function generateMetadata({
@@ -10,12 +11,12 @@ export async function generateMetadata({
 }: {
    params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-   const draftKey = await CMS.getDraftkey();
+   const cookieStore = await cookies();
    const { id } = await params;
    const blog = await CMS.get({
       contentId: id,
       endpoint: "news",
-      draftKey: draftKey,
+      draftKey: cookieStore.get("draftKey")?.value,
    });
    return {
       title: "プレビュー | " + blog.title,
@@ -24,12 +25,12 @@ export async function generateMetadata({
 }
 
 const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
-   const draftKey = await CMS.getDraftkey();
+   const cookieStore = await cookies();
    const { id } = await params;
    const content = await CMS.get({
       endpoint: "news",
       contentId: id,
-      draftKey: draftKey,
+      draftKey: cookieStore.get("draftKey")?.value,
    });
 
    return (
@@ -37,13 +38,22 @@ const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
          <Inner width="narrow">
             <p
                style={{
+                  fontSize: "24rem",
+                  marginBottom: "40rem",
+                  backgroundColor: "red",
+                  display: "inline-block",
+                  padding: ".5em",
+               }}>
+               下書きモード
+            </p>
+            <LocaleLink
+               href="/sample/disable-draft"
+               prefetch={false}
+               style={{
                   fontSize: "16rem",
                   textDecoration: "underline",
                   marginBottom: "40rem",
                }}>
-               下書きモード
-            </p>
-            <LocaleLink href="/sample/disable-draft" prefetch={false}>
                下書きモードを解除する
             </LocaleLink>
             <h1 style={{ marginBottom: "120rem", fontSize: "40rem" }}>
