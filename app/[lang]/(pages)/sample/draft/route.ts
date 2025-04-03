@@ -11,5 +11,5 @@ export async function GET(request: Request) {
       endpoint: "news",
    });
    await CMS.setDraftkey(draftKey);
-   redirect(response.id);
+   redirect("draft/" + response.id);
 }
