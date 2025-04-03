@@ -3,13 +3,15 @@ import { HTMLConverter } from "@/components/HTMLConverter";
 import type { Metadata } from "next";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import s from "@/css/article.module.scss";
+import Link from "next/link";
+import { LocaleLink } from "@/components/LocaleLink";
 
 export async function generateMetadata({
    params,
 }: {
    params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-   const { draftKey } = await CMS.getDraftkey();
+   const draftKey = await CMS.getDraftkey();
    const { id } = await params;
    const blog = await CMS.get({
       contentId: id,
@@ -23,10 +25,8 @@ export async function generateMetadata({
 }
 
 const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
-   const { draftKey } = await CMS.getDraftkey();
-
+   const draftKey = await CMS.getDraftkey();
    const { id } = await params;
-
    const content = await CMS.get({
       endpoint: "news",
       contentId: id,
@@ -44,6 +44,9 @@ const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
                }}>
                下書きモード
             </p>
+            <LocaleLink href="/sample/disable-draft" prefetch={false}>
+               下書きモードを解除する
+            </LocaleLink>
             <h1 style={{ marginBottom: "120rem", fontSize: "40rem" }}>
                {content.title}
             </h1>
