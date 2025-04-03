@@ -3,7 +3,6 @@ import { HTMLConverter } from "@/components/HTMLConverter";
 import type { Metadata } from "next";
 import { Inner } from "@/app/[lang]/_layout/Inner";
 import { LocaleLink } from "@/components/LocaleLink";
-import { cookies } from "next/headers";
 import s from "@/css/article.module.scss";
 
 export async function generateMetadata({
@@ -11,12 +10,12 @@ export async function generateMetadata({
 }: {
    params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-   const cookieStore = await cookies();
+   const draftKey = await CMS.getDraftkey();
    const { id } = await params;
    const blog = await CMS.get({
       contentId: id,
       endpoint: "news",
-      draftKey: cookieStore.get("draftKey")?.value,
+      draftKey,
    });
    return {
       title: "プレビュー | " + blog.title,
@@ -25,12 +24,12 @@ export async function generateMetadata({
 }
 
 const Single = async ({ params }: { params: Promise<{ id: string }> }) => {
-   const cookieStore = await cookies();
+   const draftKey = await CMS.getDraftkey();
    const { id } = await params;
    const content = await CMS.get({
       endpoint: "news",
       contentId: id,
-      draftKey: cookieStore.get("draftKey")?.value,
+      draftKey,
    });
 
    return (
