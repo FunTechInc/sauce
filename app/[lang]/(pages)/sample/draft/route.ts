@@ -34,10 +34,3 @@ export async function GET(request: Request) {
 
    redirect("draft/" + post.id);
 }
-
-/*===============================================
-1. route.tsのコードを公式通りにすうr
-2 setDraftkeyも不要になる
-3. getDraftkeyはdraft modeの判定不要
-4. disable routeつくる
-===============================================*/
