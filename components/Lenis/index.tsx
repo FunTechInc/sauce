@@ -96,7 +96,10 @@ export const useLenisLink = (
             props.scroll !== false
          ) {
             e.preventDefault();
-            PageTrans.utils.forceScrollToTop.enable();
+            const hash = props.href.includes("#")
+               ? `#${props.href.split("#")[1]}`
+               : undefined;
+            PageTrans.utils.forceScrollTo.enable(hash);
             lenis?.stop();
             router.push(props.href);
             lenis?.start();
