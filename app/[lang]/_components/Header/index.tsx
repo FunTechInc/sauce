@@ -26,7 +26,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
                </h1>
                <nav>
                   <li>
-                     <NavLink className={s.link} href={"/sample"}>
+                     <NavLink className={s.link} href={"/sample#test"}>
                         sample
                      </NavLink>
                   </li>

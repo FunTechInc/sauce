@@ -1,9 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
-const SESSION_KEY = "forceScrollToT";
+const SESSION_KEY = "forceScrollTo";
 const VISIBILITY = "--pageTransitionVisibility";
 /**  If you want to force the top, set the ‘forceScrollTo’ key in sessionStorage to something other than ‘false’ before the router event. */
 const forceScrollTo = {
@@ -46,7 +46,7 @@ export const PageTransitionRoute = () => {
 
    const pathname = usePathname();
 
-   useEffect(() => {
+   useLayoutEffect(() => {
       const target = forceScrollTo.isEnabled();
       if (target) {
          if (!isPopstate.current) {
