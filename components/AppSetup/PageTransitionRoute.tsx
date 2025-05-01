@@ -1,20 +1,27 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import { useLenis } from "../Lenis";
+import { useLayoutEffect, useRef } from "react";
 
-const SESSION_KEY = "forceScrollToTop";
+const SESSION_KEY = "forceScrollTo";
 const VISIBILITY = "--pageTransitionVisibility";
-/**  If you want to force the top, set the ‘forceScrollToTop’ key in sessionStorage to ‘true’ before the router event. */
-const forceScrollToTop = {
-   enable: () => sessionStorage.setItem(SESSION_KEY, "true"),
-   disable: () => sessionStorage.setItem(SESSION_KEY, "false"),
-   isEnabled: () => sessionStorage.getItem(SESSION_KEY) === "true",
+/**  If you want to force the top, set the ‘forceScrollTo’ key in sessionStorage to something other than ‘false’ before the router event. */
+const forceScrollTo = {
+   // "top" is meanless in this case
+   enable(target: string = "top") {
+      sessionStorage.setItem(SESSION_KEY, target);
+   },
+   disable() {
+      sessionStorage.setItem(SESSION_KEY, "false");
+   },
+   isEnabled() {
+      const item = sessionStorage.getItem(SESSION_KEY);
+      return item && item !== "false" ? item : false;
+   },
 };
 
 export const utils = {
-   forceScrollToTop,
+   forceScrollTo,
    sessionKey: SESSION_KEY,
    visibility: VISIBILITY,
 };
@@ -30,9 +37,8 @@ const hidden = () => {
 /** Next.js may not correctly inspect the top-level element of a DOM node. This is particularly noticeable in Route Groups when using layout.tsx. */
 export const PageTransitionRoute = () => {
    const isPopstate = useRef(false);
-   const lenis = useLenis((s) => s.lenis);
 
-   useEffect(() => {
+   useLayoutEffect(() => {
       const handlePopstate = () => (isPopstate.current = true);
       window.addEventListener("popstate", handlePopstate);
       return () => window.removeEventListener("popstate", handlePopstate);
@@ -40,35 +46,29 @@ export const PageTransitionRoute = () => {
 
    const pathname = usePathname();
 
-   useEffect(() => {
-      if (forceScrollToTop.isEnabled()) {
+   useLayoutEffect(() => {
+      const target = forceScrollTo.isEnabled();
+      if (target) {
          if (!isPopstate.current) {
-            // Separate threads for more stable operation
-            setTimeout(() => {
-               if (lenis) {
-                  lenis.scrollTo(0, {
-                     immediate: true,
-                     force: true,
-                     lock: true,
-                  });
-               } else {
-                  window.scrollTo(0, 0);
-               }
-               visible();
-            }, 0);
-         } else {
-            visible();
+            window.scrollTo(0, 0);
+            if (target.includes("#")) {
+               window.scrollTo(
+                  0,
+                  document.querySelector(target)?.getBoundingClientRect().y || 0
+               );
+            }
          }
+         visible();
       }
       isPopstate.current = false;
-      forceScrollToTop.disable();
+      forceScrollTo.disable();
 
       return () => {
-         if (forceScrollToTop.isEnabled()) {
+         if (forceScrollTo.isEnabled()) {
             hidden();
          }
       };
-   }, [pathname, lenis]);
+   }, [pathname]);
 
    return null;
 };
