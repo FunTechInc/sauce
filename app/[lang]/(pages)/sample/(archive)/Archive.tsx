@@ -20,7 +20,7 @@ export const Archive = async ({ page, category }: ArchiveProps) => {
       return <div style={{ marginTop: "40px" }}>記事がありません</div>;
    }
    return (
-      <div id="test">
+      <div>
          <div
             style={{
                marginTop: "40px",
