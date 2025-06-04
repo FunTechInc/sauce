@@ -3,20 +3,25 @@
 import { forwardRef } from "react";
 import { useLocalePathname } from "@/hooks/useLocalePathname";
 import { LenisLink } from "../Lenis";
-import { LinkProps } from "next/link";
+import Link, { LinkProps } from "next/link";
 
-export const LocaleLink = forwardRef<
-   HTMLAnchorElement,
-   LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
->(({ href, ...props }, ref) => {
-   const { getLocalizedHref } = useLocalePathname();
-   return (
-      <LenisLink
-         ref={ref}
-         href={props.target === "_blank" ? href : getLocalizedHref(href)}
-         {...props}
-      />
-   );
-});
+export type LocaleLinkProps = LinkProps &
+   React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+      lenis?: boolean;
+   };
+
+export const LocaleLink = forwardRef<HTMLAnchorElement, LocaleLinkProps>(
+   ({ href, lenis = true, ...props }, ref) => {
+      const { getLocalizedHref } = useLocalePathname();
+      const Component = lenis ? LenisLink : Link;
+      return (
+         <Component
+            ref={ref}
+            href={props.target === "_blank" ? href : getLocalizedHref(href)}
+            {...props}
+         />
+      );
+   }
+);
 
 LocaleLink.displayName = "LocaleLink";
