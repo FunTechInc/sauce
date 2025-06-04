@@ -1,0 +1,143 @@
+import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+
+const config: Config = {
+  darkMode: "class",
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    spacing: {
+      px: '1px',
+      0: '0',
+      0.5: '0.5rem',
+      1: '1rem',
+      1.5: '1.5rem',
+      2: '2rem',
+      2.5: '2.5rem',
+      3: '3rem',
+      3.5: '3.5rem',
+      4: '4rem',
+      5: '5rem',
+      6: '6rem',
+      7: '7rem',
+      8: '8rem',
+      9: '9rem',
+      10: '10rem',
+      11: '11rem',
+      12: '12rem',
+      14: '14rem',
+      16: '16rem',
+      20: '20rem',
+      24: '24rem',
+      28: '28rem',
+      32: '32rem',
+      36: '36rem',
+      40: '40rem',
+      44: '44rem',
+      48: '48rem',
+      52: '52rem',
+      56: '56rem',
+      60: '60rem',
+      64: '64rem',
+      72: '72rem',
+      80: '80rem',
+      96: '96rem',
+    },
+    fontSize: {
+      xs: ['12rem', { lineHeight: '16rem' }],
+      sm: ['14rem', { lineHeight: '20rem' }],
+      base: ['16rem', { lineHeight: '24rem' }],
+      lg: ['18rem', { lineHeight: '28rem' }],
+      xl: ['20rem', { lineHeight: '28rem' }],
+      '2xl': ['24rem', { lineHeight: '32rem' }],
+      '3xl': ['30rem', { lineHeight: '36rem' }],
+      '4xl': ['36rem', { lineHeight: '40rem' }],
+      '5xl': ['48rem', { lineHeight: '1' }],
+      '6xl': ['60rem', { lineHeight: '1' }],
+      '7xl': ['72rem', { lineHeight: '1' }],
+      '8xl': ['96rem', { lineHeight: '1' }],
+      '9xl': ['128rem', { lineHeight: '1' }],
+    },
+    extend: {
+      screens: {
+        'sm': '560px',
+        'md': '960px',
+        'lg': '1200px',
+        'xl': '1400px',
+        '2xl': '1600px',
+      },
+      maxWidth: {
+        'default': '1128rem',
+        'outer': '1360rem',
+        'wide': '1280rem',
+        'narrow': '960rem',
+      },
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '2rem',
+        'DEFAULT': '4rem',
+        'md': '6rem',
+        'lg': '8rem',
+        'xl': '12rem',
+        '2xl': '16rem',
+        '3xl': '24rem',
+        'full': '9999px',
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [tailwindcssAnimate],
+};
+
+export default config;

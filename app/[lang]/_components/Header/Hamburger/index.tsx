@@ -6,7 +6,7 @@ import { useCloseOnEscapeKeyDown } from "./useCloseOnEscapeKeyDown";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/i18n-config";
 import { FocusTrap } from "@mui/base";
-import { NavLink } from "../NavLink";
+import { RouteNavLink } from "@/components/RouteNavLink";
 import { Button } from "./Button";
 import s from "./index.module.scss";
 
@@ -35,7 +35,7 @@ export const Hamburger = ({ lang }: { lang: Locale }) => {
                   setIsMenuOpen(false);
                }}></div>
             <nav className={s.menuContainer} aria-hidden={!isMenuOpen}>
-               <NavLink href={"/sample"}>sample</NavLink>
+               <RouteNavLink href={"/sample"}>sample</RouteNavLink>
             </nav>
          </div>
       </FocusTrap>

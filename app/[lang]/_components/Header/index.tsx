@@ -2,7 +2,7 @@ import { Hamburger } from "./Hamburger";
 import { HeaderWrapper } from "./HeaderWrapper";
 import LocaleSwitcher from "../elements/LocaleSwitcher";
 import { ImageLoader } from "@/components/Loader";
-import { NavLink } from "./NavLink";
+import { RouteNavLink } from "@/components/RouteNavLink";
 import { Locale } from "@/i18n-config";
 import Logo from "@/public/app.jpg";
 import s from "./header.module.scss";
@@ -13,7 +13,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
          <HeaderWrapper>
             <div className={s.inner}>
                <h1 className={s.logo}>
-                  <NavLink href={"/"}>
+                  <RouteNavLink href={"/"}>
                      <ImageLoader
                         src={Logo}
                         width={1800}
@@ -22,13 +22,13 @@ export const Header = ({ lang }: { lang: Locale }) => {
                         alt="sauce"
                         priority
                      />
-                  </NavLink>
+                  </RouteNavLink>
                </h1>
                <nav>
                   <li>
-                     <NavLink className={s.link} href={"/sample#test"}>
+                     <RouteNavLink className={s.link} href={"/sample#test"}>
                         sample
-                     </NavLink>
+                     </RouteNavLink>
                   </li>
                </nav>
                <LocaleSwitcher />
