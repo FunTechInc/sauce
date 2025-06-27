@@ -4,5 +4,5 @@
    align-items: center;
    flex-direction: column;
    overflow: hidden;
-   margin: 50vh 0;
+   margin: calc(var(--stable-svh) * 50) 0;
 }

@@ -18,7 +18,7 @@ const PagesLayout = async ({
             style={{
                flexDirection: "column",
                display: "flex",
-               minHeight: "100svh",
+               minHeight: "calc(var(--stable-svh) * 100)",
             }}>
             <main style={{ flex: 1 }}>{children}</main>
             <Footer />

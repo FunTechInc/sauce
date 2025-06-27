@@ -7,7 +7,6 @@ import "lenis/dist/lenis.css";
 import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
 import classnames from "classnames";
-import { StableScroller } from "@funtech-inc/spice";
 import { Lenis } from "@/components/Lenis";
 
 // Meta data
@@ -71,10 +70,8 @@ const RootLayout = async ({
    return (
       <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
-            <StableScroller style={{ overscrollBehaviorY: "none" }}>
-               {children}
-               <Lenis />
-            </StableScroller>
+            {children}
+            <Lenis />
          </body>
          <AppSetup />
       </html>
