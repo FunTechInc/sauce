@@ -8,7 +8,7 @@ import { create } from "zustand";
 import { useAppStore } from "@/app/[lang]/_context/useAppStore";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
-import { useFrame, useStableScroller } from "@funtech-inc/spice";
+import { useFrame } from "@funtech-inc/spice";
 import * as PageTrans from "../AppSetup/PageTransitionRoute";
 
 export const LENIS_CONFIG = {
@@ -30,12 +30,9 @@ export const Lenis = () => {
    const lenis = useRef<LenisScroller | null>(null);
    const setLenis = useLenis((state) => state.setLenis);
 
-   const stableScroller = useStableScroller();
-
    useEffect(() => {
       lenis.current = new LenisScroller({
          ...LENIS_CONFIG,
-         wrapper: stableScroller,
       });
       setLenis(lenis.current);
 
@@ -56,7 +53,7 @@ export const Lenis = () => {
          lenis.current?.destroy();
          window.removeEventListener("popstate", handlePopstate);
       };
-   }, [setLenis, stableScroller]);
+   }, [setLenis]);
 
    // runtime
    useFrame((time) => lenis.current?.raf(time * 1000));
