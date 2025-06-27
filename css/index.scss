@@ -204,3 +204,14 @@ fill
    inset: 0;
    color: transparent;
 }
+
+/*===============================================
+stable vh
+===============================================*/
+@function stableSvh($multiplier: 1) {
+   @return calc(var(--stable-svh) * #{$multiplier});
+}
+
+@function stableLvh($multiplier: 1) {
+   @return calc(var(--stable-lvh) * #{$multiplier});
+}
