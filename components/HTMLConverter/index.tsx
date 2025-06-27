@@ -13,7 +13,20 @@ export const HTMLConverter = ({ children }: { children: string }) => {
             return (
                <Image src={src} width={+width} height={+height} alt={alt} />
             );
-         }
+         }         
+         if (
+            domNode instanceof Element &&
+            domNode.name === "figcaption"
+         ) {            
+            const firstChild = domNode.children[0];
+            const text =
+              typeof firstChild === "object" &&
+              "data" in firstChild
+                ? firstChild.data
+                : "";
+                
+            return <figcaption>{parse(text)}</figcaption>;
+         }             
       },
    });
 };
