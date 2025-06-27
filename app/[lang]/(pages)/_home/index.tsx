@@ -13,7 +13,6 @@ const HomeContent = async ({ lang }: { lang: Locale }) => {
          <InfinityLoopOnView speed={-1} style={{ width: "100%" }}>
             <p style={{ fontSize: "24vw" }}>{dictionary.title}</p>
          </InfinityLoopOnView>
-         <div id="target"></div>
       </SampleLayout>
    );
 };
