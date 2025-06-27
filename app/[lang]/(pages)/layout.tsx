@@ -1,6 +1,7 @@
 import { Locale } from "@/i18n-config";
 import { Header } from "../_components/Header";
 import { Footer } from "../_components/Footer";
+import { stableSvh } from "../_libs/constants";
 
 const PagesLayout = async ({
    children,
@@ -18,7 +19,7 @@ const PagesLayout = async ({
             style={{
                flexDirection: "column",
                display: "flex",
-               minHeight: "calc(var(--stable-svh) * 100)",
+               minHeight: stableSvh(100),
             }}>
             <main style={{ flex: 1 }}>{children}</main>
             <Footer />

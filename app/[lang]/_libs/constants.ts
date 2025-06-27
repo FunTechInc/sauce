@@ -24,6 +24,13 @@ export const WINDOWSM = 560;
 export const WINDOWMD = 960;
 export const WINDOWLG = 1120;
 
+export const stableSvh = (multiplier: number) => {
+   return `calc(var(--stable-svh) * ${multiplier})`;
+};
+export const stableLvh = (multiplier: number) => {
+   return `calc(var(--stable-lvh) * ${multiplier})`;
+};
+
 /*===============================================
 Easing
 ===============================================*/
