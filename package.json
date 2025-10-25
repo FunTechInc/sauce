@@ -3,6 +3,9 @@
    "version": "0.1.0",
    "author": "FunTech",
    "private": true,
+   "engines": {
+      "node": "22.x"
+   },
    "scripts": {
       "dev": "next dev",
       "turbo": "next dev --turbopack",
