@@ -72,8 +72,8 @@ const RootLayout = async ({
          <body style={{ opacity: 0 }} className={noto.className}>
             {children}
             <Lenis />
+            <AppSetup />
          </body>
-         <AppSetup />
       </html>
    );
 };

@@ -28,7 +28,7 @@ export const ScrollTo = ({
    const onClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(
       (e) => {
          const scrollTarget = isRefObj(target) ? target.current : target;
-         if (!scrollTarget) {
+         if (scrollTarget == null) {
             console.error("scrollTarget is not valid");
             return;
          }
