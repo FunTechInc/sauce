@@ -51,11 +51,15 @@ export const PageTransitionRoute = () => {
       if (target) {
          if (!isPopstate.current) {
             window.scrollTo(0, 0);
-            if (target.includes("#")) {
-               window.scrollTo(
-                  0,
-                  document.querySelector(target)?.getBoundingClientRect().y || 0
-               );
+            if (target.includes("#") && target.length > 1) {
+               try {
+                  const element = document.querySelector(target);
+                  if (element) {
+                     window.scrollTo(0, element.getBoundingClientRect().y || 0);
+                  }
+               } catch {
+                  // Invalid selector, ignore
+               }
             }
          }
          visible();
