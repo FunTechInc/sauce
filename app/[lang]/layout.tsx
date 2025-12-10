@@ -6,6 +6,7 @@ import "@/css/global.scss";
 import "lenis/dist/lenis.css";
 import type { Metadata } from "next";
 import { getDictionary } from "@/app/[lang]/_libs/get-dictionary";
+import { assertLocale } from "@/app/[lang]/_libs/constants";
 import classnames from "classnames";
 import { Lenis } from "@/components/Lenis";
 
@@ -32,10 +33,11 @@ import { Lenis } from "@/components/Lenis";
 export async function generateMetadata({
    params,
 }: {
-   params: Promise<{ lang: Locale }>;
+   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
    const { lang } = await params;
-   const { meta } = await getDictionary(lang);
+   const locale = assertLocale(lang);
+   const { meta } = await getDictionary(locale);
    return {
       title: {
          default: meta.title,
@@ -63,12 +65,13 @@ const RootLayout = async ({
    params,
 }: {
    children: React.ReactNode;
-   params: Promise<{ lang: Locale }>;
+   params: Promise<{ lang: string }>;
 }) => {
    const { lang } = await params;
+   const locale = assertLocale(lang);
 
    return (
-      <html lang={lang} className={classnames(poppins.variable, noto.variable)}>
+      <html lang={locale} className={classnames(poppins.variable, noto.variable)}>
          <body style={{ opacity: 0 }} className={noto.className}>
             {children}
             <Lenis />

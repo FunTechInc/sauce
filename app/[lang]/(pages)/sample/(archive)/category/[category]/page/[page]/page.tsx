@@ -23,9 +23,9 @@ export async function generateMetadata({
 export const generateStaticParams = async ({
    params,
 }: {
-   params: Promise<{ category: string }>;
+   params: { lang: string; category: string };
 }) => {
-   const { category } = await params;
+   const { category } = params;
    const { totalCount } = await CMS.getList({
       endpoint: "news",
       category: category,

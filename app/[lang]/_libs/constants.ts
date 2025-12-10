@@ -101,3 +101,16 @@ export const getConstantRoutes = (
 export const getConstantRouteKeys = (): ConstantRouteKeys[] => {
    return Object.keys(CONSTANT_ROUTES) as ConstantRouteKeys[];
 };
+
+import { type Locale, i18n } from "@/i18n-config";
+
+/**
+ * Next.js 16では、レイアウトコンポーネントのparamsはstringとして推論されるため、
+ * Locale型にキャストするためのヘルパー関数
+ */
+export function assertLocale(lang: string): Locale {
+   if (i18n.locales.includes(lang as Locale)) {
+      return lang as Locale;
+   }
+   return i18n.defaultLocale;
+}

@@ -1,20 +1,20 @@
-import { Locale } from "@/i18n-config";
 import { Header } from "../_components/Header";
 import { Footer } from "../_components/Footer";
-import { stableSvh } from "../_libs/constants";
+import { stableSvh, assertLocale } from "../_libs/constants";
 
 const PagesLayout = async ({
    children,
    params,
 }: {
    children: React.ReactNode;
-   params: Promise<{ lang: Locale }>;
+   params: Promise<{ lang: string }>;
 }) => {
    const { lang } = await params;
+   const locale = assertLocale(lang);
 
    return (
       <>
-         <Header lang={lang} />
+         <Header lang={locale} />
          <div
             style={{
                flexDirection: "column",
