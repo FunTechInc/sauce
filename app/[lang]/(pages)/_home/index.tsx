@@ -10,7 +10,7 @@ const HomeContent = async ({ lang }: { lang: Locale }) => {
    return (
       <SampleLayout>
          <ScrollTo target={"#target"}>scroll down</ScrollTo>
-         <InfinityLoopOnView speed={-1} style={{ width: "100%" }}>
+         <InfinityLoopOnView speed={1} style={{ width: "100%", whiteSpace: "nowrap" }}>
             <p style={{ fontSize: "24vw" }}>{dictionary.title}</p>
          </InfinityLoopOnView>
       </SampleLayout>

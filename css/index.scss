@@ -20,13 +20,13 @@ $mobile-design-width: 750;
 /*===============================================
 unit
 ===============================================*/
-$unit: inherit;
+$unit: 1px;
 
 //unit
 @if $designRoot==1 {
-   $unit: rem;
+   $unit: 1rem;
 } @else {
-   $unit: px;
+   $unit: 1px;
 }
 
 /*===============================================
@@ -45,23 +45,23 @@ $duration-standardAccelerate: 0.2s;
 /*===============================================
 spacing
 ===============================================*/
-$spacing-0: if($designRoot==1, 0, 0);
-$spacing-half: if($designRoot==1, 8rem, 8px);
-$spacing-mini: if($designRoot==1, 12rem, 12px);
-$spacing-1: if($designRoot==1, 16rem, 16px);
-$spacing-2: if($designRoot==1, 24rem, 24px);
-$spacing-3: if($designRoot==1, 32rem, 32px);
-$spacing-4: if($designRoot==1, 40rem, 40px);
-$spacing-4half: if($designRoot==1, 48rem, 48px);
-$spacing-5: if($designRoot==1, 56rem, 56px);
-$spacing-6: if($designRoot==1, 64rem, 64px);
-$spacing-7: if($designRoot==1, 72rem, 72px);
-$spacing-8: if($designRoot==1, 80rem, 80px);
-$spacing-8half: if($designRoot==1, 88rem, 88px);
-$spacing-9: if($designRoot==1, 96rem, 96px);
-$spacing-10: if($designRoot==1, 104rem, 104px);
-$spacing-11: if($designRoot==1, 112rem, 112px);
-$spacing-12: if($designRoot==1, 120rem, 120px);
+$spacing-0: 0 * $unit;
+$spacing-half: 8 * $unit;
+$spacing-mini: 12 * $unit;
+$spacing-1: 16 * $unit;
+$spacing-2: 24 * $unit;
+$spacing-3: 32 * $unit;
+$spacing-4: 40 * $unit;
+$spacing-4half: 48 * $unit;
+$spacing-5: 56 * $unit;
+$spacing-6: 64 * $unit;
+$spacing-7: 72 * $unit;
+$spacing-8: 80 * $unit;
+$spacing-8half: 88 * $unit;
+$spacing-9: 96 * $unit;
+$spacing-10: 104 * $unit;
+$spacing-11: 112 * $unit;
+$spacing-12: 120 * $unit;
 
 /*===============================================
 inner

@@ -26,7 +26,7 @@ function getLocale(request: NextRequest): string | undefined {
 
 const PUBLIC_FILE = /\.(.*)$/;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
    // Basic Auth
    if (
       process.env.NODE_ENV !== "development" &&
